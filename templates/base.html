@@ -1,4 +1,4 @@
-{% load staticfiles %}
+﻿{% load staticfiles %}
 <html>
     <head>
         <title>Filmland</title>
@@ -9,17 +9,40 @@
         <link rel="stylesheet" href="{% static 'css/filmland.css' %}">
     </head>
     <body>
-        <div class="page-header">
-            <h1><a href="/">Filmland</a></h1>
-            {% if user.is_authenticated %}
+                <div class="wrapper">
+                <div class="container"><ul class="menu" rel="sam1">
+                <li class="active"><a class="menuFont" href="#">FilmLand</a></li>
+                <li><a class="menuFont" href="#">Filmy</a></li>
+                <li ><a class="menuFont" href="#">Aktorzy</a></li>
+                <li><a class="menuFont" href="#">nie</a></li>
+                <li><a class="menuFont" href="#">wiemo</a></li>
+                <li><a class="menuFont" href="#">ile</a></li>
+                <li><a class="menuFont" href="#">buttonow</a></li>
+                </ul></div>
+                </div>
+
+
+
+            <div id="square">{% if user.is_authenticated %}
                 <p>Witaj, {{ user.username }}  <a href="/accounts/logout">wyloguj się.</a></p>
             {% else %}
                 <p>Witaj, gościu <a href="/accounts/login">zaloguj się</a> lub <a href="/accounts/register">zarejestruj.</a></p>
             {% endif %}
-        </div>
-        <div class="content container">
+
             {% block content %}
-            {% endblock %}
+
+            {% endblock %}</div>
+
+            <div class="content container">
+
+
+
+
+
+
+
+
+
         </div>
     </body>
 </html>
