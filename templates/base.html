@@ -12,9 +12,9 @@
         <div class="page-header">
             <h1><a href="/">Filmland</a></h1>
             {% if user.is_authenticated %}
-                <p>Witaj, {{ user.username }}  <a href="/accounts/logout">wyloguj się</a></p>
+                <p>Witaj, {{ user.username }}  <a href="/accounts/logout">wyloguj się.</a></p>
             {% else %}
-                <p>Witaj, gościu <a href="/accounts/login">zaloguj się</a></p>
+                <p>Witaj, gościu <a href="/accounts/login">zaloguj się</a> lub <a href="/accounts/register">zarejestruj.</a></p>
             {% endif %}
         </div>
         <div class="content container">
