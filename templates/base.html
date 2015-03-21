@@ -16,11 +16,13 @@
                 <li><a class="menuFont" href="#">Filmy</a></li>
                 <li><a class="menuFont" href="#">Aktorzy</a></li>
             </ul>
-            {% if user.is_authenticated %}
-                <p>Witaj, {{ user.username }}  <a href="/accounts/logout">wyloguj się.</a></p>
-            {% else %}
-                <p>Witaj, gościu <a href="/accounts/login">zaloguj się</a> lub <a href="/accounts/register">zarejestruj.</a></p>
-            {% endif %}
+            <div class="login">
+                {% if user.is_authenticated %}
+                    <p>Witaj, {{ user.username }}  <a href="/accounts/logout">wyloguj się.</a></p>
+                {% else %}
+                    <p>Witaj, gościu <a href="/accounts/login">zaloguj się</a> lub <a href="/accounts/register">zarejestruj.</a></p>
+                {% endif %}
+            </div>
         </div>
         </div>
         <div id="square">
