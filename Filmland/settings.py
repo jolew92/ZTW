@@ -49,9 +49,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'ZTW.urls'
+ROOT_URLCONF = 'Filmland.urls'
 
-WSGI_APPLICATION = 'ZTW.wsgi.application'
+WSGI_APPLICATION = 'Filmland.wsgi.application'
 
 
 # Database
