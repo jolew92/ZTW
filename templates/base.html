@@ -9,40 +9,29 @@
         <link rel="stylesheet" href="{% static 'css/filmland.css' %}">
     </head>
     <body>
-                <div class="wrapper">
-                <div class="container"><ul class="menu" rel="sam1">
+        <div class="wrapper">
+        <div class="container">
+            <ul class="menu" rel="sam1">
                 <li class="active"><a class="menuFont" href="#">FilmLand</a></li>
                 <li><a class="menuFont" href="#">Filmy</a></li>
-                <li ><a class="menuFont" href="#">Aktorzy</a></li>
+                <li><a class="menuFont" href="#">Aktorzy</a></li>
                 <li><a class="menuFont" href="#">nie</a></li>
                 <li><a class="menuFont" href="#">wiemo</a></li>
                 <li><a class="menuFont" href="#">ile</a></li>
                 <li><a class="menuFont" href="#">buttonow</a></li>
-                </ul></div>
-                </div>
-
-
-
-            <div id="square">{% if user.is_authenticated %}
+            </ul>
+            {% if user.is_authenticated %}
                 <p>Witaj, {{ user.username }}  <a href="/accounts/logout">wyloguj się.</a></p>
             {% else %}
                 <p>Witaj, gościu <a href="/accounts/login">zaloguj się</a> lub <a href="/accounts/register">zarejestruj.</a></p>
             {% endif %}
-
-            {% block content %}
-
-            {% endblock %}</div>
-
+        </div>
+        </div>
+        <div id="square">
             <div class="content container">
-
-
-
-
-
-
-
-
-
+                {% block content %}
+                {% endblock %}
+            </div>
         </div>
     </body>
 </html>
