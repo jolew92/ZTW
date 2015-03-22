@@ -4,6 +4,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    z-index:-10;
 }
 
 .fontTest {
@@ -19,9 +20,8 @@ body {
     height: 100%;
     margin-top: 40px;
     color: white;
-    background: rgba(5,4,2,0.7);;
+    background: rgba(5,4,2,0.7);
 /*  background: rgba(255,255,255,0.17); */
-    z-index:-1;
 }
 
 .login {
