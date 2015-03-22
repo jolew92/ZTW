@@ -4,6 +4,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    z-index:-10;
 }
 
 .fontTest {
@@ -13,20 +14,24 @@ body {
 #square {
     position: absolute;
     top: 20px;
-    padding: 10px;
+    padding: 30px 50px;
     width: 80%;
     left: 10%;
     height: 100%;
     margin-top: 40px;
     color: white;
-    background: rgba(5,4,2,0.7);;
+    background: rgba(5,4,2,0.7);
 /*  background: rgba(255,255,255,0.17); */
-    z-index:-1;
 }
 
 .login {
     padding-top: 20px;
     text-align: right;
+    color: white;
+}
+
+.login a {
+    color: gold;
 }
 
 .menuFont{
@@ -85,6 +90,8 @@ ul li a {
 
 ul li a:hover {
     background: transparent none;
+    text-decoration: none;
+    color: white;
 }
 
 ul li.active a {
