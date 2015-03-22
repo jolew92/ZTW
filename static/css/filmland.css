@@ -12,18 +12,19 @@ body {
 
 #square {
     position: absolute;
-    top: 60px;
-    padding: 20px;
+    top: 20px;
+    padding: 10px;
     width: 80%;
     left: 10%;
     height: 100%;
     margin-top: 40px;
     color: white;
-	background: rgba(5,4,2,0.5);;
+    background: rgba(255,255,255,0.17);
+    z-index:-1;
 }
 
 .login {
-    padding-top: 30px;
+    padding-top: 20px;
     text-align: right;
 }
 
@@ -32,10 +33,12 @@ body {
 }
 
 .wrapper {
+    
     position: relative;
     width: 92%;
     left: 4%;
-    height: 80;
+    top:-20px;
+    height: 60;
     margin-bottom: 10px;
     background: #464646;
     background: -webkit-gradient(linear, left top, left bottom, from(rgb(168,168,168)), to(rgb(69,69,69)));
@@ -49,7 +52,7 @@ ul {
 }
 
 ul.menu {
-    height: 80px;
+    height: 60px;
     border-left: 0px solid rgba(0,0,0,0.3);
     border-right: 0px solid rgba(255,255,255,0.3);
     float: left;
@@ -58,7 +61,7 @@ ul.menu {
 ul.menu li {
     list-style: none;
     float: left;
-    height: 80px;
+    height: 60px;
     text-align: center;
     background: -webkit-gradient(radial, 50% 100%, 10, 50% 50%, 90, from(rgba(232,240,17,1)), to(rgba(240,153,17, 1)) );
     background: -moz-radial-gradient(center 80px 45deg, circle cover, rgba(232,240,17,1) 0%, rgba(240,153,17, 1) 100%);
@@ -70,7 +73,7 @@ ul li a {
     border-left: 1px solid rgba(255,255,255,0.1);
     border-right: 1px solid rgba(0,0,0,0.1);
     text-align: center;
-    line-height: 80px;
+    line-height: 60px;
     background: -webkit-gradient(linear, left top, left bottom, from(rgb(168,168,168)), to(rgb(69,69,69)));
     background: -moz-linear-gradient(top, rgb(168,168,168), rgb(69,69,69));
     -webkit-transition-property: background;
