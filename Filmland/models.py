@@ -3,32 +3,47 @@ from django.db import models
 class Movies(models.Model):
     name = models.CharField(max_length=30)
 
+    class Meta:
+        verbose_name = "Film"
+        verbose_name_plural = "Filmy"
+
+    def __unicode__(self):
+        return self.name
+
 class Genere(models.Model):
     name = models.CharField(max_length=30)
+
+    class Meta:
+        verbose_name = "Gatunek"
+        verbose_name_plural = "Gatunki"
+
+    def __unicode__(self):
+        return self.name
 
 class MovieGenere(models.Model):
     movie = models.ForeignKey(Movies)
     genere = models.ForeignKey(Genere)
 
-class Rating(models.Model):
-    movie = models.ForeignKey(Movies)
-    rate = models.ForgeinKey(Vote)
 
 OCENA_CHOICE = (
-    (1,'Omijać'),
-    (2,'Bardzo zły'),
+    (1,'Omijac'),
+    (2,'Bardzo zly'),
     (3,'Marny'),
-    (4,'Słaby'),
-    (5,'Może'),
-    (6,'Średni'),
+    (4,'Slaby'),
+    (5,'Moze'),
+    (6,'Sredni'),
     (7,'Dobry'),
     (8,'Bardzo dobry'),
-    (9,'Wyśmienity'),
-    (10,'Arcydzieło'),
+    (9,'Wysmienity'),
+    (10,'Arcydzielo'),
 )
 
 class Vote(models.Model):
     vote = models.IntegerField(choices=OCENA_CHOICE)
+
+class Rating(models.Model):
+    movie = models.ForeignKey(Movies)
+    rate = models.ForeignKey(Vote)
 
 class Year(models.Model):
     year = models.IntegerField();
@@ -44,7 +59,7 @@ class MovieRole(models.Model):
     role = models.CharField(max_length=50)
 
 class Biography(models.Model):
-    bio= models.CharField()
+    bio= models.CharField(max_length=9000)
 
 LANGUAGE_CHOICE = (
     (1,'PL'),
@@ -56,19 +71,19 @@ class Language(models.Model):
 
 class Decription(models.Model):
     movie = models.ForeignKey(Movies)
-    desc = models.CharField()
+    desc = models.CharField(max_length=9000)
 
 class MovieListItem(models.Model):
     def something(self):
         pass
 
-class MovieList(models.Model):
-    userList = models.ForeignKey(User)
-    movieList = models.ForeignKey(Movies)
-
 class User(models.Model):
     login = models.CharField(max_length=25)
     password = models.CharField(max_length=25)
+
+class MovieList(models.Model):
+    userList = models.ForeignKey(User)
+    movieList = models.ForeignKey(Movies)
 
 USERROLE_CHOICE = (
     (1,'User'),
