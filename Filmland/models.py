@@ -10,27 +10,25 @@ class MovieGenere(models.Model):
     movie = models.ForeignKey(Movies)
     genere = models.ForeignKey(Genere)
 
-
-
 class Rating(models.Model):
     movie = models.ForeignKey(Movies)
     rate = models.ForgeinKey(Vote)
 
-ocena_choices = (
-    ('1','Omijać'),
-    ('2','Bardzo zły'),
-    ('3','Marny'),
-    ('4','Słaby'),
-    ('5','Może'),
-    ('6','Średni'),
-    ('7','Dobry'),
-    ('8','Bardzo dobry'),
-    ('9','Wyśmienity'),
-    ('10','Arcydzieło'),
+OCENA_CHOICE = (
+    (1,'Omijać'),
+    (2,'Bardzo zły'),
+    (3,'Marny'),
+    (4,'Słaby'),
+    (5,'Może'),
+    (6,'Średni'),
+    (7,'Dobry'),
+    (8,'Bardzo dobry'),
+    (9,'Wyśmienity'),
+    (10,'Arcydzieło'),
 )
 
 class Vote(models.Model):
-    COS Z CZOISAMI ALE JESZCZE NIE WIEM
+    vote = models.IntegerField(choices=OCENA_CHOICE)
 
 class Year(models.Model):
     year = models.IntegerField();
@@ -46,28 +44,49 @@ class MovieRole(models.Model):
     role = models.CharField(max_length=50)
 
 class Biography(models.Model):
-    NIE WIEM
+    bio= models.CharField()
+
+LANGUAGE_CHOICE = (
+    (1,'PL'),
+    (2,'ENG'),
+)
 
 class Language(models.Model):
-    TU TEZ COS Z CHOISAMI?
+    language = models.IntegerField(choices=LANGUAGE_CHOICE)
 
 class Decription(models.Model):
     movie = models.ForeignKey(Movies)
-    desc = models.CharField(max_length=255) //tymczasowo
+    desc = models.CharField()
 
 class MovieListItem(models.Model):
+    def something(self):
+        pass
 
 class MovieList(models.Model):
+    userList = models.ForeignKey(User)
+    movieList = models.ForeignKey(Movies)
 
 class User(models.Model):
     login = models.CharField(max_length=25)
     password = models.CharField(max_length=25)
 
+USERROLE_CHOICE = (
+    (1,'User'),
+    (2,'Mod'),
+)
+
 class UserRole(models.Model):
-    TU TEZ COS Z CHOISAMI?
+    def something(self):
+        pass
+
+COUNTRY_CHOICE = (
+    (1,'PL'),
+    (2,'ENG'),
+    (3,'ITA'),
+)
 
 class Country(models.Model):
-    TU TEZ COS Z CHOISAMI?
+    country = models.IntegerField(choices=COUNTRY_CHOICE)
 
 class MovieCountry(models.Model):
     movie = models.ForeignKey(Movies)
