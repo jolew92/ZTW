@@ -1,0 +1,13 @@
+1. MySQL 5.6 installer
+2. Wybraæ Server i Connector do Pythona
+3. Instalowaæ, has³o do roota to P@ssw0rd, coœ tam z nazwami to powpisywaæ ZTW
+4. Otworzyæ MySQL command line
+5. Chyba bêdzie chcia³ has³o do roota
+6. CREATE DATABASE ztw;
+7. SHOW DATABASES;
+8. Powinno wyœwietliæ m.in. ztw;
+9. To chyba ju¿ wiecie jak odpaliæ w PyCharm to wszystko z tymi migracjami itd.
+10. Server odpala siê w konsoli python manage.py runserver
+11. Z tymi migracjami to chyba by³o python manage.py makemigration
+12. python manage.py migrate albo python manage.py syncdb
+13. No i sprawdzic czy coœ siê wyœwietla na 127.0.0.1:8000
