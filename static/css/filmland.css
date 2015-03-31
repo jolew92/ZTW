@@ -1,0 +1,108 @@
+body {
+    overflow-x:hidden;
+    background: url('test.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index:-10;
+}
+
+.fontTest {
+    color: white;
+}
+
+#square {
+    position: absolute;
+    top: 19px;
+    padding: 30px 50px;
+    width: 80%;
+    left: 10%;
+    height: 90%;
+    margin-top: 40px;
+    color: white;
+    background: rgba(5,4,2,0.7);
+/*  background: rgba(255,255,255,0.17); */
+}
+
+.login {
+    padding-top: 20px;
+    text-align: right;
+    color: white;
+    padding-right: 10%;
+}
+
+.login a {
+    color: gold;
+}
+
+.menuFont{
+    color: white;
+}
+
+.wrapper {
+    position: absolute;
+    top: -1px;
+    right: 10%;
+    left: 10%;
+    height: 60px;
+    margin-bottom: 10px;
+    background: #464646;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(168,168,168)), to(rgb(69,69,69)));
+    background: -moz-linear-gradient(top, rgb(168,168,168), rgb(69,69,69));
+    border-top: 0px solid #939393;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul.menu {
+    margin-left: -15px;
+    height: 60px;
+    border-left: 0px solid rgba(0,0,0,0.3);
+    border-right: 0px solid rgba(255,255,255,0.3);
+    float: left;
+}
+
+ul.menu li {
+    list-style: none;
+    float: left;
+    height: 60px;
+    text-align: center;
+    background: -webkit-gradient(radial, 50% 100%, 10, 50% 50%, 90, from(rgba(232,240,17,1)), to(rgba(240,153,17, 1)) );
+    background: -moz-radial-gradient(center 80px 45deg, circle cover, rgba(232,240,17,1) 0%, rgba(240,153,17, 1) 100%);
+    }
+
+ul li a {
+    display: block;
+    padding: 0 20px;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    border-right: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+    line-height: 60px;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(168,168,168)), to(rgb(69,69,69)));
+    background: -moz-linear-gradient(top, rgb(168,168,168), rgb(69,69,69));
+    -webkit-transition-property: background;
+    -webkit-transition-duration: 700ms;
+    -moz-transition-property: background;
+    -moz-transition-duration: 700ms;
+}
+
+ul li a:hover {
+    background: transparent none;
+    text-decoration: none;
+    color: white;
+}
+
+ul li.active a {
+        text-decoration: none;
+    background: -webkit-gradient(radial, 50% 100%, 10, 50% 50%, 90, from(rgba(232,240,17,1)), to(rgba(240,156,0, 1)) );
+    background: -moz-radial-gradient(center 80px 45deg, circle cover, rgba(232,240,17,1) 0%, rgba(240,156,0, 1) 100%);
+}
+
+ul li a:visited {
+    color: white;
+    text-decoration: none;
+}
