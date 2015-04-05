@@ -1,7 +1,35 @@
-{% extends 'base.html' %}
-
+﻿{% extends 'base.html' %}
+﻿
 {% block content %}
 
-    Strona Główna!
+	<div class="gallery autoplay items-3">
+  <div id="item-1" class="control-operator"></div>
+  <div id="item-2" class="control-operator"></div>
+  <div id="item-3" class="control-operator"></div>
+
+  <figure class="item">
+    <div class="wrap">
+	<img src="http://static2.gamespot.com/uploads/original/1365/13658182/2559799-bak_sshot075.jpg" height=400px width=712px/>
+	<h3 class="desc">Test1</h3></div>
+  </figure>
+
+  <figure class="item">
+	<div class="wrap">
+	<img src="http://www.psdgraphics.com/file/black-windows-7-wallpaper-1280x720.jpg" height=400px width=712px/>
+	<h3 class="desc">Test2</h3></div>
+  </figure>
+
+  <figure class="item">
+    <div class="wrap">
+	<img src="http://i.imgur.com/7mNMrUm.jpg" height=400px width=712px/>
+	<h3 class="desc">Test3</h3></div>
+  </figure>
+
+  <div class="controls">
+    <a href="#item-1" class="control-button">•</a>
+    <a href="#item-2" class="control-button">•</a>
+    <a href="#item-3" class="control-button">•</a>
+  </div>
+</div>
 
 {% endblock content %}
