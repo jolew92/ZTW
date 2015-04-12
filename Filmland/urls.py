@@ -15,4 +15,7 @@ urlpatterns = patterns('',
     url(r'^accounts/register/$', 'accounts.views.register_user'),
     url(r'^accounts/register_success/$', 'accounts.views.register_success'),
 
+    # movies
+    url(r'^movies/movie_list/$', 'movies.views.movie_list'),
+    url(r'^movies/people_list/$', 'movies.views.people_list'),
 )

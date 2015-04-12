@@ -13,9 +13,9 @@
         <div class="wrapper">
         <div class="container">
             <ul class="menu" rel="sam1">
-                <li class="active"><a class="menuFont" href="#">FilmLand</a></li>
-                <li><a class="menuFont" href="#">Filmy</a></li>
-                <li><a class="menuFont" href="#">Aktorzy</a></li>
+                <li class="active"><a class="menuFont" href="/">FilmLand</a></li>
+                <li><a class="menuFont" href="/movies/movie_list">Filmy</a></li>
+                <li><a class="menuFont" href="/movies/people_list">Aktorzy</a></li>
             </ul>
             <div class="login">
                 {% if user.is_authenticated %}
@@ -27,10 +27,8 @@
         </div>
         </div>
         <div id="square">
-            <div class="content container">
                 {% block content %}
                 {% endblock %}
-            </div>
         </div>
     </body>
 </html>

@@ -11,12 +11,15 @@ body {
     -o-background-size: cover;
     background-size: cover;
 
-font-family: testFont;
-    //z-index:-10;
+    font-family: testFont;
+    z-index:-10;
+    font-size: 1rem;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+}
 
-    //font-size: 1rem;
-    //font-family: "Helvetica Neue", Arial, sans-serif;
-    //line-height: 1.5;
+li {
+    color: white;
 }
 
 .fontTest {
@@ -29,12 +32,12 @@ font-family: testFont;
     padding: 20px 50px;
     width: 80%;
     left: 10%;
-    height: 90%;
+    height: 95%;
     margin-top: 20px;
     color: white;
     background: rgba(5,4,2,0.7);
 /*  background: rgba(255,255,255,0.17); */
-   // z-index: -1;
+
 }
 
 .login {
@@ -42,7 +45,7 @@ font-family: testFont;
     text-align: right;
     color: black;
     font-family: testFont;
-    //font-weight: 600;
+    font-weight: 600;
     padding-right: 10%;
 }
 
@@ -57,7 +60,6 @@ font-family: testFont;
 /* ********************MENU******************** */
 
 .wrapper {
-
     position: absolute;
     top: -1px;
     right: 10%;
@@ -95,8 +97,8 @@ ul.menu li {
     height: 30px;
     text-align: center;
     background: -webkit-gradient(radial, 50% 100%, 10, 50% 50%, 90, from(rgba(232,240,17,1)), to(rgba(240,153,17, 1)) );
-    background: -moz-radial-gradient(center 80px 45deg, circle cover, rgba(232,240,17,1) 0%, rgba(240,153,17, 1) 100%);
-    }
+ /*   background: -moz-radial-gradient(center 80px 45deg, circle cover, rgba(232,240,17,1) 0%, rgba(240,153,17, 1) 100%); */
+}
 
 ul li a {
     color: black;
@@ -125,7 +127,7 @@ ul li a:hover {
 ul li.active a {
     text-decoration: none;
     background: -webkit-gradient(radial, 50% 100%, 10, 50% 50%, 90, from(rgba(232,240,17,1)), to(rgba(240,156,0, 1)) );
-    background: -moz-radial-gradient(center 80px 45deg, circle cover, rgba(232,240,17,1) 0%, rgba(240,156,0, 1) 100%);
+ /*   background: -moz-radial-gradient(center 80px 45deg, circle cover, rgba(232,240,17,1) 0%, rgba(240,156,0, 1) 100%);*/
 }
 
 ul li a:visited {
@@ -143,22 +145,22 @@ ul li a:visited {
 	box-sizing:         border-box;  
 }
 
-//html {
-//	font-size: 100%;
-//}
+html {
+	font-size: 100%;
+}
 
 
-//.content {
-//	margin: 0 auto;
-//	padding: 2rem;
-//	text-align: center;
-//
-//}
+.content {
+	margin: 0 auto;
+	padding: 2rem;
+	text-align: center;
+
+}
 
 .button {
 	display: inline-block;
-  margin: 0;
-  padding: 1rem 2rem;
+    margin: 0;
+    padding: 1rem 2rem;
 	border: 0;
 	-webkit-border-radius: 0.317rem;
 	-moz-border-radius:    0.317rem;
@@ -168,7 +170,7 @@ ul li a:visited {
 	text-decoration: none;
 	font-weight: 700;
 	font-size: 1.25rem;
-  line-height: 1.5;
+    line-height: 1.5;
 	font-family: "Helvetica Neue", Arial, sans-serif;
 	cursor: pointer;
 	-webkit-appearance: none;
@@ -863,33 +865,31 @@ ul li a:visited {
 */
 
 .gallery {
-
- position: relative;
-  
-  
+    position: relative;
 }
 
 .gallery .item {
-  height: 400px;
-  width: 712px;
-  margin-left:10%;
-  overflow: hidden;
-  text-align: center;
-  background: rgba(255,255,255,0.17);
-  
+    height: 80%;
+    width: 110%;
+    left: -50px;
+    top: -21px;
+    overflow: hidden;
+    text-align: center;
+    background: rgba(255,255,255,0.17);
 }
 
 .gallery .controls {
-  position: absolute;
-  bottom: 0;
-  width: 80%;
-  text-align: center;
-  z-index:3;
+    position: absolute;
+    bottom: 0;
+    top: 62%;
+    width: 100%;
+    text-align: center;
+    z-index:3;
 }
 
 .gallery .control-button {
   display: inline-block;
-  //margin: 0 .02em;
+  margin: 0 ;
   font-size: 3em;
   text-align: center;
   text-decoration: none;
@@ -899,21 +899,26 @@ ul li a:visited {
 }
 
 /* test */
-	.wrap {
-	  /* force the div to properly contain the floated images: */
-	  position:relative;
-	  float:left;
-	  clear:none;
-	  overflow:hidden;
-	}
-	.wrap img {
-	  position:relative;
-	  z-index:1;
-	}
-	.wrap .desc {
-	  display:block;
-	  position:absolute;
-	  width:100%;
-	  top:10%;
-	  left:-40%;
-	  z-index:2;
+.wrap {
+	 /* force the div to properly contain the floated images: */
+    overflow: hidden;
+    text-align: center;
+    background: rgba(255,255,255,0.17);
+    position:relative;
+    float:left;
+    clear:none;
+    overflow:hidden;
+}
+.wrap img {
+    position:relative;
+    z-index:1;
+}
+
+.wrap .desc {
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 10%;
+    left: -40%;
+    z-index: 2;
+}
