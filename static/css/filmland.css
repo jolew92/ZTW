@@ -18,6 +18,21 @@ body {
     line-height: 1.5;
 }
 
+div {
+    font-family: testFont;
+    color: white;
+}
+
+p {
+    font-family: testFont;
+    color: white;
+}
+
+.attributes {
+    color: gold;
+    display : inline;
+}
+
 li {
     color: white;
 }
@@ -926,14 +941,25 @@ html {
 .list_link {
     all: initial;
     color: white;
+    font-family: testFont;
 }
 
 .list_link:hover{
     all: initial;
     color: gold;
+    font-family: testFont;
 }
 
 .list_link:visited{
     all: initial;
     color: white;
+    font-family: testFont;
+}
+
+.role_list {
+    color: white;
+}
+
+.role_list_item {
+    margin-left: 5%;
 }

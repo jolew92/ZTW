@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response
-from people.models import Person
+from people.models import Person, Biography
+from movies.models import MovieRole
 
 
 def people(request):
@@ -8,4 +9,5 @@ def people(request):
 
 
 def person(request, person_id=1):
-    return render_to_response('person.html', {'person': Person.objects.get(id=person_id)})
+    bio = Biography.objects.filter(person_id=person_id)
+    return render_to_response('person.html', {'person': Person.objects.get(id=person_id), 'bio': bio})

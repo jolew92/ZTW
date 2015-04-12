@@ -2,4 +2,46 @@
 ﻿
 {% block content %}
     <h1>{{  movie.title }}</h1>
+    <div>
+        <p class="attributes">Rok:</p><p>{{ movie.year }}</p>
+        <p class="attributes">Język:</p><p>{{ movie.language }}</p>
+        <p class="attributes">Gatunek:</p>
+        <p>{% for m in movie.genre.all %}
+            {% if forloop.last %}
+               {{ m.genre }}
+            {% else %}
+                {{ m.genre }},
+            {% endif %}
+        {% endfor %}
+        </p>
+        <p class="attributes">Kraj:</p>
+        <p>{% for m in movie.country.all %}
+            {% if forloop.last %}
+               {{ m.name }}
+            {% else %}
+                {{ m.name }},
+            {% endif %}
+        {% endfor %}
+        </p>
+    </div>
+    <div>
+        {% for d in desc %}
+            {% if d.language == 'PL' %}
+                <p>{{ d.description }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div>
+        {% for p in movie_roles.all %}
+            <ul class="role_list"><p class="attributes">{{ p.role }}</p>
+            {% for person in p.people.all %}
+                <li class="role_list_item">
+                    <a href="/people/get/{{ person.id }}" class="list_link">
+                        {{ person.last_name }} {{ person.first_name }}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
 {% endblock content %}
