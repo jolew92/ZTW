@@ -17,5 +17,5 @@ urlpatterns = patterns('',
 
     # movies
     url(r'^movies/movie_list/$', 'movies.views.movie_list'),
-    url(r'^movies/people_list/$', 'movies.views.people_list'),
+    url(r'^people/people_list/$', 'people.views.people_list'),
 )
