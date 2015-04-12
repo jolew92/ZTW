@@ -1,7 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render_to_response
 from movies.models import Movie
 
 
-def movie_list(request):
+def movies(request):
     movies = Movie.objects.order_by('title')
-    return render(request, 'movie_list.html', {'movies': movies})
+    return render_to_response('movies.html', {'movies': movies})
+
+
+def movie(request, movie_id=1):
+    return render_to_response('movie.html', {'movie': Movie.objects.get(id=movie_id)})
+
+

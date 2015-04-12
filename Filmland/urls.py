@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     url(r'^accounts/register_success/$', 'accounts.views.register_success'),
 
     # movies
-    url(r'^movies/movie_list/$', 'movies.views.movie_list'),
-    url(r'^people/people_list/$', 'people.views.people_list'),
+    url(r'^movies/all/$', 'movies.views.movies'),
+    url(r'^movies/get/(?P<movie_id>\d+)/$', 'movies.views.movie'),
+    url(r'^people/all/$', 'people.views.people'),
+    url(r'^people/get/(?P<person_id>\d+)/$', 'people.views.person'),
 )

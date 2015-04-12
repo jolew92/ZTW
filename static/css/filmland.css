@@ -932,3 +932,8 @@ html {
     all: initial;
     color: gold;
 }
+
+.list_link:visited{
+    all: initial;
+    color: white;
+}
