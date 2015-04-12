@@ -9,4 +9,19 @@
             {% endif %}
         {% endfor %}
     </div>
+    <div>
+        {% for r in roles.all %}
+            <ul class="role_list"><p class="attributes">{{ r.role }}</p>
+            {% for m in movie_roles.all %}
+                {% if m.role == r %}
+                    <li class="role_list_item">
+                        <a href="/movies/get/{{ m.movie.id }}" class="list_link">
+                            {{ m.movie.title }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
 {% endblock content %}

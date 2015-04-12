@@ -32,8 +32,10 @@
         {% endfor %}
     </div>
     <div>
+        {% for r in roles.all %}
+        <ul class="role_list"><p class="attributes">{{ r.role }}</p>
         {% for p in movie_roles.all %}
-            <ul class="role_list"><p class="attributes">{{ p.role }}</p>
+            {% if p.role == r %}
             {% for person in p.people.all %}
                 <li class="role_list_item">
                     <a href="/people/get/{{ person.id }}" class="list_link">
@@ -41,7 +43,9 @@
                     </a>
                 </li>
             {% endfor %}
-            </ul>
+            {% endif %}
+        {% endfor %}
+        </ul>
         {% endfor %}
     </div>
 {% endblock content %}
