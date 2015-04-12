@@ -167,7 +167,7 @@ html {
 
 .content {
 	margin: 0 auto;
-	padding: 2rem;
+	padding: 1rem;
 	text-align: center;
 
 }
@@ -175,7 +175,7 @@ html {
 .button {
 	display: inline-block;
     margin: 0;
-    padding: 1rem 2rem;
+    padding: 0.7rem 1rem;
 	border: 0;
 	-webkit-border-radius: 0.317rem;
 	-moz-border-radius:    0.317rem;
@@ -184,8 +184,8 @@ html {
 	color: black;
 	text-decoration: none;
 	font-weight: 700;
-	font-size: 1.25rem;
-    line-height: 1.5;
+	font-size: 1.1rem;
+    line-height: 1.0;
 	font-family: "Helvetica Neue", Arial, sans-serif;
 	cursor: pointer;
 	-webkit-appearance: none;
@@ -241,9 +241,10 @@ html {
 }
 
 .gallery .item:first-of-type {
-  position: static;
-  pointer-events: auto;
-  opacity: 1;
+  position: relative;
+  pointer-events: none;
+  pacity: 0;
+ 
 }
 
 .gallery .item {
@@ -888,9 +889,9 @@ html {
     width: 110%;
     left: -50px;
     top: -21px;
-    overflow: hidden;
+    //overflow: hidden;
     text-align: center;
-    background: rgba(255,255,255,0.17);
+    //background: rgba(255,255,255,0.17);
 }
 
 .gallery .controls {
