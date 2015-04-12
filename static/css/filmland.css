@@ -922,3 +922,13 @@ html {
     left: -40%;
     z-index: 2;
 }
+
+.list_link {
+    all: initial;
+    color: white;
+}
+
+.list_link:hover{
+    all: initial;
+    color: gold;
+}

@@ -2,6 +2,7 @@
 from django.db import models
 from people.models import Person
 from genre.models import Genre
+from django.core import urlresolvers
 
 
 class Language(models.Model):
@@ -55,10 +56,17 @@ class Movie(models.Model):
     language = models.ForeignKey(Language, blank=True, null=True, verbose_name='Język')
     genre = models.ManyToManyField(Genre, blank=True, null=True, verbose_name='Gatunek')
     country = models.ManyToManyField(Country, blank=True, null=True, verbose_name='Kraj')
- #   roles = models.ManyToManyField(Role, blank=True, null=True)
 
     def __unicode__(self):
         return unicode(self.title)
+
+    @property
+    def get_admin_url(self):
+        return urlresolvers.reverse("admin:%s_%s_change" %
+        (self._meta.app_label, self._meta.module_name), args=(self.pk,))
+
+    def get_url(self):
+        return u"/%s/%s/%s" % (self._meta.app_label, self._meta.module_name, self.pk)
 
     class Meta:
         ordering = ['title']

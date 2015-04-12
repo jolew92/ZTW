@@ -25,7 +25,6 @@ class MovieAdmin(admin.ModelAdmin):
     inlines = [MovieCountryInline, DescriptionMovieInline, MoviePeopleInline]
     exclude = ('country', 'roles',)
 
-
 admin.site.register(Movie, MovieAdmin)
 admin.site.register(Language)
 admin.site.register(Country)
