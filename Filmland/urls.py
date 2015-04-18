@@ -1,5 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from movies.views import MoviesView, MovieView
+from people.views import PeopleView, PersonView
+from search.views import SearchView
 
 urlpatterns = patterns('',
 
@@ -16,8 +19,9 @@ urlpatterns = patterns('',
     url(r'^accounts/register_success/$', 'accounts.views.register_success'),
 
     # movies
-    url(r'^movies/all/$', 'movies.views.movies'),
-    url(r'^movies/get/(?P<movie_id>\d+)/$', 'movies.views.movie'),
-    url(r'^people/all/$', 'people.views.people'),
-    url(r'^people/get/(?P<person_id>\d+)/$', 'people.views.person'),
+    url(r'^movies/all/$', MoviesView.as_view()),
+    url(r'^movies/get/(?P<movie_id>\d+)/$', MovieView.as_view()),
+    url(r'^people/all/$', PeopleView.as_view()),
+    url(r'^people/get/(?P<person_id>\d+)/$', PersonView.as_view()),
+    url(r'^search/$', SearchView.as_view()),
 )

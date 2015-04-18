@@ -8,7 +8,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('people', '0001_initial'),
-        ('genre', '0001_initial'),
     ]
 
     operations = [
@@ -39,6 +38,19 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
+            name='Genre',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('genre', models.CharField(max_length=30, verbose_name=b'Gatunek')),
+            ],
+            options={
+                'ordering': ['genre'],
+                'verbose_name': 'Gatunek',
+                'verbose_name_plural': 'Gatunki',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
             name='Language',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -58,7 +70,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=30, verbose_name=b'Tytu\xc5\x82')),
                 ('year', models.IntegerField(max_length=4, verbose_name=b'Rok')),
                 ('country', models.ManyToManyField(to='movies.Country', null=True, verbose_name=b'Kraj', blank=True)),
-                ('genre', models.ManyToManyField(to='genre.Genre', null=True, verbose_name=b'Gatunek', blank=True)),
+                ('genre', models.ManyToManyField(to='movies.Genre', null=True, verbose_name=b'Gatunek', blank=True)),
                 ('language', models.ForeignKey(verbose_name=b'J\xc4\x99zyk', blank=True, to='movies.Language', null=True)),
             ],
             options={

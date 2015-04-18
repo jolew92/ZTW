@@ -16,11 +16,23 @@
                 <li class="active"><a class="menuFont" href="/">FilmLand</a></li>
                 <li><a class="menuFont" href="/movies/all">Filmy</a></li>
                 <li><a class="menuFont" href="/people/all">Aktorzy</a></li>
+                <li>
+                    <form action="/search/" method="get">
+                       <div class="input-group-sm">
+                           <input type="Search" placeholder="Szukaj..." name="search" class="form-control" />
+                           <div class="input-group-btn-sm">
+                               <button class="btn btn-info btn-sm">
+                               <span class="glyphicon glyphicon-search"></span>
+                               </button>
+                           </div>
+                       </div>
+                    </form>
+                </li>
             </ul>
             <div class="login">
                 {% if user.is_authenticated %}
                     <p>Witaj, {{ user.username }}  <a href="/accounts/logout">wyloguj się.</a></p>
-                {% else %}
+                    {% else %}
                     <p>Witaj, gościu <a href="/accounts/login">zaloguj się</a> lub <a href="/accounts/register">zarejestruj.</a></p>
                 {% endif %}
             </div>

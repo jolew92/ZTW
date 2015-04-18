@@ -58,6 +58,7 @@ li {
 .login {
     padding-top: 5px;
     text-align: right;
+    float: right;
     color: black;
     font-family: testFont;
     font-weight: 600;
@@ -118,7 +119,7 @@ ul.menu li {
 ul li a {
     color: black;
     font-family: testFont;
-    display: block;
+    display: inline-block;
     padding: 0 20px;
     border-left: 1px solid rgba(255,255,255,0.1);
     border-right: 1px solid rgba(0,0,0,0.1);

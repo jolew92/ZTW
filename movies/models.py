@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from people.models import Person
-from genre.models import Genre
 from django.core import urlresolvers
+#///where_to_search
 
 
 class Language(models.Model):
@@ -13,8 +13,20 @@ class Language(models.Model):
 
     class Meta:
         ordering = ['name']
-        verbose_name = 'Język'
-        verbose_name_plural = 'Języki'
+        verbose_name = u'Język'
+        verbose_name_plural = u'Języki'
+
+
+class Genre(models.Model):
+    genre = models.CharField(max_length=30, verbose_name='Gatunek')
+
+    def __unicode__(self):
+        return unicode(self.genre)
+
+    class Meta:
+        ordering = ['genre']
+        verbose_name = 'Gatunek'
+        verbose_name_plural = 'Gatunki'
 
 
 VOTE_GRADES = (

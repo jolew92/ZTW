@@ -1,15 +1,22 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from people.models import Person, Biography
 from movies.models import MovieRole, Role
+from django.views.generic import View
 
 
-def people(request):
-    people_all = Person.objects.order_by('last_name')
-    return render_to_response('people.html', {'people': people_all})
+class PeopleView(View):
+    template_name = 'people.html'
+
+    def get(self, request):
+        people_all = Person.objects.order_by('last_name')
+        return render(request, self.template_name, {'people': people_all})
 
 
-def person(request, person_id=1):
-    bio = Biography.objects.filter(person_id=person_id)
-    movie_roles = MovieRole.objects.filter(people__id=person_id)
-    return render_to_response('person.html', {'person': Person.objects.get(id=person_id), 'bio': bio,
-                                              'movie_roles': movie_roles, 'roles': Role.objects})
+class PersonView(View):
+    template_name = 'person.html'
+
+    def get(self, request, person_id=1):
+        bio = Biography.objects.filter(person_id=person_id)
+        movie_roles = MovieRole.objects.filter(people__id=person_id)
+        return render(request, self.template_name, {'person': Person.objects.get(id=person_id), 'bio': bio,
+                                                    'movie_roles': movie_roles, 'roles': Role.objects})
