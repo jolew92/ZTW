@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+﻿
+{% block content %}
+
+    <h3><p class="attributes">Szukane: </p>{{ search }}</h3><br>
+    <h3 class="attributes">Filmy:</h3>
+    {% if movies.exists %}
+        <ul>
+            {% for movie in movies %}
+                <li><a href="/movies/get/{{ movie.id }}" class="list_link">{{ movie.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+            <p>Nic nie znaleziono.</p>
+    {% endif %}
+    <br>
+    <h3 class="attributes">Osoby:</h3>
+    {% if people.exists %}
+        <ul>
+            {% for person in people %}
+                <li><a href="/people/get/{{ person.id }}" class="list_link">{{ person.last_name }} {{ person.first_name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nic nie znaleziono.</p>
+    {% endif %}
+
+{% endblock content %}

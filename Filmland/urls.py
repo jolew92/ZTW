@@ -2,11 +2,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from movies.views import MoviesView, MovieView
 from people.views import PeopleView, PersonView
-from search.views import SearchView
+from views import HomeView, SearchView
 
 urlpatterns = patterns('',
 
-    url(r'^$', 'Filmland.views.home', name='home'),
+    url(r'^$', HomeView.as_view()),
     url(r'^admin/', include(admin.site.urls)),
 
     # user auth urls

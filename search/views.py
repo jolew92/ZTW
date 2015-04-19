@@ -12,21 +12,21 @@ class SearchView(View):
     template_person = 'searchPerson.html'
 
     def get(self, request):
-        search = request.GET['search']
         what = request.GET['what_to_search']
+        search = request.GET['search']
         if search == '':
             return HttpResponseRedirect('/')
         else:
-            if what.selected == 'all':
+            if what == 'all':
                 movies = Movie.objects.filter(title__icontains=search)
                 people = Person.objects.all()
                 for term in search.split():
                     people = people.filter(Q(first_name__icontains=term) | Q(last_name__icontains=term))
                 return render(request, self.template_all, {'movies': movies, 'people': people, 'search': search})
-            elif what.selected == 'movie':
+            elif what == 'movie':
                 movies = Movie.objects.filter(title__icontains=search)
                 return render(request, self.template_movie, {'movies': movies, 'search': search})
-            elif what.selected == 'person':
+            elif what == 'person':
                 people = Person.objects.all()
                 for term in search.split():
                     people = people.filter(Q(first_name__icontains=term) | Q(last_name__icontains=term))

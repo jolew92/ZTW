@@ -7,6 +7,11 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <link rel="stylesheet" href="{% static 'css/filmland.css' %}">
+        <script type="text/javascript">
+            function getval(sel) {
+               var sel = sel.value;
+            }
+        </script>
     </head>
     <body>
         <div class="wrapper">
@@ -20,7 +25,7 @@
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control" placeholder="Szukaj..." name="search">
                     <div class="input-group-btn">
-                        <select class="btn btn-default" id="what_to_search">
+                        <select class="btn btn-default" name="what_to_search">
                            <option value="all" selected="true">Wszystko</option>
                            <option value="movie">Film</option>
                            <option value="person">Osoba</option>
