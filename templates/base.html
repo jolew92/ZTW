@@ -7,7 +7,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <link rel="stylesheet" href="{% static 'css/filmland.css' %}">
-			
     </head>
     <body>
         <div class="wrapper">
@@ -16,19 +15,16 @@
                 <li class="active"><a class="menuFont" href="/">FilmLand</a></li>
                 <li><a class="menuFont" href="/movies/all">Filmy</a></li>
                 <li><a class="menuFont" href="/people/all">Aktorzy</a></li>
-                <li>
-                    <form action="/search/" method="get">
-                       <div class="input-group-sm">
-                           <input type="Search" placeholder="Szukaj..." name="search" class="form-control" />
-                           <div class="input-group-btn-sm">
-                               <button class="btn btn-info btn-sm">
-                               <span class="glyphicon glyphicon-search"></span>
-                               </button>
-                           </div>
-                       </div>
-                    </form>
-                </li>
             </ul>
+            <form action="/search/" method="get" class="searchbar">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" placeholder="Search for..." name="search">
+
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search "></span></button>
+                    </div>
+                </div>
+            </form>
             <div class="login">
                 {% if user.is_authenticated %}
                     <p>Witaj, {{ user.username }}  <a href="/accounts/logout">wyloguj się.</a></p>

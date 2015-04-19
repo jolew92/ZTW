@@ -965,3 +965,13 @@ html {
 .role_list_item {
     margin-left: 5%;
 }
+
+.searchbar {
+    width: 40%;
+    text-align: left;
+    float: left;
+    color: black;
+    font-family: testFont;
+    font-weight: 600;
+    padding-right: 10%;
+}
