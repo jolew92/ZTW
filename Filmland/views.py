@@ -7,4 +7,4 @@ def user_name(request):
 
 
 def home(request):
-    return render_to_response("index.html")
+    return render_to_response("index.html", {'user': request.user}, context_instance=RequestContext(request))

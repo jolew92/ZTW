@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+﻿
+{% block content %}
+
+    <h3><p class="attributes">Szukane: </p>{{ search }}</h3><br>
+    <h3 class="attributes">Filmy:</h3>
+    <ul>
+    {% for movie in movies %}
+        <li><a href="/movies/get/{{ movie.id }}" class="list_link">{{ movie.title }}</a></li>
+    {% endfor %}
+    </ul><br>
+
+{% endblock content %}

@@ -57,12 +57,16 @@ li {
 
 .login {
     padding-top: 5px;
-    text-align: right;
+    text-align: left;
     float: right;
     color: black;
     font-family: testFont;
     font-weight: 600;
     padding-right: 10%;
+    position: absolute;
+    right:-9%;
+    z-index:140;
+    top:0;
 }
 
 .login a {
@@ -967,11 +971,10 @@ html {
 }
 
 .searchbar {
-    width: 40%;
+    max-width: 40%;
     text-align: left;
     float: left;
     color: black;
     font-family: testFont;
     font-weight: 600;
-    padding-right: 10%;
 }
