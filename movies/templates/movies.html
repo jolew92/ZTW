@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
-﻿
+﻿{% load i18n %}
 {% block content %}
     <ul>
-    {% for movie in movies %}
-        <li><a href="/movies/get/{{ movie.id }}" class="list_link">{{ movie.title }} ({{ movie.year }})</a></li>
-    {% endfor %}
+    {% if LANGUAGE_CODE == 'pl' %}
+        {% for movie in movies %}
+            <li><a href="/movies/get/{{ movie.id }}/" class="list_link">{{ movie.title }} ({{ movie.year }})</a></li>
+        {% endfor %}
+    {% else %}
+        {% for movie in movies %}
+            <li><a href="/movies/get/{{ movie.id }}/" class="list_link">{{ movie.title_en }} ({{ movie.year }})</a></li>
+        {% endfor %}
+    {% endif %}
     </ul>
 {% endblock content %}

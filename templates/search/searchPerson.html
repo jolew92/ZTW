@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
-﻿
+﻿﻿﻿{% load i18n %}
 {% block content %}
 
-    <h3><p class="attributes">Szukane: </p>{{ search }}</h3><br>
-    <h3 class="attributes">Osoby:</h3>
+    <h3><p class="attributes">{% trans "Szukane:" %}</p> {{ search }}</h3><br>
+    <h3 class="attributes">{% trans "Osoby:" %}</h3>
     {% if people.exists %}
         <ul>
             {% for person in people %}
-                <li><a href="/people/get/{{ person.id }}" class="list_link">{{ person.last_name }} {{ person.first_name }}</a></li>
+                <li><a href="/people/get/{{ person.id }}/" class="list_link">{{ person.last_name }} {{ person.first_name }}</a></li>
             {% endfor %}
         </ul>
     {% else %}
-        <p>Nic nie znaleziono.</p>
+        <p>{% trans "Nie nie znaleziono." %}</p>
     {% endif %}
 
 {% endblock content %}

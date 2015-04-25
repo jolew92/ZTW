@@ -19,8 +19,8 @@ class DescriptionMovieInline(admin.TabularInline):
 
 
 class MovieAdmin(admin.ModelAdmin):
-    list_display = 'title', 'year', 'language'
-    fields = 'title', 'year', 'language', 'genre'
+    list_display = 'title', 'title_en', 'year', 'language'
+    fields = 'title', 'title_en', 'year', 'language', 'genre'
     filter_horizontal = ("genre",)
     inlines = [MovieCountryInline, DescriptionMovieInline, MoviePeopleInline]
     exclude = ('country', 'roles',)

@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-
+﻿{% load i18n %}
 {% block content %}
 
-    <h2>Logowania</h2>
+    <h2>{% trans "Logowanie" %}</h2>
     <br>
     {% if form.errors %}
-        <p class="error">Nieprawidłowa nazwa użytkownika lub hasło.</p>
+        <p class="error">{% trans "Nieprawidłowa nazwa użytkownika lub hasło." %}</p>
     {% endif %}
 
     <form class="form-horizontal" action="/accounts/auth/" method="post">{% csrf_token %}
@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="form-group col-sm-2 control-label">
-        <button type="submit" class="button button_secondary">Zaloguj</button>
+        <button type="submit" class="button button_secondary">{% trans "Zaloguj" %}</button>
       </div>
     </form>
 

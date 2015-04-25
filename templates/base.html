@@ -1,4 +1,5 @@
-﻿﻿{% load staticfiles %}
+﻿{% load i18n %}
+﻿{% load staticfiles %}
 <html>
     <head>
         <title>Filmland</title>
@@ -9,21 +10,37 @@
         <link rel="stylesheet" href="{% static 'css/filmland.css' %}">
     </head>
     <body>
+    <div class="language">
+        <form action="/i18n/setlang/" method="post">{% csrf_token %}
+        <input name="next" type="hidden" value="/" />
+                {% get_language_info_list for LANGUAGES as languages %}
+                <select class="btn btn-default" name="language" onchange="this.form.submit()">
+                {% for language in languages %}
+                    {% if language.code == LANGUAGE_CODE %}
+                        <option value="{{ language.code }}" selected="true">{{ language.name_local | title}}</option>
+                    {% else %}
+                        <option value="{{ language.code }}">{{ language.name_local | title}}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>
+            </form>
+        </form>
+    </div>
         <div class="wrapper">
         <div class="container">
             <ul class="menu" rel="sam1">
                 <li class="active"><a class="menuFont" href="/">FilmLand</a></li>
-                <li><a class="menuFont" href="/movies/all">Filmy</a></li>
-                <li><a class="menuFont" href="/people/all">Aktorzy</a></li>
+                <li><a class="menuFont" href="/movies/all/">{% trans "Filmy" %}</a></li>
+                <li><a class="menuFont" href="/people/all/">{% trans "Aktorzy" %}</a></li>
             </ul>
             <form action="/search/" method="get" class="searchbar">
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" placeholder="Szukaj..." name="search">
+                    <input type="text" class="form-control" placeholder="{% trans "Szukaj..." %}" name="search">
                     <div class="input-group-btn">
                         <select class="btn btn-default" name="what_to_search">
-                           <option value="all" selected="true">Wszystko</option>
-                           <option value="movie">Film</option>
-                           <option value="person">Osoba</option>
+                           <option value="all" selected="true">{% trans "Wszystko" %}</option>
+                           <option value="movie">{% trans "Film" %}</option>
+                           <option value="person">{% trans "Osoba" %}</option>
                          </select>
                     </div>
                     <div class="input-group-btn">
@@ -33,9 +50,9 @@
             </form>
             <div class="login">
                 {% if user.is_authenticated %}
-                    <p>Witaj, {{ user.username }}  <a href="/accounts/logout">wyloguj się.</a></p>
+                    <p>{% trans "Witaj," %} {{ user.username }}  <a href="/accounts/logout/">{% trans "wyloguj się." %}</a></p>
                     {% else %}
-                    <p>Witaj, gościu <a href="/accounts/login">zaloguj się</a> lub <a href="/accounts/register">zarejestruj.</a></p>
+                    <p>{% trans "Witaj, gościu " %} <a href="/accounts/login/">{% trans "zaloguj się" %}</a> {% trans ' lub ' %}<a href="/accounts/register/">{% trans "zarejestruj." %}</a></p>
                 {% endif %}
             </div>
         </div>

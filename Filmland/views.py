@@ -4,13 +4,17 @@ from movies.models import Movie
 from people.models import Person
 from django.views.generic import View
 from django.db.models import Q
+from django.conf import settings
+from django.utils import translation
 from django.http import HttpResponseRedirect
+
 
 
 class HomeView(View):
     template_name = "index.html"
 
     def get(self, request):
+        #request.session[settings.LANGUAGE_SESSION_KEY] = 'pl'
         return render(request, self.template_name, {'user': request.user}, context_instance=RequestContext(request))
 
 

@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
-﻿
+﻿﻿﻿{% load i18n %}
 {% block content %}
 
-    <h3><p class="attributes">Szukane: </p>{{ search }}</h3><br>
-    <h3 class="attributes">Filmy:</h3>
+    <h3><p class="attributes">{% trans "Szukane:" %}</p> {{ search }}</h3><br>
+    <h3 class="attributes">{% trans "Filmy:" %}</h3>
     {% if movies.exists %}
         <ul>
+        {% if LANGUAGE_CODE == 'pl' %}
             {% for movie in movies %}
-                <li><a href="/movies/get/{{ movie.id }}" class="list_link">{{ movie.title }} ({{ movie.year }})</a></li>
+                <li><a href="/movies/get/{{ movie.id }}/" class="list_link">{{ movie.title }} ({{ movie.year }})</a></li>
             {% endfor %}
+        {% else %}
+            {% for movie in movies %}
+                <li><a href="/movies/get/{{ movie.id }}/" class="list_link">{{ movie.title_en }} ({{ movie.year }})</a></li>
+            {% endfor %}
+        {% endif %}
         </ul>
     {% else %}
-            <p>Nic nie znaleziono.</p>
+        <p>{% trans "Nie nie znaleziono." %}</p>
     {% endif %}
 
 {% endblock content %}

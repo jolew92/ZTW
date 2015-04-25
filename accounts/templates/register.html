@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-
+﻿{% load i18n %}
 {% block content %}
 
-    <h2>Rejestracja</h2>
+    <h2>{% trans "Rejestracja" %}</h2>
     <br>
     <form class="form-horizontal" action="/accounts/register/" method="post">{% csrf_token %}
       <div class="form-group">
@@ -18,19 +18,19 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="password1" class="col-sm-2 control-label">Hasło:</label>
+        <label for="password1" class="col-sm-2 control-label">{% trans "Hasło:" %}</label>
          <div class="col-xs-4">
             <p>{{ form.password1 }}</p>
          </div>
       </div>
       <div class="form-group">
-        <label for="password2" class="col-sm-2 control-label">Powtórz hasło:</label>
+        <label for="password2" class="col-sm-2 control-label">{% trans "Powtórz hasło:" %}</label>
          <div class="col-xs-4" minlenght="5">
              <p>{{ form.password2 }}</p>
          </div>
       </div>
       <div class="form-group col-sm-2 control-label">
-        <button type="submit" class="button button_secondary">Zarejestruj</button>
+        <button type="submit" class="button button_secondary">{% trans "Zarejestruj" %}</button>
       </div>
     </form>
 

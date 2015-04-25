@@ -1,4 +1,5 @@
 ﻿{% extends 'base.html' %}
+{% load i18n %}
 ﻿
 {% block content %}
 
@@ -16,7 +17,7 @@
   <figure class="item">
 	<div class="wrap">
 	<img src="http://thegeekiary.com/wp-content/uploads/2015/04/Jurassic_World.jpg" height=400px width=100%/>
-	<h3 class="desc">Test2</h3></div>
+	<h3 class="desc">{{ l }}</h3></div>
   </figure>
 
   <figure class="item">
@@ -31,5 +32,4 @@
     <a href="#item-3" class="control-button">•</a>
   </div>
 </div>
-
 {% endblock content %}

@@ -40,7 +40,6 @@ INSTALLED_APPS = (
     'movies',
     'people',
     'list',
-    'search',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,7 +49,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 ROOT_URLCONF = 'Filmland.urls'
@@ -102,4 +101,23 @@ TEMPLATES_PATH = os.path.join(PROJECT_PATH, "templates")
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
     TEMPLATES_PATH,
+)
+
+LOCALE_PATHS = (
+    os.path.join(PROJECT_PATH, 'locale'),
+)
+
+_ = lambda s: s
+LANGUAGES = (
+    ('en', _('English')),
+    ('pl', _('Polski')),
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.core.context_processors.static',
+    'django.contrib.messages.context_processors.messages',
 )

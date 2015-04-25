@@ -1,0 +1,231 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-25 22:17+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\Filmland\settings.py:112
+msgid "English"
+msgstr "English"
+
+#: .\Filmland\settings.py:113
+msgid "Polski"
+msgstr "Polski"
+
+#: .\Filmland\urls.py:16
+msgid "^$"
+msgstr ""
+
+#: .\Filmland\urls.py:19
+msgid "^accounts/login/$"
+msgstr ""
+
+#: .\Filmland\urls.py:20
+msgid "^accounts/auth/$"
+msgstr ""
+
+#: .\Filmland\urls.py:21
+msgid "^accounts/logout/$"
+msgstr ""
+
+#: .\Filmland\urls.py:22
+msgid "^accounts/loggedin/$"
+msgstr ""
+
+#: .\Filmland\urls.py:23
+msgid "^accounts/invalid/$"
+msgstr ""
+
+#: .\Filmland\urls.py:24
+msgid "^accounts/register/$"
+msgstr ""
+
+#: .\Filmland\urls.py:25
+msgid "^accounts/register_success/$"
+msgstr ""
+
+#: .\Filmland\urls.py:28
+msgid "^movies/all/$"
+msgstr ""
+
+#: .\Filmland\urls.py:29
+msgid "^movies/get/(?P<movie_id>\\d+)/$"
+msgstr ""
+
+#: .\Filmland\urls.py:30
+msgid "^people/all/$"
+msgstr ""
+
+#: .\Filmland\urls.py:31
+msgid "^people/get/(?P<person_id>\\d+)/$"
+msgstr ""
+
+#: .\Filmland\urls.py:32
+msgid "^search/$"
+msgstr ""
+
+#: .\accounts\templates\invalid_login.html:5
+msgid "Nieprawidłowe dane!"
+msgstr "Incorrect data!"
+
+#: .\accounts\templates\invalid_login.html:6
+#: .\accounts\templates\loggedin.html:6 .\accounts\templates\logout.html:6
+#: .\accounts\templates\register_success.html:6
+msgid "Kliknij "
+msgstr "Click "
+
+#: .\accounts\templates\invalid_login.html:6
+#: .\accounts\templates\loggedin.html:6 .\accounts\templates\logout.html:6
+#: .\accounts\templates\register_success.html:6
+msgid "tutaj"
+msgstr "here"
+
+#: .\accounts\templates\invalid_login.html:6
+#: .\accounts\templates\loggedin.html:6
+msgid " aby spróbować ponownie."
+msgstr " to try again."
+
+#: .\accounts\templates\loggedin.html:5
+msgid "Witaj"
+msgstr "Welcome"
+
+#: .\accounts\templates\loggedin.html:5
+msgid "jesteś zalogowany!"
+msgstr "you're loggedin!"
+
+#: .\accounts\templates\login.html:5
+msgid "Logowanie"
+msgstr "Login"
+
+#: .\accounts\templates\login.html:8
+msgid "Nieprawidłowa nazwa użytkownika lub hasło."
+msgstr "Incorrect login or password."
+
+#: .\accounts\templates\login.html:25
+msgid "Zaloguj"
+msgstr "Login"
+
+#: .\accounts\templates\logout.html:5
+msgid "Zostałeś wylogowany!"
+msgstr "You're loggedout!"
+
+#: .\accounts\templates\logout.html:6
+#: .\accounts\templates\register_success.html:6
+msgid " aby się zalogować"
+msgstr " to login."
+
+#: .\accounts\templates\register.html:5
+msgid "Rejestracja"
+msgstr "Registration"
+
+#: .\accounts\templates\register.html:21
+msgid "Hasło:"
+msgstr "Password:"
+
+#: .\accounts\templates\register.html:27
+msgid "Powtórz hasło:"
+msgstr "Repeat password:"
+
+#: .\accounts\templates\register.html:33
+msgid "Zarejestruj"
+msgstr "Register"
+
+#: .\accounts\templates\register_success.html:5
+msgid "Zostałeś zarejestrowany!"
+msgstr "You are registered!"
+
+#: .\movies\templates\movie.html:6
+msgid "Rok:"
+msgstr "Year:"
+
+#: .\movies\templates\movie.html:7
+msgid "Język:"
+msgstr "Language:"
+
+#: .\movies\templates\movie.html:15
+msgid "Gatunek:"
+msgstr "Genre:"
+
+#: .\movies\templates\movie.html:35
+msgid "Kraj:"
+msgstr "Country:"
+
+#: .\templates\base.html:33
+msgid "Filmy"
+msgstr "Movies"
+
+#: .\templates\base.html:34
+msgid "Aktorzy"
+msgstr "Actors"
+
+#: .\templates\base.html:38
+msgid "Szukaj..."
+msgstr "Search..."
+
+#: .\templates\base.html:41
+msgid "Wszystko"
+msgstr "All"
+
+#: .\templates\base.html:42
+msgid "Film"
+msgstr "Movie"
+
+#: .\templates\base.html:43
+msgid "Osoba"
+msgstr "Person"
+
+#: .\templates\base.html:53
+msgid "Witaj,"
+msgstr "Welcome,"
+
+#: .\templates\base.html:53
+msgid "wyloguj się."
+msgstr "logout."
+
+#: .\templates\base.html:55
+msgid "Witaj, gościu "
+msgstr "Welcome, guest "
+
+#: .\templates\base.html:55
+msgid "zaloguj się"
+msgstr "login"
+
+#: .\templates\base.html:55
+msgid " lub "
+msgstr " or "
+
+#: .\templates\base.html:55
+msgid "zarejestruj."
+msgstr "register."
+
+#: .\templates\search\searchAll.html:5 .\templates\search\searchMovie.html:5
+#: .\templates\search\searchPerson.html:5
+msgid "Szukane:"
+msgstr "Searched:"
+
+#: .\templates\search\searchAll.html:6 .\templates\search\searchMovie.html:6
+msgid "Filmy:"
+msgstr "Movies:"
+
+#: .\templates\search\searchAll.html:20 .\templates\search\searchAll.html:31
+#: .\templates\search\searchMovie.html:20
+#: .\templates\search\searchPerson.html:14
+msgid "Nie nie znaleziono."
+msgstr "Nothing was found."
+
+#: .\templates\search\searchAll.html:23 .\templates\search\searchPerson.html:6
+msgid "Osoby:"
+msgstr "People:"

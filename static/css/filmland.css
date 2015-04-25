@@ -978,3 +978,9 @@ html {
     font-family: testFont;
     font-weight: 600;
 }
+
+.language {
+    float: right;
+    color: white;
+    top: 10px;
+}

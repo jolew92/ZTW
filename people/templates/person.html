@@ -1,22 +1,38 @@
 {% extends 'base.html' %}
-﻿
+﻿﻿{% load i18n %}
 {% block content %}
     <h1>{{ person.last_name }} {{  person.first_name}}</h1>
     <div>
         {% for b in bio %}
-            {% if b.language == 'PL' %}
-                <p>{{ b.description }}</p>
+            {% if LANGUAGE_CODE == 'pl' %}
+                {% if b.language == 'PL' %}
+                    <p>{{ b.description }}</p>
+                {% endif %}
+            {% else %}
+                {% if b.language == 'EN' %}
+                    <p>{{ b.description }}</p>
+                {% endif %}
             {% endif %}
         {% endfor %}
     </div>
     <div>
         {% for r in roles.all %}
-            <ul class="role_list"><p class="attributes">{{ r.role }}</p>
+            <ul class="role_list"><p class="attributes">
+                {% if LANGUAGE_CODE == 'pl' %}
+                    {{ r.role }}
+                {% else %}
+                    {{ r.role_en }}
+                {% endif %}
+            </p>
             {% for m in movie_roles.all %}
                 {% if m.role == r %}
                     <li class="role_list_item">
-                        <a href="/movies/get/{{ m.movie.id }}" class="list_link">
-                            {{ m.movie.title }}
+                        <a href="/movies/get/{{ m.movie.id }}/" class="list_link">
+                            {% if LANGUAGE_CODE == 'pl' %}
+                                {{ m.movie.title }}
+                            {% else %}
+                                {{ m.movie.title_en }}
+                            {% endif %}
                         </a>
                     </li>
                 {% endif %}

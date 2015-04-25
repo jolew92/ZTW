@@ -7,6 +7,7 @@ from django.core import urlresolvers
 
 class Language(models.Model):
     name = models.CharField(max_length=30, verbose_name='Język')
+    name_en = models.CharField(max_length=30, verbose_name='Language')
 
     def __unicode__(self):
         return unicode(self.name)
@@ -19,6 +20,7 @@ class Language(models.Model):
 
 class Genre(models.Model):
     genre = models.CharField(max_length=30, verbose_name='Gatunek')
+    genre_en = models.CharField(max_length=30, verbose_name='Genre')
 
     def __unicode__(self):
         return unicode(self.genre)
@@ -52,6 +54,7 @@ LANGUAGE = (
 
 class Country(models.Model):
     name = models.CharField(max_length=30, verbose_name='Kraj')
+    name_en = models.CharField(max_length=30, verbose_name='Country')
 
     def __unicode__(self):
         return unicode(self.name)
@@ -64,6 +67,7 @@ class Country(models.Model):
 
 class Movie(models.Model):
     title = models.CharField(max_length=30, verbose_name='Tytuł')
+    title_en = models.CharField(max_length=30, verbose_name='Title')
     year = models.IntegerField(max_length=4, blank=False, null=False, verbose_name='Rok')
     language = models.ForeignKey(Language, blank=True, null=True, verbose_name='Język')
     genre = models.ManyToManyField(Genre, blank=True, null=True, verbose_name='Gatunek')
@@ -88,6 +92,7 @@ class Movie(models.Model):
 
 class Role(models.Model):
     role = models.CharField(max_length=30, verbose_name='Rola')
+    role_en = models.CharField(max_length=30, verbose_name='Role')
 
     def __unicode__(self):
         return unicode(self.role)
