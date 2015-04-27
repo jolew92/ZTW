@@ -1,9 +1,9 @@
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render_to_response, render, HttpResponse
 from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf
 from accounts.forms import RegistrationForm, UpdateProfile
-from django.views.generic import View, UpdateView
+from django.views.generic import View
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
 
@@ -16,21 +16,6 @@ class EditView(View):
             return render(request, self.template_name)
         else:
             return HttpResponseRedirect('/')
-
-
-def update_profile(request):
-    args = {}
-    if request.method == 'POST':
-        form = UpdateProfile(data=request.POST)
-        form.actual_user = request.user
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/')
-    else:
-        form = UpdateProfile()
-
-    args['form'] = form
-    return render(request, 'edit_user.html', args)
 
 
 class LoginView(View):
@@ -69,6 +54,21 @@ class RegisterSuccess(View):
 
     def get(self, request):
         return render(request, self.template_name)
+
+
+def update_profile(request):
+    args = {}
+    if request.method == 'POST':
+        user_instance = User.objects.get(id=request.user.id)
+        form = UpdateProfile(request.POST, instance=user_instance)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/accounts/edit_user/')
+    else:
+        form = UpdateProfile()
+
+    args['form'] = form
+    return render(request, 'edit_user.html', args)
 
 
 def register_user(request):

@@ -6,14 +6,14 @@ from views import HomeView, SearchView
 from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import ugettext_lazy as _
 from list.views import ListsView, ListItemView
-from accounts.views import EditView, LoginView, LoggedinView, InvalidLoginView, LogoutView, RegisterSuccess
+from accounts.views import EditView, LoginView, LoggedinView, InvalidLoginView, LogoutView, RegisterSuccess, UpdateProfile
 
 urlpatterns = patterns('',
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^admin/', include(admin.site.urls),),
     url(r'^accounts/auth/$', 'accounts.views.auth_view'),
     url(r'^accounts/register/$', 'accounts.views.register_user'),
-    url((r'^accounts/edit_user/$'), 'accounts.views.update_profile'),)
+    url(r'^accounts/edit_user/$', 'accounts.views.update_profile'),)
 
 urlpatterns += i18n_patterns('',
 

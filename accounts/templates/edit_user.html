@@ -17,24 +17,24 @@
         <form class="form-horizontal" action="/accounts/edit_user/" method="post">{% csrf_token %}
           <div class="form-group">
             <label for="username" class="col-sm-2 control-label">Login:</label>
-             <div class="col-xs-4 black">
-                {{ form.username }}
+             <div class="col-xs-4">
+                <input class="form-control" type="text" name="username" value="{{ request.user.username }}" disabled="true" id="username">
             </div>
           </div>
           <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email:</label>
-             <div class="col-xs-4 black">
+             <div class="col-xs-4 black ">
                 {{ form.email }}
             </div>
           </div>
             <div class="form-group">
-            <label for="email" class="col-sm-2 control-label">{% trans "Imię" %}</label>
+            <label for="first_name" class="col-sm-2 control-label">{% trans "Imię" %}</label>
              <div class="col-xs-4 black">
                 {{ form.first_name }}
             </div>
             </div>
             <div class="form-group">
-             <label for="email" class="col-sm-2 control-label" >{% trans "Nazwisko:" %}</label>
+             <label for="last_name" class="col-sm-2 control-label" >{% trans "Nazwisko:" %}</label>
              <div class="col-xs-4 black">
                 {{ form.last_name }}
             </div>
