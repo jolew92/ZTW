@@ -5,24 +5,25 @@ from people.views import PeopleView, PersonView
 from views import HomeView, SearchView
 from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import ugettext_lazy as _
-from accounts.views import LoginView, AuthView, LogoutView, LoggedinView, InvalidLoginView, RegisterUserView, RegisterSuccessrView
+from list.views import ListsView, ListItemView
+from accounts.views import EditView, LoginView, LoggedinView, InvalidLoginView, LogoutView, RegisterSuccess
 
-
-urlpatterns = patterns('', url(r'^i18n/', include('django.conf.urls.i18n')),
-                       url(r'^admin/', include(admin.site.urls),))
+urlpatterns = patterns('',
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^admin/', include(admin.site.urls),),
+    url(r'^accounts/auth/$', 'accounts.views.auth_view'),
+    url(r'^accounts/register/$', 'accounts.views.register_user'),
+    url((r'^accounts/edit_user/$'), 'accounts.views.update_profile'),)
 
 urlpatterns += i18n_patterns('',
 
     url(_(r'^$'), HomeView.as_view()),
-
-    # user auth urls
     url(_(r'^accounts/login/$'), LoginView.as_view()),
-    url(_(r'^accounts/auth/$'), AuthView.as_view()),
     url(_(r'^accounts/logout/$'), LogoutView.as_view()),
     url(_(r'^accounts/loggedin/$'), LoggedinView.as_view()),
     url(_(r'^accounts/invalid/$'), InvalidLoginView.as_view()),
-    url(_(r'^accounts/register/$'), RegisterUserView.as_view()),
-    url(_(r'^accounts/register_success/$'), RegisterSuccessrView.as_view()),
+    url(_(r'^accounts/register_success/$'), RegisterSuccess.as_view()),
+    url(_(r'^accounts/edit/$'), EditView.as_view()),
 
     # movies
     url(_(r'^movies/all/$'), MoviesView.as_view()),
@@ -30,4 +31,6 @@ urlpatterns += i18n_patterns('',
     url(_(r'^people/all/$'), PeopleView.as_view()),
     url(_(r'^people/get/(?P<person_id>\d+)/$'), PersonView.as_view()),
     url(_(r'^search/$'), SearchView.as_view()),
+    url(_(r'^list/all/$'), ListsView.as_view()),
+    url(_(r'^list/get/(?P<movielistitem_id>\d+)/$'), ListItemView.as_view()),
 )

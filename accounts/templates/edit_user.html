@@ -1,0 +1,48 @@
+{% extends 'edit.html' %}
+﻿{% load i18n %}
+{% block edit %}
+
+    <script type="text/javascript" >
+        $(document).ready(function(){
+            $("#id_username").val('{{ request.user.username }}');
+            $("#id_email").val('{{ request.user.email }}');
+            $("#id_first_name").val('{{ request.user.first_name }}');
+            $("#id_last_name").val('{{ request.user.last_name }}');
+        });
+    </script>
+
+    <div class="edit">
+        <h3>{% trans "Edycja danych:" %}</h3>
+        <br>
+        <form class="form-horizontal" action="/accounts/edit_user/" method="post">{% csrf_token %}
+          <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">Login:</label>
+             <div class="col-xs-4 black">
+                {{ form.username }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Email:</label>
+             <div class="col-xs-4 black">
+                {{ form.email }}
+            </div>
+          </div>
+            <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">{% trans "Imię" %}</label>
+             <div class="col-xs-4 black">
+                {{ form.first_name }}
+            </div>
+            </div>
+            <div class="form-group">
+             <label for="email" class="col-sm-2 control-label" >{% trans "Nazwisko:" %}</label>
+             <div class="col-xs-4 black">
+                {{ form.last_name }}
+            </div>
+            </div>
+          <div class="form-group col-sm-2 control-label">
+            <button type="submit" class="button button_secondary">{% trans "Edytuj" %}</button>
+          </div>
+        </form>
+
+    </div>
+{% endblock %}

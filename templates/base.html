@@ -32,6 +32,9 @@
                 <li class="active"><a class="menuFont" href="/">FilmLand</a></li>
                 <li><a class="menuFont" href="/movies/all/">{% trans "Filmy" %}</a></li>
                 <li><a class="menuFont" href="/people/all/">{% trans "Aktorzy" %}</a></li>
+                {% if user.is_authenticated %}
+                    <li><a class="menuFont" href="/list/all/">{% trans "Twoje listy" %}</a></li>
+                {% endif %}
             </ul>
             <form action="/search/" method="get" class="searchbar">
                 <div class="input-group input-group-sm">
@@ -50,7 +53,7 @@
             </form>
             <div class="login">
                 {% if user.is_authenticated %}
-                    <p>{% trans "Witaj," %} {{ user.username }}  <a href="/accounts/logout/">{% trans "wyloguj się." %}</a></p>
+                    <p>{% trans "Witaj," %} <a href='/accounts/edit/'>{{ user.username }}</a>  <a href="/accounts/logout/">{% trans "wyloguj się." %}</a></p>
                     {% else %}
                     <p>{% trans "Witaj, gościu " %} <a href="/accounts/login/">{% trans "zaloguj się" %}</a> {% trans ' lub ' %}<a href="/accounts/register/">{% trans "zarejestruj." %}</a></p>
                 {% endif %}

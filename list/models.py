@@ -4,25 +4,25 @@ from django.contrib.auth.models import User
 from movies.models import Movie
 
 
-class MovieItem(models.Model):
-    user = models.ForeignKey(User, null=True)
-    movieitem = models.ForeignKey(Movie, null=True)
-
-    def __unicode__(self):
-        return u"%s %s" % (self.user.username, self.movieitem)
-
-    class Meta:
-        verbose_name = 'Ulubiony'
-        verbose_name_plural = 'Ulubione'
-
-
 class MovieList(models.Model):
-    user = models.ForeignKey(User, unique=True, null=True)
-    movielist = models.ManyToManyField(MovieItem, null=True)
+    user = models.ForeignKey(User, unique=True, null=True, verbose_name='Użytkownik')
 
     def __unicode__(self):
-        return u"%s" % self.user.username
+        return u"%s" % self.user
 
     class Meta:
-        verbose_name = 'Lista ulubionych'
-        verbose_name_plural = 'Listy ulubionych'
+        verbose_name = 'Lista użytkownika'
+        verbose_name_plural = 'Listy użytkownika'
+
+
+class MovieListItem(models.Model):
+    name = models.CharField(max_length=30, verbose_name='Nazwa')
+    movies = models.ManyToManyField(Movie, blank=True, null=True, verbose_name='Filmy')
+    movielist = models.ForeignKey(MovieList, verbose_name='Użytkownik')
+
+    def __unicode__(self):
+        return u"%s %s" % (self.name, self.movielist.user)
+
+    class Meta:
+        verbose_name = 'Lista'
+        verbose_name_plural = 'Listy'

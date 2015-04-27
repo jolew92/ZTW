@@ -1,15 +1,21 @@
 {% extends 'base.html' %}
 ﻿﻿{% load i18n %}
 {% block content %}
-    <h1>{{  movie.title }}</h1>
+    <h1>
+        {% if LANGUAGE_CODE == 'pl' %}
+            {{  movie.title }}
+        {% else %}
+            {{ movie.title_en }}
+        {% endif %}
+    </h1>
     <div>
         <p class="attributes">{% trans "Rok:" %}</p><p>{{ movie.year }}</p>
         <p class="attributes">{% trans "Język:" %}</p>
             <p>
                 {% if LANGUAGE_CODE == 'pl' %}
-                    {{ movie.language }}
+                    {{ movie.language.name }}
                 {% else %}
-                    {{ movie.language_en }}
+                    {{ movie.language.name_en }}
                 {% endif %}
             </p>
         <p class="attributes">{% trans "Gatunek:" %}</p>

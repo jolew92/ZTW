@@ -984,3 +984,45 @@ html {
     color: white;
     top: 10px;
 }
+
+#menu ul{
+    top:14px;
+	margin-top:15px;
+	color:white;
+	height:100%;
+    width: 170px;
+	left: 10%;
+	float:left;
+	position:fixed;
+	z-index:2;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(148,148,148)), to(rgb(69,69,69)));
+    background: -moz-linear-gradient(top, rgb(148,148,148), rgb(69,69,69));
+}
+
+#menu li{
+    text-align: center;
+  	float: left;
+}
+
+#menu li a {
+    height: 55px;
+    width: 170px;
+    padding: 10px 10px 10px 10px;
+    text-decoration: none;
+}
+
+.wrapper2 {
+    background: #464646;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(148,148,148)), to(rgb(69,69,69)));
+    background: -moz-linear-gradient(top, rgb(148,148,148), rgb(69,69,69));
+    border-top: 0px solid #939393;
+}
+
+.edit {
+    margin-top: -2%;
+    margin-left: 15%;
+}
+
+.black {
+    color: black;
+}

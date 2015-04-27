@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+﻿﻿﻿{% load i18n %}
+{% block content %}
+
+    {% for movie in list.movies.all %}
+        {% if LANGUAGE_CODE == 'pl' %}
+            <li><a href="/movies/get/{{ movie.id }}/" class="list_link">{{ movie.title }} ({{ movie.year }})</a></li>
+        {% else %}
+            <li><a href="/movies/get/{{ movie.id }}/" class="list_link">{{ movie.title_en }} ({{ movie.year }})</a></li>
+        {% endif %}
+    {% endfor %}
+
+{% endblock content %}

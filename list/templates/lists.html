@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+﻿﻿﻿{% load i18n %}
+{% block content %}
+    <ul>
+        {% for item in lists %}
+            <li><a href="/list/get/{{ item.id }}/" class="list_link">{{ item.name }}</a></li>
+      {% endfor %}
+    </ul>
+{% endblock content %}

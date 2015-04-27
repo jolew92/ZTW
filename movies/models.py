@@ -2,7 +2,6 @@
 from django.db import models
 from people.models import Person
 from django.core import urlresolvers
-#///where_to_search
 
 
 class Language(models.Model):
