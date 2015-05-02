@@ -2,6 +2,8 @@
 from django.db import models
 from people.models import Person
 from django.core import urlresolvers
+from django.contrib.auth.models import User
+#from djangoratings.fields import RatingField
 
 
 class Language(models.Model):
@@ -71,6 +73,7 @@ class Movie(models.Model):
     language = models.ForeignKey(Language, blank=True, null=True, verbose_name='Język')
     genre = models.ManyToManyField(Genre, blank=True, null=True, verbose_name='Gatunek')
     country = models.ManyToManyField(Country, blank=True, null=True, verbose_name='Kraj')
+    #rating = RatingField(range=5)
 
     def __unicode__(self):
         return unicode(self.title)
@@ -127,3 +130,18 @@ class Description(models.Model):
     class Meta:
         verbose_name = 'Opis filmu'
         verbose_name_plural = 'Opisy filmów'
+
+class Rate(models.Model):
+    rate = models.CharField(max_length=2,choices=VOTE_GRADES, verbose_name='Oceny')
+    user = models.ForeignKey(User, null=True)
+    movie = models.ForeignKey(Movie)
+
+    def __unicode__(self):
+       return u"%s %s %s" % (self.movie.title, self.user, self.rate)
+
+    #def __unicode__(self):
+    #    return u"%s" % (self.rate)
+
+    class Meta:
+        verbose_name = 'Ocena filmu'
+        verbose_name_plural = 'Oceny filmów'

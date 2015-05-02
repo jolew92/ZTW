@@ -1,6 +1,5 @@
 from django.contrib import admin
-from movies.models import Movie, Language, Country, Role, Description, MovieRole, Genre
-
+from movies.models import Movie, Language, Country, Role, Description, MovieRole, Genre,Rate
 
 class MoviePeopleInline(admin.TabularInline):
     model = MovieRole
@@ -31,4 +30,5 @@ admin.site.register(Country)
 admin.site.register(Genre)
 admin.site.register(Role)
 admin.site.register(Description)
+admin.site.register(Rate)
 

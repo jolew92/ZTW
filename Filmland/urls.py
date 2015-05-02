@@ -13,7 +13,10 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls),),
     url(r'^accounts/auth/$', 'accounts.views.auth_view'),
     url(r'^accounts/register/$', 'accounts.views.register_user'),
-    url(r'^accounts/edit_user/$', 'accounts.views.update_profile'),)
+    url(r'^accounts/edit_user/$', 'accounts.views.update_profile'),
+    url(r'^movies/get/(?P<movie_id>\d+)/set_rating/$', 'movies.views.set_rating'),
+
+    )
 
 urlpatterns += i18n_patterns('',
 
@@ -33,4 +36,7 @@ urlpatterns += i18n_patterns('',
     url(_(r'^search/$'), SearchView.as_view()),
     url(_(r'^list/all/$'), ListsView.as_view()),
     url(_(r'^list/get/(?P<movielistitem_id>\d+)/$'), ListItemView.as_view()),
+    #url(_(r'^$/movies/get/$/set_rating', 'movies.views.set_rating')),
+    #url(_(r'^movies/get/$/set_rating', 'movies.views.set_rating')),
+
 )

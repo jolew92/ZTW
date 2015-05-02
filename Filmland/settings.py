@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'movies',
     'people',
     'list',
-    'ratings'
+    'django_extensions',
+    #'djangoratings',
 )
 
 MIDDLEWARE_CLASSES = (
