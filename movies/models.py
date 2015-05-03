@@ -133,15 +133,12 @@ class Description(models.Model):
 
 
 class Rate(models.Model):
-    rate = models.CharField(max_length=2,choices=VOTE_GRADES, verbose_name='Oceny')
+    rate = models.CharField(max_length=2, choices=VOTE_GRADES, verbose_name='Oceny')
     user = models.ForeignKey(User, null=True)
     movie = models.ForeignKey(Movie)
 
     def __unicode__(self):
-       return u"%s %s %s" % (self.movie.title, self.user, self.rate)
-
-    #def __unicode__(self):
-    #    return u"%s" % (self.rate)
+        return u"%s %s %s" % (self.movie.title, self.user, self.rate)
 
     class Meta:
         verbose_name = 'Ocena filmu'

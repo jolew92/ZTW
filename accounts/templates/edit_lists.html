@@ -1,0 +1,26 @@
+{% extends 'edit.html' %}
+﻿{% load i18n %}
+{% block edit %}
+    <div class="edit">
+        <h3>{% trans "Twoje listy:" %}</h3>
+        <ul class="clear">
+            {% for item in lists %}
+                <li>
+                    <button type="submit" class="btn-group btn-group-sm btn-danger" onclick="location.href='/accounts/edit_list/remove_list/?list={{ item.id }}'"><span class='glyphicon glyphicon-remove'/></button>
+                    <a href="/accounts/edit_list/{{ item.id }}/" class="list_link">{{ item.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    <br>
+        <form class="form-horizontal" action="/accounts/edit_list/add_list/" method="POST">{% csrf_token %}
+            <div class="col-lg-6">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="{% trans "Nowa lista..." %}" name="list_name" id="list_name">
+                  <span class="input-group-btn">
+                    <button class="btn btn-success" type="submit">+</button>
+                  </span>
+                </div>
+              </div>
+        </form>
+    </div>
+{% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-03 14:43+0200\n"
+"POT-Creation-Date: 2015-05-03 19:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,59 +25,67 @@ msgstr "English"
 msgid "Polski"
 msgstr "Polski"
 
-#: .\Filmland\urls.py:22
+#: .\Filmland\urls.py:26
 msgid "^$"
 msgstr ""
 
-#: .\Filmland\urls.py:23
+#: .\Filmland\urls.py:27
 msgid "^accounts/login/$"
 msgstr ""
 
-#: .\Filmland\urls.py:24
+#: .\Filmland\urls.py:28
 msgid "^accounts/logout/$"
 msgstr ""
 
-#: .\Filmland\urls.py:25
+#: .\Filmland\urls.py:29
 msgid "^accounts/loggedin/$"
 msgstr ""
 
-#: .\Filmland\urls.py:26
+#: .\Filmland\urls.py:30
 msgid "^accounts/invalid/$"
 msgstr ""
 
-#: .\Filmland\urls.py:27
+#: .\Filmland\urls.py:31
 msgid "^accounts/register_success/$"
 msgstr ""
 
-#: .\Filmland\urls.py:28
+#: .\Filmland\urls.py:32
 msgid "^accounts/edit/$"
 msgstr ""
 
-#: .\Filmland\urls.py:31
-msgid "^movies/all/$"
-msgstr ""
-
-#: .\Filmland\urls.py:32
-msgid "^movies/get/(?P<movie_id>\\d+)/$"
-msgstr ""
-
 #: .\Filmland\urls.py:33
-msgid "^people/all/$"
+msgid "^accounts/edit_list/$"
 msgstr ""
 
 #: .\Filmland\urls.py:34
-msgid "^people/get/(?P<person_id>\\d+)/$"
-msgstr ""
-
-#: .\Filmland\urls.py:35
-msgid "^search/$"
-msgstr ""
-
-#: .\Filmland\urls.py:36
-msgid "^list/all/$"
+msgid "^accounts/edit_list/(?P<movielistitem_id>\\d+)/$"
 msgstr ""
 
 #: .\Filmland\urls.py:37
+msgid "^movies/all/$"
+msgstr ""
+
+#: .\Filmland\urls.py:38
+msgid "^movies/get/(?P<movie_id>\\d+)/$"
+msgstr ""
+
+#: .\Filmland\urls.py:39
+msgid "^people/all/$"
+msgstr ""
+
+#: .\Filmland\urls.py:40
+msgid "^people/get/(?P<person_id>\\d+)/$"
+msgstr ""
+
+#: .\Filmland\urls.py:41
+msgid "^search/$"
+msgstr ""
+
+#: .\Filmland\urls.py:42
+msgid "^list/all/$"
+msgstr ""
+
+#: .\Filmland\urls.py:43
 msgid "^list/get/(?P<movielistitem_id>\\d+)/$"
 msgstr ""
 
@@ -89,21 +97,33 @@ msgstr "Edit data"
 msgid "Zarządzaj listami"
 msgstr "Manage lists"
 
+#: .\accounts\templates\edit_list.html:8
+msgid "Nazwa: "
+msgstr "Name:"
+
+#: .\accounts\templates\edit_lists.html:5
+msgid "Twoje listy:"
+msgstr "Your lists:"
+
+#: .\accounts\templates\edit_lists.html:18
+msgid "Nowa lista..."
+msgstr "New list..."
+
 #: .\accounts\templates\edit_user.html:15
 msgid "Edycja danych:"
 msgstr "Edit data:"
 
 #: .\accounts\templates\edit_user.html:31
-msgid "Imię"
-msgstr "First name"
+msgid "Imię:"
+msgstr "First name:"
 
 #: .\accounts\templates\edit_user.html:37
 msgid "Nazwisko:"
-msgstr "Last name"
+msgstr "Last name:"
 
 #: .\accounts\templates\edit_user.html:43
-msgid "Edytuj"
-msgstr "Edit"
+msgid "Edytuj:"
+msgstr "Edit:"
 
 #: .\accounts\templates\invalid_login.html:5
 msgid "Nieprawidłowe dane!"
@@ -178,23 +198,23 @@ msgstr "Register"
 msgid "Zostałeś zarejestrowany!"
 msgstr "You are registered!"
 
-#: .\movies\templates\movie.html:19
-msgid "Rok:"
-msgstr "Year:"
-
-#: .\movies\templates\movie.html:20
-msgid "Język:"
-msgstr "Language:"
-
-#: .\movies\templates\movie.html:28
-msgid "Gatunek:"
-msgstr "Genre:"
-
-#: .\movies\templates\movie.html:48
+#: .\movies\templates\movie.html:18
 msgid "Ocena:"
 msgstr "Rating:"
 
-#: .\movies\templates\movie.html:61
+#: .\movies\templates\movie.html:33
+msgid "Rok:"
+msgstr "Year:"
+
+#: .\movies\templates\movie.html:34
+msgid "Język:"
+msgstr "Language:"
+
+#: .\movies\templates\movie.html:42
+msgid "Gatunek:"
+msgstr "Genre:"
+
+#: .\movies\templates\movie.html:62
 msgid "Kraj:"
 msgstr "Country:"
 

@@ -5,7 +5,9 @@ from django.core.context_processors import csrf
 from accounts.forms import RegistrationForm, UpdateProfile
 from django.views.generic import View
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserChangeForm
+from list.models import MovieList, MovieListItem
+from django.utils import translation
+from movies.models import Movie
 
 
 class EditView(View):
@@ -95,3 +97,71 @@ def auth_view(request):
         return HttpResponseRedirect('/accounts/loggedin/')
     else:
         return HttpResponseRedirect('/accounts/invalid/')
+
+
+class EditListsView(View):
+    template_name = 'edit_lists.html'
+
+    def get(self, request):
+        if request.user.is_authenticated():
+            lists = MovieListItem.objects.filter(movielist__user=request.user)
+            return render(request, self.template_name, {'lists': lists, 'user': request.user})
+        else:
+            return HttpResponseRedirect('/')
+
+
+class EditListView(View):
+    template_name = 'edit_list.html'
+
+    def get(self, request, movielistitem_id=1):
+        if request.user.is_authenticated():
+            list = MovieListItem.objects.get(id=movielistitem_id)
+            return render(request, self.template_name, {'list': list})
+        else:
+            return HttpResponseRedirect('/')
+
+
+def remove_list(request):
+    language = translation.get_language_from_request(request)
+    if request.user.is_authenticated():
+        list_id = request.GET['list']
+        MovieListItem.objects.filter(id=list_id).delete()
+        return HttpResponseRedirect(redirect_to='/'+language+'/accounts/edit_list/')
+    else:
+        return HttpResponseRedirect('/')
+
+
+def add_list(request):
+    language = translation.get_language_from_request(request)
+    if request.user.is_authenticated():
+        list_name = request.POST.get('list_name', '')
+        list = MovieListItem.objects.create(name=list_name, movielist=MovieList.objects.get(user=request.user))
+        list.save()
+        return HttpResponseRedirect(redirect_to='/'+language+'/accounts/edit_list/')
+    else:
+        return HttpResponseRedirect('/')
+
+
+def change_list_name(request, list_id):
+    language = translation.get_language_from_request(request)
+    if request.user.is_authenticated():
+        list_name = request.POST.get('list_name', '')
+        list = MovieListItem.objects.get(id=list_id)
+        list.name = list_name
+        list.save()
+        return HttpResponseRedirect(redirect_to='/'+language+'/accounts/edit_list/'+list_id+'/')
+    else:
+        return HttpResponseRedirect('/')
+
+
+def remove_movie(request, list_id):
+    language = translation.get_language_from_request(request)
+    movie_id = request.POST.get('movie', '')
+    movie_to_delete = Movie.objects.get(id=movie_id)
+    movielist = MovieListItem.objects.filter(id=list_id)
+    for movie in movielist.movies:
+        if movie == movie_to_delete:
+            movie.delete()
+            movielist.save()
+
+    return HttpResponseRedirect(redirect_to='/'+language+'/accounts/edit_list/'+list_id+'/')

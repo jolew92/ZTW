@@ -1,0 +1,36 @@
+{% extends 'edit.html' %}
+﻿{% load i18n %}
+{% block edit %}
+    <div class="edit">
+        <br>
+        <form class="form-horizontal" action="/accounts/edit_list/{{ list.id }}/change_list_name/" method="POST">{% csrf_token %}
+            <div class="col-lg-8">
+                <label for="list_name" class="col-sm-2 control-label">{% trans "Nazwa: " %}</label>
+                <div class="input-group">
+                      <input type="text" class="form-control" value="{{ list.name }}" name="list_name" id="list_name">
+                      <span class="input-group-btn">
+                        <button class="btn btn-success" type="submit">&#x2714;</button>
+                      </span>
+                </div>
+              </div>
+        </form>
+    <br><br>
+        <ul class="clear">
+            <div class="form-group">
+            {% for movie in list.movies.all %}
+                {% if LANGUAGE_CODE == 'pl' %}
+                    <li>
+                        <button type="submit" class="btn-group btn-group-sm btn-danger" onclick="location.href='/accounts/edit_list/{{ list.id }}/remove_movie/?movie={{ movie.id }}'"><span class='glyphicon glyphicon-remove'/></button>
+                        <a href="/movies/get/{{ movie.id }}/" class="list_link">{{ movie.title }} ({{ movie.year }})</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <button type="submit" class="btn-group btn-group-sm btn-danger" onclick="location.href='/accounts/edit_list/{{ list.id }}/remove_movie/?movie={{ movie.id }}'"><span class='glyphicon glyphicon-remove'/></button>
+                        <a href="/movies/get/{{ movie.id }}/" class="list_link">{{ movie.title_en }} ({{ movie.year }})</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </ul>
+    </div>
+{% endblock %}

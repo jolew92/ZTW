@@ -21,7 +21,7 @@ class MovieView(View):
         ocena = Rate.objects.filter(movie_id=movie_id, user_id=request.user.id)
         desc = Description.objects.filter(movie_id=movie_id)
         movie_roles = MovieRole.objects.filter(movie_id=movie_id)
-        if len(ocena) != 0 :
+        if len(ocena) != 0:
             return render(request, self.template_name, {'movie': Movie.objects.get(id=movie_id),
                                                     'desc': desc, 'roles': Role.objects, 'movie_roles': movie_roles, 'ocena':ocena[0].rate})
         else:

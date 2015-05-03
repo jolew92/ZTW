@@ -1,6 +1,7 @@
 from django.contrib import admin
 from movies.models import Movie, Language, Country, Role, Description, MovieRole, Genre,Rate
 
+
 class MoviePeopleInline(admin.TabularInline):
     model = MovieRole
     filter_horizontal = ("people",)
