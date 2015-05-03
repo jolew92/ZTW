@@ -156,12 +156,9 @@ def change_list_name(request, list_id):
 
 def remove_movie(request, list_id):
     language = translation.get_language_from_request(request)
-    movie_id = request.POST.get('movie', '')
-    movie_to_delete = Movie.objects.get(id=movie_id)
-    movielist = MovieListItem.objects.filter(id=list_id)
-    for movie in movielist.movies:
-        if movie == movie_to_delete:
-            movie.delete()
-            movielist.save()
-
-    return HttpResponseRedirect(redirect_to='/'+language+'/accounts/edit_list/'+list_id+'/')
+    if request.user.is_authenticated():
+        movie_id = request.GET['movie']
+        MovieListItem.movies.through.objects.get(movielistitem__id=list_id, movie__id=movie_id).delete()
+        return HttpResponseRedirect(redirect_to='/'+language+'/accounts/edit_list/'+list_id+'/')
+    else:
+        return HttpResponseRedirect('/')
