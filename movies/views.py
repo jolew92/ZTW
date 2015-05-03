@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.utils import translation
 
+
 class MoviesView(View):
     template_name = 'movies.html'
 
@@ -30,16 +31,14 @@ class MovieView(View):
 
 def set_rating(request, movie_id=1):
     language = translation.get_language_from_request(request)
-    #filmid = request.GET['movie_id']
     ocena = request.GET['ocena']
-#        ocena = int(request.GET.get('rating'))
-    u = request.user.id
+    user = request.user.id
     oceny = Rate.objects.filter(movie_id=movie_id, user_id=request.user.id)
-    if len(oceny) == 0 :
-        r=Rate(rate=ocena,user = User.objects.get(id=u), movie = Movie.objects.get(id = movie_id))
-        r.save()
+
+    if len(oceny) == 0:
+        rate = Rate(rate=ocena, user=User.objects.get(id=user), movie=Movie.objects.get(id=movie_id))
+        rate.save()
     else:
         oceny[0].rate = ocena
         oceny[0].save()
-    return HttpResponseRedirect(redirect_to='/'+language+'/movies/get/'+movie_id)
-    #return HttpResponse(template_name = 'movie.html')
+    return HttpResponseRedirect(redirect_to='/'+language+'/movies/get/'+movie_id+'/')

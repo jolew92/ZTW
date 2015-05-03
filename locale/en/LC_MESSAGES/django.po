@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-26 23:09+0200\n"
+"POT-Creation-Date: 2015-05-03 14:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,71 +17,67 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\Filmland\settings.py:113
+#: .\Filmland\settings.py:114
 msgid "English"
 msgstr "English"
 
-#: .\Filmland\settings.py:114
+#: .\Filmland\settings.py:115
 msgid "Polski"
 msgstr "Polski"
 
-#: .\Filmland\urls.py:19
+#: .\Filmland\urls.py:22
 msgid "^$"
 msgstr ""
 
-#: .\Filmland\urls.py:20
+#: .\Filmland\urls.py:23
 msgid "^accounts/login/$"
 msgstr ""
 
-#: .\Filmland\urls.py:21
+#: .\Filmland\urls.py:24
 msgid "^accounts/logout/$"
 msgstr ""
 
-#: .\Filmland\urls.py:22
+#: .\Filmland\urls.py:25
 msgid "^accounts/loggedin/$"
 msgstr ""
 
-#: .\Filmland\urls.py:23
+#: .\Filmland\urls.py:26
 msgid "^accounts/invalid/$"
 msgstr ""
 
-#: .\Filmland\urls.py:24
+#: .\Filmland\urls.py:27
 msgid "^accounts/register_success/$"
 msgstr ""
 
-#: .\Filmland\urls.py:25
+#: .\Filmland\urls.py:28
 msgid "^accounts/edit/$"
 msgstr ""
 
-#: .\Filmland\urls.py:26
-msgid "^accounts/edit_user/$"
-msgstr ""
-
-#: .\Filmland\urls.py:29
+#: .\Filmland\urls.py:31
 msgid "^movies/all/$"
 msgstr ""
 
-#: .\Filmland\urls.py:30
+#: .\Filmland\urls.py:32
 msgid "^movies/get/(?P<movie_id>\\d+)/$"
 msgstr ""
 
-#: .\Filmland\urls.py:31
+#: .\Filmland\urls.py:33
 msgid "^people/all/$"
 msgstr ""
 
-#: .\Filmland\urls.py:32
+#: .\Filmland\urls.py:34
 msgid "^people/get/(?P<person_id>\\d+)/$"
 msgstr ""
 
-#: .\Filmland\urls.py:33
+#: .\Filmland\urls.py:35
 msgid "^search/$"
 msgstr ""
 
-#: .\Filmland\urls.py:34
+#: .\Filmland\urls.py:36
 msgid "^list/all/$"
 msgstr ""
 
-#: .\Filmland\urls.py:35
+#: .\Filmland\urls.py:37
 msgid "^list/get/(?P<movielistitem_id>\\d+)/$"
 msgstr ""
 
@@ -182,19 +178,23 @@ msgstr "Register"
 msgid "Zostałeś zarejestrowany!"
 msgstr "You are registered!"
 
-#: .\movies\templates\movie.html:12
+#: .\movies\templates\movie.html:19
 msgid "Rok:"
 msgstr "Year:"
 
-#: .\movies\templates\movie.html:13
+#: .\movies\templates\movie.html:20
 msgid "Język:"
 msgstr "Language:"
 
-#: .\movies\templates\movie.html:21
+#: .\movies\templates\movie.html:28
 msgid "Gatunek:"
 msgstr "Genre:"
 
-#: .\movies\templates\movie.html:41
+#: .\movies\templates\movie.html:48
+msgid "Ocena:"
+msgstr "Rating:"
+
+#: .\movies\templates\movie.html:61
 msgid "Kraj:"
 msgstr "Country:"
 

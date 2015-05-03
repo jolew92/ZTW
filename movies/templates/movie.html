@@ -3,10 +3,9 @@
 {% block content %}
 
 <script type="text/javascript">
-
-    window.onload = function(){document.getElementById("star{{ocena}}").checked=true;};
-
-
+    window.onload = function(){
+        document.getElementById("star{{ocena}}").checked=true;
+    };
 </script>
     <h1>
         {% if LANGUAGE_CODE == 'pl' %}
@@ -15,6 +14,21 @@
             {{ movie.title_en }}
         {% endif %}
     </h1>
+    <div>
+        <p class="attributes">{% trans "Ocena:" %}</p>
+        <p><fieldset class="rating">
+                <input type="radio" id="star10" name="rating" value="10" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=10'"/><label for="star10">10 stars</label>
+                <input type="radio" id="star9" name="rating" value="9" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=9'"/><label for="star9">9 stars</label>
+                <input type="radio" id="star8" name="rating" value="8" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=8'"/><label for="star8">8 stars</label>
+                <input type="radio" id="star7" name="rating" value="7" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=7'"/><label for="star7">7 stars</label>
+                <input type="radio" id="star6" name="rating" value="6" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=6'"/><label for="star6">6 star</label>
+                <input type="radio" id="star5" name="rating" value="5" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=5'"/><label for="star5">5 stars</label>
+                <input type="radio" id="star4" name="rating" value="4" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=4'"/><label for="star4">4 stars</label>
+                <input type="radio" id="star3" name="rating" value="3" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=3'"/><label for="star3">3 stars</label>
+                <input type="radio" id="star2" name="rating" value="2" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=2'"/><label for="star2">2 stars</label>
+                <input type="radio" id="star1" name="rating" value="1" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=1'"/><label for="star1">1 star</label>
+        </fieldset></p><br><br>
+    </div>
     <div>
         <p class="attributes">{% trans "Rok:" %}</p><p>{{ movie.year }}</p>
         <p class="attributes">{% trans "Język:" %}</p>
@@ -45,19 +59,6 @@
                 {% endfor %}
             {% endif %}
         </p>
-        <p>OCEN:</p>
-        <p><fieldset class="rating">
-                <input type="radio" id="star10" name="rating" value="10" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=10'" /><label for="star10">10 stars</label>
-                <input type="radio" id="star9" name="rating" value="9" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=9'" /><label for="star9">9 stars</label>
-                <input type="radio" id="star8" name="rating" value="8" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=8'" /><label for="star8">8 stars</label>
-                <input type="radio" id="star7" name="rating" value="7" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=7'" /><label for="star7">7 stars</label>
-                <input type="radio" id="star6" name="rating" value="6" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=6'" /><label for="star6">6 star</label>
-                <input type="radio" id="star5" name="rating" value="5" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=5'" /><label for="star5">5 stars</label>
-                <input type="radio" id="star4" name="rating" value="4" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=4'" /><label for="star4">4 stars</label>
-                <input type="radio" id="star3" name="rating" value="3" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=3'" /><label for="star3">3 stars</label>
-                <input type="radio" id="star2" name="rating" value="2" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=2'" /><label for="star2">2 stars</label>
-                <input type="radio" id="star1" name="rating" value="1" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=1'" /><label for="star1">1 star</label>
-</fieldset></p><br><br><p id="chuj">KURWA MAC TEST</p><br><br>
         <p class="attributes">{% trans "Kraj:" %}</p>
         <p>
             {% if LANGUAGE_CODE == 'pl' %}

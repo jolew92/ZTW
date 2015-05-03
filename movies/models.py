@@ -131,6 +131,7 @@ class Description(models.Model):
         verbose_name = 'Opis filmu'
         verbose_name_plural = 'Opisy filmów'
 
+
 class Rate(models.Model):
     rate = models.CharField(max_length=2,choices=VOTE_GRADES, verbose_name='Oceny')
     user = models.ForeignKey(User, null=True)
