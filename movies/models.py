@@ -143,3 +143,15 @@ class Rate(models.Model):
     class Meta:
         verbose_name = 'Ocena filmu'
         verbose_name_plural = 'Oceny filmów'
+
+class Avg(models.Model):
+    movie = models.ForeignKey(Movie)
+    sumVotes = models.IntegerField()
+    numberOfVotes = models.IntegerField()
+
+    def __unicode__(self):
+        return u"%s %s %s" % (self.movie.title, self.sumVotes, self.numberOfVotes)
+
+    class Meta:
+        verbose_name = 'avg'
+        verbose_name_plural = 'avg'
