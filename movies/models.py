@@ -144,6 +144,7 @@ class Rate(models.Model):
         verbose_name = 'Ocena filmu'
         verbose_name_plural = 'Oceny filmów'
 
+
 class Avg(models.Model):
     movie = models.ForeignKey(Movie)
     sumVotes = models.IntegerField()
