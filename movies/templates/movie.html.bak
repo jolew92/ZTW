@@ -5,11 +5,6 @@
 <script type="text/javascript">
     window.onload = function(){
         document.getElementById("star{{ocena}}").checked=true;
-    {% for c in ocenaR%}
-        document.getElementById("star{{c.rate}}_{{c.role.id}}").checked=true;
-    {% endfor %}
-
-
     };
 </script>
     <h1>
@@ -113,19 +108,8 @@
             {% for person in p.people.all %}
                 <li class="role_list_item">
                     <a href="/people/get/{{ person.id }}/" class="list_link">
-                        {{ person.last_name }} {{ person.first_name }} {{p.role}}
-                    </a> {{p.id}} <p><fieldset class="rating">
-                <input type="radio" id="star10_{{p.id}}" name="rating_{{p.id}}" value="10" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=10'"/><label for="star10_{{p.id}}">10 stars</label>
-                <input type="radio" id="star9_{{p.id}}" name="rating_{{p.id}}" value="9" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=9'"/><label for="star9_{{p.id}}">9 stars</label>
-                <input type="radio" id="star8_{{p.id}}" name="rating_{{p.id}}" value="8" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=8'"/><label for="star8_{{p.id}}">8 stars</label>
-                <input type="radio" id="star7_{{p.id}}" name="rating_{{p.id}}" value="7" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=7'"/><label for="star7_{{p.id}}">7 stars</label>
-                <input type="radio" id="star6_{{p.id}}" name="rating_{{p.id}}" value="6" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=6'"/><label for="star6_{{p.id}}">6 star</label>
-                <input type="radio" id="star5_{{p.id}}" name="rating_{{p.id}}" value="5" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=5'"/><label for="star5_{{p.id}}">5 stars</label>
-                <input type="radio" id="star4_{{p.id}}" name="rating_{{p.id}}" value="4" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=4'"/><label for="star4_{{p.id}}">4 stars</label>
-                <input type="radio" id="star3_{{p.id}}" name="rating_{{p.id}}" value="3" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=3'"/><label for="star3_{{p.id}}">3 stars</label>
-                <input type="radio" id="star2_{{p.id}}" name="rating_{{p.id}}" value="2" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=2'"/><label for="star2_{{p.id}}">2 stars</label>
-                <input type="radio" id="star1_{{p.id}}" name="rating_{{p.id}}" value="1" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=1'"/><label for="star1_{{p.id}}">1 star</label>
-        </fieldset></p><br><br>
+                        {{ person.last_name }} {{ person.first_name }}
+                    </a>
                 </li>
             {% endfor %}
             {% endif %}

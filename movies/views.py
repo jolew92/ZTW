@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from movies.models import Movie, Description, Role, MovieRole, Rate, Avg
+from movies.models import Movie, Description, Role, MovieRole, Rate, Avg,RoleRate, AvgRole
 from django.views.generic import View
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
@@ -19,6 +19,7 @@ class MovieView(View):
 
     def get(self, request, movie_id=1):
         ocena = Rate.objects.filter(movie_id=movie_id, user_id=request.user.id)
+        #oceny = RoleRate.objects.filter(role_id=role_id, user_id=request.user.id)
 
         try:
             avg = Avg.objects.get(movie=Movie.objects.get(id=movie_id))
@@ -30,23 +31,23 @@ class MovieView(View):
 
         desc = Description.objects.filter(movie_id=movie_id)
         movie_roles = MovieRole.objects.filter(movie_id=movie_id)
-        #try:
 
-        #except srednia.IndexError:
-        #    srednia = 0
+        roles = MovieRole.objects.filter(movie_id=movie_id)
+        przekazujeoceny = RoleRate.objects.filter(user_id=request.user.id, role__in=roles)
+
 
         if len(ocena) != 0:
 
             return render(request, self.template_name, {'movie': Movie.objects.get(id=movie_id),
                                                     'desc': desc, 'roles': Role.objects, 'movie_roles': movie_roles, 'ocena':ocena[0].rate,
-                                                    'srednia':srednia})
+                                                    'srednia':srednia,'ocenaR':przekazujeoceny})
         elif len(ocena) == 0 and test == 1:
             return render(request, self.template_name, {'movie': Movie.objects.get(id=movie_id),
                                                     'desc': desc, 'roles': Role.objects, 'movie_roles': movie_roles,
-                                                    'srednia':srednia})
+                                                    'srednia':srednia,'ocenaR':przekazujeoceny})
         else:
             return render(request, self.template_name, {'movie': Movie.objects.get(id=movie_id),
-                                                    'desc': desc, 'roles': Role.objects, 'movie_roles': movie_roles,'srednia':srednia
+                                                    'desc': desc, 'roles': Role.objects, 'movie_roles': movie_roles,'srednia':srednia,'ocenaR':przekazujeoceny
             })
 
 
@@ -89,4 +90,25 @@ def set_rating(request, movie_id=1):
         avg.sumVotes = suma
         avg.save()
         oceny[0].save()
+    return HttpResponseRedirect(redirect_to='/'+language+'/movies/get/'+movie_id+'/')
+
+def set_role(request):
+    language = translation.get_language_from_request(request)
+    ocenaR = request.GET['ocenaR']
+    role_id = request.GET['role_id']
+    movie_id= request.GET['movie_id']
+    user = request.user.id
+    oceny = RoleRate.objects.filter(role_id=role_id, user_id=request.user.id)
+
+
+    if len(oceny) == 0:
+        rate = RoleRate(rate=ocenaR, user=User.objects.get(id=user), role=MovieRole.objects.get(id=role_id))
+        rate.save()
+
+
+    else:
+        oceny[0].rate = ocenaR
+        oceny[0].save()
+
+
     return HttpResponseRedirect(redirect_to='/'+language+'/movies/get/'+movie_id+'/')
