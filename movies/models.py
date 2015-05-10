@@ -170,6 +170,7 @@ class RoleRate(models.Model):
         verbose_name = 'Ocena roli'
         verbose_name_plural = u'Oceny ról'
 
+
 class AvgRole(models.Model):
     role = models.ForeignKey(MovieRole)
     sumVotes = models.IntegerField()

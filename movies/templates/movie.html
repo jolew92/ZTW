@@ -31,7 +31,7 @@
               minWidth: 400,
               autoOpen:false,
               buttons: {
-                "Dodaj": function() {
+             "{% trans "Dodaj" %}": function() {
                     var value = $("input[name=add_to_list]:checked").val();
                     var name = "";
                     if(value != null) {
@@ -62,7 +62,7 @@
                         return showMessageDialog(2);
                     }
                 },
-                "Anuluj": function() {
+                "{% trans "Anuluj" %}": function() {
                   $( this ).dialog( "close" );
                 }
               }
@@ -127,7 +127,7 @@
         {% endif %}
         <button class="btn-group btn-group-sm btn-success" id="ok_link"><span class='glyphicon glyphicon-plus'/></button>
     </h1>
-    <div id="dialog-confirm" title="Do jakiej listy dodać film?">
+    <div id="dialog-confirm" title="{% trans "Do jakiej listy dodać film?" %}">
         <form id="add_movie"  action="/movies/{{ movie.id }}/add_to_list/" method="post">{% csrf_token %}
             <fieldset class="add_to_list">
               {% for item in lists %}
@@ -136,26 +136,26 @@
             </fieldset>
         </form>
     </div>
-    <div id="dialog-submit-ok" title="Udało się">
-        <p class="black">Dodano film
+    <div id="dialog-submit-ok" title="{% trans "Udało się" %}">
+        <p class="black">{% trans "Dodano film" %}
             {% if LANGUAGE_CODE == 'pl' %}
                 "{{  movie.title }}"
             {% else %}
                 "{{ movie.title_en }}"
             {% endif %}
-            do listy "<span class="black" id="list_name1">lista</span>".</p>
+            {% trans "do listy" %} "<span class="black" id="list_name1">lista</span>".</p>
     </div>
-    <div id="dialog-submit-error" title="Nie udało się">
-        <p class="black">Żadna lista nie została zaznaczona.</p>
+    <div id="dialog-submit-error" title="{% trans "Nie udało się" %}">
+        <p class="black">{% trans "Żadna lista nie została zaznaczona." %}</p>
     </div>
-    <div id="dialog-submit-exists" title="Udało się">
-        <p class="black">Film
+    <div id="dialog-submit-exists" title="{% trans "Nie udało się" %}">
+        <p class="black">{% trans "Film" %}
             {% if LANGUAGE_CODE == 'pl' %}
                 "{{  movie.title }}"
             {% else %}
                 "{{ movie.title_en }}"
             {% endif %}
-            znajduje się już na liście "<span class="black" id="list_name2"></span>".</p>
+            {% trans "znajduje się już na liście" %} "<span class="black" id="list_name2"></span>".</p>
     </div>
         <div>
         <p class="attributes">{% trans "Ocena:" %}</p>
