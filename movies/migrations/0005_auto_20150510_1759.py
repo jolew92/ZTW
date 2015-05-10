@@ -7,12 +7,12 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('movies', '0005_avg'),
+        ('movies', '0004_auto_20150510_1758'),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='avg',
-            options={'verbose_name': 'avg', 'verbose_name_plural': 'avg'},
+            name='language',
+            options={'ordering': ['name'], 'verbose_name': 'J\u0119zyk', 'verbose_name_plural': 'J\u0119zyki'},
         ),
     ]

@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^accounts/edit_list/(?P<list_id>\d+)/remove_movie/$', 'accounts.views.remove_movie'),
     url(r'^accounts/edit_list/add_list/$', 'accounts.views.add_list'),
     url(r'^accounts/edit_list/(?P<list_id>\d+)/change_list_name/$', 'accounts.views.change_list_name'),
+    url(r'^movies/(?P<movie_id>\d+)/add_to_list/$', 'movies.views.add_movie_to_list'),
 )
 
 urlpatterns += i18n_patterns('',
