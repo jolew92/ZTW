@@ -9,20 +9,17 @@
             document.getElementById("star{{c.rate}}_{{c.role.id}}").checked=true;
         {% endfor %}
         };
-
         $( document ).ready(function() {
             $("#dialog-submit-ok").hide();
             $("#dialog-submit-error").hide();
             $("#dialog-submit-exists").hide();
         });
-
          $(function() {
              $("#ok_link").click(function(e) {
                  e.preventDefault();
                  $('#dialog-confirm').dialog('open');
              }
           );
-
           $( "#dialog-confirm" ).dialog({
               resizable: false,
               minHeight: 100,
@@ -31,7 +28,7 @@
               minWidth: 400,
               autoOpen:false,
               buttons: {
-             "{% trans "Dodaj" %}": function() {
+              "{% trans "Dodaj" %}": function() {
                     var value = $("input[name=add_to_list]:checked").val();
                     var name = "";
                     if(value != null) {
@@ -62,13 +59,12 @@
                         return showMessageDialog(2);
                     }
                 },
-                "{% trans "Anuluj" %}": function() {
+             "{% trans "Anuluj" %}": function() {
                   $( this ).dialog( "close" );
                 }
               }
             });
           });
-
             function showMessageDialog(number) {
                 if(number==0) {
                     $( "#dialog-submit-ok" ).dialog({
@@ -124,7 +120,8 @@
             {{  movie.title }}
         {% else %}
             {{ movie.title_en }}
-        {% endif %}
+        {% endif %}<br>
+        <img id="obrazek" src="https://dl.dropboxusercontent.com/u/102438243/{{movie.id}}.jpg" width="250" height="358"/>
         <button class="btn-group btn-group-sm btn-success" id="ok_link"><span class='glyphicon glyphicon-plus'/></button>
     </h1>
     <div id="dialog-confirm" title="{% trans "Do jakiej listy dodać film?" %}">
@@ -148,7 +145,7 @@
     <div id="dialog-submit-error" title="{% trans "Nie udało się" %}">
         <p class="black">{% trans "Żadna lista nie została zaznaczona." %}</p>
     </div>
-    <div id="dialog-submit-exists" title="{% trans "Nie udało się" %}">
+    <div id="dialog-submit-exists" title="{% trans "Już istnieje" %}">
         <p class="black">{% trans "Film" %}
             {% if LANGUAGE_CODE == 'pl' %}
                 "{{  movie.title }}"
@@ -249,6 +246,7 @@
         {% for p in movie_roles.all %}
             {% if p.role == r %}
             {% for person in p.people.all %}
+
                 <li class="role_list_item">
                     <a href="/people/get/{{ person.id }}/" class="list_link">
                         {{ person.last_name }} {{ person.first_name }}
@@ -265,6 +263,7 @@
                 <input type="radio" id="star1_{{p.id}}" name="rating_{{p.id}}" value="1" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=1'"/><label for="star1_{{p.id}}">1 star</label>
         </fieldset></p><br><br>
                 </li>
+
             {% endfor %}
             {% endif %}
         {% endfor %}

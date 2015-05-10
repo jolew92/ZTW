@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-10 21:56+0200\n"
+"POT-Creation-Date: 2015-05-10 23:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,65 +198,81 @@ msgstr "Register"
 msgid "Zostałeś zarejestrowany!"
 msgstr "You are registered!"
 
-#: .\movies\templates\movie.html:34
+#: .\movies\templates\movie.html:31
 msgid "Dodaj"
 msgstr "Add"
 
-#: .\movies\templates\movie.html:65
+#: .\movies\templates\movie.html:62
 msgid "Anuluj"
 msgstr "Cancel"
 
-#: .\movies\templates\movie.html:130
+#: .\movies\templates\movie.html:127
 msgid "Do jakiej listy dodać film?"
 msgstr "To which list add this movie?"
 
-#: .\movies\templates\movie.html:139
+#: .\movies\templates\movie.html:136
 msgid "Udało się"
 msgstr "Success"
 
-#: .\movies\templates\movie.html:140
+#: .\movies\templates\movie.html:137
 msgid "Dodano film"
 msgstr "Added movie"
 
-#: .\movies\templates\movie.html:146
+#: .\movies\templates\movie.html:143
 msgid "do listy"
 msgstr "to list"
 
-#: .\movies\templates\movie.html:148 .\movies\templates\movie.html.py:151
+#: .\movies\templates\movie.html:145
 msgid "Nie udało się"
 msgstr "Failure"
 
-#: .\movies\templates\movie.html:149
+#: .\movies\templates\movie.html:146
 msgid "Żadna lista nie została zaznaczona."
 msgstr "You haven't checked any list."
 
-#: .\movies\templates\movie.html:152 .\templates\base.html:51
+#: .\movies\templates\movie.html:148
+msgid "Już istnieje"
+msgstr "Already exists"
+
+#: .\movies\templates\movie.html:149 .\templates\base.html:51
 msgid "Film"
 msgstr "Movie"
 
-#: .\movies\templates\movie.html:158
+#: .\movies\templates\movie.html:155
 msgid "znajduje się już na liście"
 msgstr "already in the list"
 
-#: .\movies\templates\movie.html:161
+#: .\movies\templates\movie.html:158
 msgid "Ocena:"
 msgstr "Rating:"
 
-#: .\movies\templates\movie.html:176
+#: .\movies\templates\movie.html:173
 msgid "Rok:"
 msgstr "Year:"
 
-#: .\movies\templates\movie.html:177
+#: .\movies\templates\movie.html:174
 msgid "Język:"
 msgstr "Language:"
 
-#: .\movies\templates\movie.html:185
+#: .\movies\templates\movie.html:182
 msgid "Gatunek:"
 msgstr "Genre:"
 
-#: .\movies\templates\movie.html:205
+#: .\movies\templates\movie.html:202
 msgid "Kraj:"
 msgstr "Country:"
+
+#: .\movies\templates\movies.html:5
+msgid "Wybierz gatunek:"
+msgstr "Select genre:"
+
+#: .\movies\templates\movies.html:20
+msgid "Od:"
+msgstr "From:"
+
+#: .\movies\templates\movies.html:21
+msgid "Do:"
+msgstr "To:"
 
 #: .\templates\base.html:39
 msgid "Filmy"
