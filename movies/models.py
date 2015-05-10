@@ -164,7 +164,7 @@ class RoleRate(models.Model):
     user = models.ForeignKey(User, null=True)
 
     def __unicode__(self):
-        return u"%s %s %s" % (self.role.id, self.user, self.rate)
+        return u"%s %s %s %s" % (self.id,self.role.id, self.user, self.rate)
 
     class Meta:
         verbose_name = 'Ocena rolo'
