@@ -4,12 +4,15 @@
 
 <p id="test">Wybierz gatunek</p>
 <form name="myform" id="k1" method="get">
-<div align="center"><br>
-<input type="radio" name="gatunek" value="Horror" id="r1" onlclick="genere()">Horror
-<input type="radio" name="gatunek" value="Akcja" id="r2" onlclick="genere()">Akcja
-<input type="radio" name="gatunek" value="Dramat" id="r3" onlclick="genere()">Dramat
-    <input type="text" placeholder="Od:" name="od"/>
-    <input type="text" placeholder="Do:" name="do2"/>
+<div align="center"><br>Gatunek:
+<input type="radio" name="gatunek" value="Horror" id="r1" onlclick="genere()">{% trans "Horror" %}
+<input type="radio" name="gatunek" value="Akcja" id="r2" onlclick="genere()">{% trans "Akcja" %}
+<input type="radio" name="gatunek" value="Dramat" id="r3" onlclick="genere()">{% trans "Dramat" %}
+<input type="radio" name="gatunek" value="Musical" id="r4" onlclick="genere()">{% trans "Musical" %}
+<input type="radio" name="gatunek" value="Sci-Fi" id="r5" onlclick="genere()">{% trans "Sci-Fi" %}
+<br>
+Lata od:<input type="text" placeholder="Od:" name="od"/>
+    do:<input type="text" placeholder="Do:" name="do2"/>
     <input type="submit" value="OK" />
 </div></form>
 

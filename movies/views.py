@@ -41,12 +41,6 @@ class MoviesView(View):
            do2 = 9999
 
 
-
-
-
-
-
-
         if 'gatunek' in request.GET:
             gatunek = request.GET['gatunek']
             return render(request, self.template_name, {'movies': movies, 'gatunek':gatunek,'od':int(od),'do2':int(do2)})
