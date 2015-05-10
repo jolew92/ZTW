@@ -124,7 +124,8 @@
             {{  movie.title }}
         {% else %}
             {{ movie.title_en }}
-        {% endif %}
+        {% endif %}<br>
+        <img id="obrazek" src="https://dl.dropboxusercontent.com/u/102438243/{{movie.id}}.jpg" width="250" height="358"/>
         <button class="btn-group btn-group-sm btn-success" id="ok_link"><span class='glyphicon glyphicon-plus'/></button>
     </h1>
     <div id="dialog-confirm" title="Do jakiej listy dodać film?">
@@ -148,7 +149,7 @@
     <div id="dialog-submit-error" title="Nie udało się">
         <p class="black">Żadna lista nie została zaznaczona.</p>
     </div>
-    <div id="dialog-submit-exists" title="Udało się">
+    <div id="dialog-submit-exists" title="Już istnieje">
         <p class="black">Film
             {% if LANGUAGE_CODE == 'pl' %}
                 "{{  movie.title }}"

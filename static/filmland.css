@@ -1,5 +1,12 @@
 .hidden { display: none }
 
+.obrazek{
+psoition: relative;
+left:10%;
+z-index:-1;
+
+}
+
 @font-face {
     font-family: testFont;
     src: url(CaviarDreams_Bold.ttf);

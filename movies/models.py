@@ -167,18 +167,21 @@ class RoleRate(models.Model):
         return u"%s %s %s" % (self.role.id, self.user, self.rate)
 
     class Meta:
-        verbose_name = 'Ocena roli'
-        verbose_name_plural = u'Oceny ról'
+        verbose_name = 'Ocena rolo'
+        verbose_name_plural = 'Oceny ról'
 
 class AvgRole(models.Model):
     role = models.ForeignKey(MovieRole)
     sumVotes = models.IntegerField()
     numberOfVotes = models.IntegerField()
+    avgR = models.FloatField(null=True)
 
     def __unicode__(self):
-        return u"%s %s %s" % (self.role, self.sumVotes, self.numberOfVotes)
+        return u"%s %s %s %s" % (self.role, self.sumVotes, self.numberOfVotes, self.avgR)
 
     class Meta:
         verbose_name = 'AVG ROLEs'
         verbose_name_plural = 'AVG ROLE'
+
+
 
