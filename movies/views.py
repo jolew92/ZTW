@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from movies.models import Movie, Description, Role, MovieRole, Rate, Avg,RoleRate, AvgRole, Genre
+from movies.models import Movie, Description, Role, MovieRole, Rate, Avg,RoleRate, Genre
 from django.views.generic import View
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
@@ -54,9 +54,9 @@ class MovieView(View):
 
         desc = Description.objects.filter(movie_id=movie_id)
         movie_roles = MovieRole.objects.filter(movie_id=movie_id)
+
         roles = MovieRole.objects.filter(movie_id=movie_id)
         przekazujeoceny = RoleRate.objects.filter(user_id=request.user.id, role__in=roles)
-        srednio = AvgRole.objects.filter(role__in=roles)
 
         lists = MovieListItem.objects.filter(movielist__user=request.user)
 
@@ -64,16 +64,16 @@ class MovieView(View):
             return render(request, self.template_name, {'movie': Movie.objects.get(id=movie_id), 'desc': desc,
                                                         'roles': Role.objects, 'movie_roles': movie_roles,
                                                         'ocena': ocena[0].rate, 'srednia': srednia, 'ocenaR':przekazujeoceny,
-                                                        'avgR': srednio, 'lists': lists})
+                                                        'lists': lists})
         elif len(ocena) == 0 and test == 1:
             return render(request, self.template_name, {'movie': Movie.objects.get(id=movie_id),'desc': desc,
                                                         'roles': Role.objects, 'movie_roles': movie_roles,
                                                         'srednia': srednia, 'ocenaR': przekazujeoceny,
-                                                        'avgR': srednio, 'lists': lists})
+                                                         'lists': lists})
         else:
             return render(request, self.template_name, {'movie': Movie.objects.get(id=movie_id), 'desc': desc,
                                                         'roles': Role.objects, 'movie_roles': movie_roles, 'srednia':srednia,
-                                                        'ocenaR': przekazujeoceny, 'avgR': srednio, 'lists': lists})
+                                                        'ocenaR': przekazujeoceny, 'lists': lists})
 
 
 def set_rating(request, movie_id=1):
@@ -121,46 +121,31 @@ def set_role(request):
     language = translation.get_language_from_request(request)
     ocenaR = request.GET['ocenaR']
     role_id = request.GET['role_id']
-    movie_id = request.GET['movie_id']
+    movie_id= request.GET['movie_id']
     user = request.user.id
     oceny = RoleRate.objects.filter(role_id=role_id, user_id=request.user.id)
+    movierole = MovieRole.objects.get(id=role_id)
 
-    try:
-        avgR = AvgRole.objects.get(role=MovieRole.objects.get(id=role_id))
-        ilosc = avgR.numberOfVotes
-        suma = avgR.sumVotes
-        test = 1
-    except AvgRole.DoesNotExist:
-        test = 0
-        ilosc = 0
-        suma = 0
 
-    if len(oceny) == 0 and test ==0:
+    if len(oceny) == 0:
         rate = RoleRate(rate=ocenaR, user=User.objects.get(id=user), role=MovieRole.objects.get(id=role_id))
         rate.save()
-        #ocena2 = rate[0].rate
-        ilosc = ilosc + 1
-        suma = suma + int(ocenaR)
-        avg = suma/float(ilosc)
-        srednia = AvgRole(role=MovieRole.objects.get(id=role_id), numberOfVotes=ilosc, sumVotes=suma, avgR=avg)
-        srednia.save()
-    elif len(oceny) == 0:
-        rate = RoleRate(rate=ocenaR, user=User.objects.get(id=user), role=MovieRole.objects.get(id=role_id))
-        rate.save()
-        ilosc = ilosc + 1
-        suma = suma+int(ocenaR)
-        avgR.numberOfVotes = ilosc
-        avgR.sumVotes = suma
-        avgR.avgR = suma/float(ilosc)
-        avgR.save()
+        movierole.sumVotes += long(ocenaR)
+        movierole.numberOfVotes +=1
+        movierole.avgR = movierole.sumVotes/float(movierole.numberOfVotes)
+        movierole.save()
+
+
+
     else:
-        ocena2 = oceny[0].rate
+        temp = oceny[0].rate
         oceny[0].rate = ocenaR
-        suma = suma+int(ocenaR)-int(ocena2)
-        avgR.sumVotes = suma
-        avgR.avgR = suma/float(ilosc)
-        avgR.save()
         oceny[0].save()
+        movierole.sumVotes = movierole.sumVotes - long(temp) + long(ocenaR)
+        movierole.avgR = movierole.sumVotes/float(movierole.numberOfVotes)
+        movierole.save()
+
+
     return HttpResponseRedirect(redirect_to='/'+language+'/movies/get/'+movie_id+'/')
 
 

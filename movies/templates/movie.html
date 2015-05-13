@@ -7,9 +7,9 @@
             document.getElementById("star{{ocena}}").checked=true;
         {% for c in ocenaR%}
             document.getElementById("star{{c.rate}}_{{c.role.id}}").checked=true;
-
         {% endfor %}
         };
+
         $( document ).ready(function() {
             $("#dialog-submit-ok").hide();
             $("#dialog-submit-error").hide();
@@ -262,9 +262,8 @@
                 <input type="radio" id="star3_{{p.id}}" name="rating_{{p.id}}" value="3" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=3'"/><label for="star3_{{p.id}}">3 stars</label>
                 <input type="radio" id="star2_{{p.id}}" name="rating_{{p.id}}" value="2" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=2'"/><label for="star2_{{p.id}}">2 stars</label>
                 <input type="radio" id="star1_{{p.id}}" name="rating_{{p.id}}" value="1" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=1'"/><label for="star1_{{p.id}}">1 star</label>
-        </fieldset></p>{%for a in avgR%}{{a.role}}{% endfor %}<br><br>
+        </fieldset></p>{{ p.avgR }}/10<br><br>
                 </li>
-
             {% endfor %}
             {% endif %}
         {% endfor %}
