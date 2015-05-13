@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'movies',
     'people',
     'list',
+    'cinema',
     'django_extensions',
     #'djangoratings',
 )

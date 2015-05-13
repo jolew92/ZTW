@@ -5,6 +5,10 @@ psoition: relative;
 left:10%;
 z-index:-1;
 
+table,tr,td,th{
+    color:white;
+}
+
 }
 
 @font-face {

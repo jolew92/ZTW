@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+﻿{% load i18n %}
+{% block content %}
+
+{{cinema.brand}} {{cinema.additionalName}}<br>
+{{cinema.town}}<br>
+{{cinema.street}}
+{{cinema.street_number}}<br>
+<table>
+{%for t in timetable%}
+    <tr>
+<td>{{t.movie}}</td><td>{{t.time}}</td></tr>
+{%endfor%}
+</table>
+{% endblock content %}

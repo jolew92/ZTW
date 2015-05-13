@@ -6,6 +6,7 @@ from views import HomeView, SearchView
 from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import ugettext_lazy as _
 from list.views import ListsView, ListItemView
+from cinema.views import  CinemasView, CinemaView
 from accounts.views import EditView, LoginView, LoggedinView, InvalidLoginView, LogoutView, RegisterSuccess, EditListsView, EditListView
 
 urlpatterns = patterns('',
@@ -26,6 +27,8 @@ urlpatterns = patterns('',
 urlpatterns += i18n_patterns('',
 
     url(_(r'^$'), HomeView.as_view()),
+    url(_(r'^cinemas/all/$'), CinemasView.as_view()),
+    url(_(r'^cinemas/get/(?P<cinema_id>\d+)/$'), CinemaView.as_view()),
     url(_(r'^accounts/login/$'), LoginView.as_view()),
     url(_(r'^accounts/logout/$'), LogoutView.as_view()),
     url(_(r'^accounts/loggedin/$'), LoggedinView.as_view()),
