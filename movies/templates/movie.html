@@ -8,7 +8,26 @@
         {% for c in ocenaR%}
             document.getElementById("star{{c.rate}}_{{c.role.id}}").checked=true;
         {% endfor %}
-        };
+        }
+
+        $(function() {
+		$('body').on("click", ".rate", function () {
+			$.ajax({
+				url: $("#rf").attr('action'),
+				method: "POST",
+				data: {
+					'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').prop('value'),
+					'rating': $(this).prop('value')
+				}
+			}).done(function (data) {
+					alert("Dziękujemy za ocenę");
+			}).fail(function () {
+				alert("Some error occured while sending data. Try again later.");
+			});
+		});
+	});
+
+
 
         $( document ).ready(function() {
             $("#dialog-submit-ok").hide();
@@ -122,7 +141,7 @@
         {% else %}
             {{ movie.title_en }}
         {% endif %}<br>
-        <img id="obrazek" src="https://dl.dropboxusercontent.com/u/102438243/{{movie.id}}.jpg" width="250" height="358"/>
+        <img id="obrazek" src="/media/movies/{{movie.id}}.jpg" width="250" height="358"/>
         <button class="btn-group btn-group-sm btn-success" id="ok_link"><span class='glyphicon glyphicon-plus'/></button>
     </h1>
     <div id="dialog-confirm" title="{% trans "Do jakiej listy dodać film?" %}">
@@ -157,18 +176,21 @@
     </div>
         <div>
         <p class="attributes">{% trans "Ocena:" %}</p>
+        <form method="post" action="/movies/get/{{movie.id}}/set_rating/" id="rf">
+		{% csrf_token %}
         <p><fieldset class="rating">
-                <input type="radio" id="star10" name="rating" value="10" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=10'"/><label for="star10">10 stars</label>
-                <input type="radio" id="star9" name="rating" value="9" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=9'"/><label for="star9">9 stars</label>
-                <input type="radio" id="star8" name="rating" value="8" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=8'"/><label for="star8">8 stars</label>
-                <input type="radio" id="star7" name="rating" value="7" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=7'"/><label for="star7">7 stars</label>
-                <input type="radio" id="star6" name="rating" value="6" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=6'"/><label for="star6">6 star</label>
-                <input type="radio" id="star5" name="rating" value="5" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=5'"/><label for="star5">5 stars</label>
-                <input type="radio" id="star4" name="rating" value="4" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=4'"/><label for="star4">4 stars</label>
-                <input type="radio" id="star3" name="rating" value="3" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=3'"/><label for="star3">3 stars</label>
-                <input type="radio" id="star2" name="rating" value="2" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=2'"/><label for="star2">2 stars</label>
-                <input type="radio" id="star1" name="rating" value="1" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=1'"/><label for="star1">1 star</label>
+               <input type="radio" id="star10" name="rating" class="rate" value="10" /><label for="star10">10 stars</label>
+                <input type="radio" id="star9" name="rating" class="rate" value="9" /><label for="star9">9 stars</label>
+                <input type="radio" id="star8" name="rating" class="rate" value="8" /><label for="star8">8 stars</label>
+                <input type="radio" id="star7" name="rating" class="rate" value="7" /><label for="star7">7 stars</label>
+                <input type="radio" id="star6" name="rating" class="rate" value="6" /><label for="star6">6 star</label>
+                <input type="radio" id="star5" name="rating" class="rate" value="5" /><label for="star5">5 stars</label>
+                <input type="radio" id="star4" name="rating" class="rate" value="4" /><label for="star4">4 stars</label>
+                <input type="radio" id="star3" name="rating" class="rate" value="3" /><label for="star3">3 stars</label>
+                <input type="radio" id="star2" name="rating" class="rate" value="2" /><label for="star2">2 stars</label>
+                <input type="radio" id="star1" name="rating" class="rate" value="1" /><label for="star1">1 star</label>
         </fieldset></p>  <p style="font-size: 30px;">&nbsp; {{ srednia }}/10</p>
+		</form>
     </div>
     <div>
         <p class="attributes">{% trans "Rok:" %}</p><p>{{ movie.year }}</p>

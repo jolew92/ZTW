@@ -3,13 +3,19 @@
 {% block content %}
 
 {{cinema.brand}} {{cinema.additionalName}}<br>
-{{cinema.town}}<br>
-{{cinema.street}}
+<img src="/media/cinemas/{{cinema.brand.id}}.png" width="340" height="88"/>
+<p>Adres:</p>
+{{cinema.town}} {{cinema.street}}
 {{cinema.street_number}}<br>
-<table>
+<center><p style="font-size:30px;">Repertuar:</p><table>
+    <tr><td style="color: white;font-size:30px"><i>Film</i></td><td style="color: white;font-size:30px;text-align:right"><i>Godzina</i></td></tr>
+    <tr><td><hr width="160%"></td></tr>
+
+
+    <br><br>
 {%for t in timetable%}
     <tr>
-<td>{{t.movie}}</td><td>{{t.time}}</td></tr>
+<td style="color: white;font-size:40px">{{t.movie}}{{t.movie.id}}</td><td style="color: gold;font-size:40px">{{t.time}}</td></tr>
 {%endfor%}
-</table>
+</table></center>
 {% endblock content %}

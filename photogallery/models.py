@@ -68,12 +68,12 @@ class Image(models.Model):
         return "%s x %s" % (self.width, self.height)
 
     def people_(self):
-        lst = [Person.objects.get(id=unicode(x[1])).last_name + " " +
-               Person.objects.get(id=unicode(x[1])).first_name for x in self.people.values_list()]
+        lst = [Person.objects.get(id=x[1]).last_name + " " +
+               Person.objects.get(id=x[1]).first_name for x in self.people.values_list()]
         return str(join(lst, ', '))
 
     def movies_(self):
-        lst = [Movie.objects.get(id=unicode(x[1])).title for x in self.movies.values_list()]
+        lst = [Movie.objects.get(id=x[1]).title for x in self.movies.values_list()]
         return str(join(lst, ', '))
 
     def thumbnail(self):

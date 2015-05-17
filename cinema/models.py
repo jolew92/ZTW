@@ -31,7 +31,7 @@ class Cinema(models.Model):
     street_number = models.CharField(max_length=30, verbose_name='Nr')
 
     def __unicode__(self):
-        return u"%s %s" % (self.brand, self.town.name)
+        return u"%s %s %s" % (self.brand,self.additionalName, self.town.name)
 
     class Meta:
         ordering = ['brand']
@@ -40,7 +40,7 @@ class Cinema(models.Model):
 
 class Timetable(models.Model):
     cinema = models.ForeignKey(Cinema, verbose_name='Kino')
-    time = models.DateTimeField()
+    time = models.TimeField()
     movie = models.ForeignKey(Movie)
 
     def __unicode__(self):

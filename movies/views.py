@@ -2,7 +2,7 @@ from django.shortcuts import render
 from movies.models import Movie, Description, Role, MovieRole, Rate, Avg,RoleRate, Genre
 from django.views.generic import View
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.utils import translation
 from list.models import MovieListItem
 
@@ -78,7 +78,7 @@ class MovieView(View):
 
 def set_rating(request, movie_id=1):
     language = translation.get_language_from_request(request)
-    ocena = request.GET['ocena']
+    ocena = request.POST['rating']
     user = request.user.id
     oceny = Rate.objects.filter(movie_id=movie_id, user_id=request.user.id)
 
@@ -114,7 +114,7 @@ def set_rating(request, movie_id=1):
         avg.sumVotes = suma
         avg.save()
         oceny[0].save()
-    return HttpResponseRedirect(redirect_to='/'+language+'/movies/get/'+movie_id+'/')
+    return HttpResponse()
 
 
 def set_role(request):
