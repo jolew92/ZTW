@@ -4,7 +4,6 @@ from movies.models import Movie, Language, Country, Role, Description, MovieRole
 
 class MoviePeopleInline(admin.TabularInline):
     model = MovieRole
-    filter_horizontal = ("people",)
     extra = 0
 
 

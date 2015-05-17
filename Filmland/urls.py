@@ -1,5 +1,6 @@
 from django.conf.urls import include, url, patterns
 from django.contrib import admin
+from django.conf import settings
 from movies.views import MoviesView, MovieView
 from people.views import PeopleView, PersonView
 from views import HomeView, SearchView
@@ -22,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^accounts/edit_list/add_list/$', 'accounts.views.add_list'),
     url(r'^accounts/edit_list/(?P<list_id>\d+)/change_list_name/$', 'accounts.views.change_list_name'),
     url(r'^movies/(?P<movie_id>\d+)/add_to_list/$', 'movies.views.add_movie_to_list'),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 )
 
 urlpatterns += i18n_patterns('',

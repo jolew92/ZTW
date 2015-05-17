@@ -42,7 +42,7 @@ INSTALLED_APPS = (
     'list',
     'cinema',
     'django_extensions',
-    #'djangoratings',
+    'photogallery',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -96,6 +96,16 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+
+def rel(*x):
+   return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
 SETTINGS_PATH = os.path.dirname(__file__)
 PROJECT_PATH = os.path.join(SETTINGS_PATH, os.pardir)
 PROJECT_PATH = os.path.abspath(PROJECT_PATH)
