@@ -3,7 +3,7 @@ from django.db import models
 from people.models import Person
 from django.core import urlresolvers
 from django.contrib.auth.models import User
-#from djangoratings.fields import RatingField
+from string import join
 
 
 class Language(models.Model):
@@ -77,6 +77,10 @@ class Movie(models.Model):
 
     def __unicode__(self):
         return unicode(self.title)
+
+    def genre_(self):
+        lst = [x[1] for x in self.genre.values_list()]
+        return str(join(lst, ', '))
 
     @property
     def get_admin_url(self):

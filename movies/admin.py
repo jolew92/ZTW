@@ -18,11 +18,12 @@ class DescriptionMovieInline(admin.TabularInline):
 
 
 class MovieAdmin(admin.ModelAdmin):
-    list_display = 'title', 'title_en', 'year', 'language'
+    list_display = 'title', 'title_en', 'year', 'genre_', 'language'
     fields = 'title', 'title_en', 'year', 'language', 'genre'
     filter_horizontal = ("genre",)
     inlines = [MovieCountryInline, DescriptionMovieInline, MoviePeopleInline]
     exclude = ('country', 'roles',)
+    search_fields = ["title", "title_en", "year", "genre__genre", "genre__genre_en"]
 
 admin.site.register(Movie, MovieAdmin)
 admin.site.register(Language)
