@@ -16,6 +16,15 @@
         {% endfor %}
     </div>
     <div>
+    {% for im in images %}
+        {% autoescape off %}<a href="/photogallery/person/{{ person.id }}/{{ im.id }}/">{{ im.thumbnail_bigger }}</a>{% endautoescape %}
+    {% endfor %}
+
+        {% if not images.first == None %}
+            <p style="margin-top: 10px;"><a href="/photogallery/person/{{ person.id }}/{{ images.first.id }}/" class="list_link">More...</a></p>
+        {% endif %}
+    </div>
+    <div>
         {% for r in roles.all %}
             <ul class="role_list"><p class="attributes">
                 {% if LANGUAGE_CODE == 'pl' %}

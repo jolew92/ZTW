@@ -2,6 +2,7 @@ from django.shortcuts import render
 from people.models import Person, Biography
 from movies.models import MovieRole, Role
 from django.views.generic import View
+from photogallery.models import Image
 
 
 class PeopleView(View):
@@ -18,5 +19,7 @@ class PersonView(View):
     def get(self, request, person_id=1):
         bio = Biography.objects.filter(person_id=person_id)
         movie_roles = MovieRole.objects.filter(people__id=person_id)
+        images = Image.objects.filter(people__person_id=person_id).order_by('id')[:5]
         return render(request, self.template_name, {'person': Person.objects.get(id=person_id), 'bio': bio,
-                                                    'movie_roles': movie_roles, 'roles': Role.objects})
+                                                    'movie_roles': movie_roles, 'roles': Role.objects,
+                                                    'images': images})

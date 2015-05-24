@@ -78,7 +78,6 @@ li {
     padding-right: 10%;
     position: absolute;
     right:-9%;
-    z-index:140;
     top:0;
 }
 
@@ -1103,4 +1102,51 @@ html {
 ul.clear {
     margin-left: 15px;
     list-style-type: none;
+}
+
+.button-container form,
+.button-container form div {
+    display: inline;
+}
+
+.button-container button {
+    display: inline;
+    vertical-align: middle;
+}
+
+.gallery_link {
+    text-decoration: none;
+    color: white;
+    font-family: testFont;
+}
+
+.gallery_link:hover {
+    text-decoration: none;
+    color: gold;
+    font-family: testFont;
+}
+
+.image-container {
+    padding: 20px;
+    background: rgba(255,255,255,0.7);
+}
+
+.image-container a {
+    text-decoration: none;
+    color: black;
+    font-family: testFont;
+}
+
+.image-container a:hover {
+    text-decoration: none;
+    color: gold;
+    font-family: testFont;
+}
+
+#image-in-gallery {
+    max-width: 100%;
+    max-height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

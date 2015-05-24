@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from movies.models import Movie, Description, Role, MovieRole, Rate, Avg,RoleRate, Genre
+from movies.models import Movie, Description, Role, MovieRole, Rate, Avg, RoleRate, Genre
+from photogallery.models import MovieAlbum, Image
 from django.views.generic import View
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
@@ -60,20 +61,22 @@ class MovieView(View):
 
         lists = MovieListItem.objects.filter(movielist__user=request.user)
 
+        images = Image.objects.filter(movies__movie_id=movie_id).order_by('id')[:5]
+
         if len(ocena) != 0:
             return render(request, self.template_name, {'movie': Movie.objects.get(id=movie_id), 'desc': desc,
                                                         'roles': Role.objects, 'movie_roles': movie_roles,
                                                         'ocena': ocena[0].rate, 'srednia': srednia, 'ocenaR':przekazujeoceny,
-                                                        'lists': lists})
+                                                        'lists': lists, 'images': images})
         elif len(ocena) == 0 and test == 1:
             return render(request, self.template_name, {'movie': Movie.objects.get(id=movie_id),'desc': desc,
                                                         'roles': Role.objects, 'movie_roles': movie_roles,
                                                         'srednia': srednia, 'ocenaR': przekazujeoceny,
-                                                         'lists': lists})
+                                                         'lists': lists, 'images': images})
         else:
             return render(request, self.template_name, {'movie': Movie.objects.get(id=movie_id), 'desc': desc,
                                                         'roles': Role.objects, 'movie_roles': movie_roles, 'srednia':srednia,
-                                                        'ocenaR': przekazujeoceny, 'lists': lists})
+                                                        'ocenaR': przekazujeoceny, 'lists': lists, 'images': images})
 
 
 def set_rating(request, movie_id=1):

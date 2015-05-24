@@ -81,6 +81,11 @@ class Image(models.Model):
                (self.image.name, self.image.name)
     thumbnail.allow_tags = True
 
+    def thumbnail_bigger(self):
+        return """<img border="0" alt="" src="/media/%s" style="width:80px; height: 80px; "/>""" % \
+               (self.image.name)
+    thumbnail.allow_tags = True
+
     class Meta:
         ordering = ['title']
         verbose_name = 'Zdjecie'

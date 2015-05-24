@@ -8,7 +8,10 @@ from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import ugettext_lazy as _
 from list.views import ListsView, ListItemView
 from cinema.views import  CinemasView, CinemaView
-from accounts.views import EditView, LoginView, LoggedinView, InvalidLoginView, LogoutView, RegisterSuccess, EditListsView, EditListView
+from accounts.views import EditView, LoginView, LoggedinView, InvalidLoginView, LogoutView, RegisterSuccess, \
+    EditListsView, EditListView
+from photogallery.views import MovieGalleryView, PersonGalleryView
+
 
 urlpatterns = patterns('',
     url(r'^i18n/', include('django.conf.urls.i18n')),
@@ -48,4 +51,8 @@ urlpatterns += i18n_patterns('',
     url(_(r'^search/$'), SearchView.as_view()),
     url(_(r'^list/all/$'), ListsView.as_view()),
     url(_(r'^list/get/(?P<movielistitem_id>\d+)/$'), ListItemView.as_view()),
+
+    #gallery
+    url(_(r'^photogallery/movie/(?P<movie_id>\d+)/(?P<image_id>\d+)/$'), MovieGalleryView.as_view()),
+    url(_(r'^photogallery/person/(?P<person_id>\d+)/(?P<image_id>\d+)/$'),PersonGalleryView.as_view())
 )

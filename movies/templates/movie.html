@@ -174,6 +174,15 @@
             {% endif %}
             {% trans "znajduje się już na liście" %} "<span class="black" id="list_name2"></span>".</p>
     </div>
+    <div>
+    {% for im in images %}
+        {% autoescape off %}<a href="/photogallery/movie/{{ movie.id }}/{{ im.id }}/">{{ im.thumbnail_bigger }}</a>{% endautoescape %}
+    {% endfor %}
+
+        {% if not images.first == None %}
+            <p style="margin-top: 10px;"><a href="/photogallery/movie/{{ movie.id }}/{{ images.first.id }}/" class="list_link">More...</a></p>
+        {% endif %}
+    </div>
         <div>
         <p class="attributes">{% trans "Ocena:" %}</p>
         <form method="post" action="/movies/get/{{movie.id}}/set_rating/" id="rf">

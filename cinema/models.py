@@ -40,11 +40,11 @@ class Cinema(models.Model):
 
 class Timetable(models.Model):
     cinema = models.ForeignKey(Cinema, verbose_name='Kino')
-    time = models.TimeField()
+    movie_time = models.TimeField()
     movie = models.ForeignKey(Movie)
 
     def __unicode__(self):
-        return u"%s %s %s" % (self.cinema, self.time, self.movie.title)
+        return u"%s %s %s" % (self.cinema, self.movie_time, self.movie.title)
 
     class Meta:
         ordering = ['cinema']
