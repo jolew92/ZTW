@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+﻿﻿﻿{% load i18n %}
+{% block content %}
+    <script type="text/javascript">
+    $( document ).ready(function() {
+            $("#dialog-image").hide();
+        });
+         $(function() {
+             $("#dialog-link").click(function (e) {
+                         e.preventDefault();
+                         $('#dialog-image').dialog('open');
+                     }
+             );
+             $("#dialog-image").dialog({
+                 resizable: false,
+                 width: 'auto',
+                 height: 'auto',
+                 modal: true,
+                 autoOpen: false
+             });
+         });
+    </script>
+    <h1 style="margin-top: 2px;">
+        <a class="gallery_link" href="/persons/get/{{ person.id }}/">{{  person }}</a>
+    </h1>
+    <div class="button-container" style="position: absolute; right: 50px;">
+        <form method="get" action="/photogallery/person/{{ person.id }}/{% for i in previous %}{{ i.id }}{% endfor %}/">
+            <button class="btn btn-lg btn-success" type="submit"><span class='glyphicon glyphicon-chevron-left'/></button>
+        </form>
+        <button class="btn btn-lg btn-success" id="dialog-link"><span class='glyphicon glyphicon-fullscreen'/></button>
+        <form method="get" action="/photogallery/person/{{ person.id }}/{% for i in next %}{{ i.id }}{% endfor %}/">
+            <button class="btn btn-lg btn-success" type="submit"><span class='glyphicon glyphicon-chevron-right'/></button>
+        </form>
+    </div>
+    <br><br>
+    <div class="image-container">
+        <img src="/media/{{ image }}" id="image-in-gallery"/>
+        {% if not image.title == '' %}
+            <p style="margin-top: 20px; margin-bottom: 0px; color: black">
+                Tytuł: {{ image.title }}
+            </p>
+        {% endif %}
+        {% if not image.people.first == None %}
+            <p style="margin-top: 20px; margin-bottom: 0px; color: black">
+                {% trans "Osoby" %}:
+                {% for p in image.people.all %}
+                    {% if p == image.people.last %}
+                        <a href="/people/get/{{ p.person.id }}/" class="gallery_link">{{ p.person }}</a>
+                    {% else %}
+                        <a href="/people/get/{{ p.person.id }}/" class="gallery_link">{{ p.person }}</a>,
+                    {% endif %}
+                {% endfor %}
+            </p>
+        {% endif %}
+    </div>
+    <div id="dialog-image">
+        <a href="/media/{{ image }}"><img src="/media/{{ image }}" style="max-height: 550px; max-width: 100%;"/></a>
+    </div>
+    <br>
+    <div>
+    {% for im in images %}
+        {% autoescape off %}<a href="/photogallery/person/{{ person.id }}/{{ im.id }}/">{{ im.thumbnail_bigger }}</a>{% endautoescape %}
+    {% endfor %}
+    </div>
+{% endblock content %}

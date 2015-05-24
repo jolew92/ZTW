@@ -3,7 +3,7 @@ from django.db import models
 from people.models import Person
 from django.core import urlresolvers
 from django.contrib.auth.models import User
-#from djangoratings.fields import RatingField
+from string import join
 
 
 class Language(models.Model):
@@ -78,6 +78,10 @@ class Movie(models.Model):
     def __unicode__(self):
         return unicode(self.title)
 
+    def genre_(self):
+        lst = [x[1] for x in self.genre.values_list()]
+        return str(join(lst, ', '))
+
     @property
     def get_admin_url(self):
         return urlresolvers.reverse("admin:%s_%s_change" %
@@ -109,9 +113,13 @@ class MovieRole(models.Model):
     role = models.ForeignKey(Role)
     people = models.ManyToManyField(Person, blank=True, null=True, verbose_name='Osoba')
     movie = models.ForeignKey(Movie, blank=True, null=True)
+    sumVotes = models.IntegerField(default=0)
+    numberOfVotes = models.IntegerField(default=0)
+    avgR = models.FloatField(default=0.0)
 
     def __unicode__(self):
-        return unicode(self.role)
+        #return unicode(self.role)
+        return u"%s %s %s" % (self.role, self.movie.title, self.avgR)
 
     class Meta:
         ordering = ['role']
@@ -157,28 +165,18 @@ class Avg(models.Model):
         verbose_name = 'avg'
         verbose_name_plural = 'avg'
 
+
 class RoleRate(models.Model):
     rate = models.CharField(max_length=2, choices=VOTE_GRADES, verbose_name='Oceny2')
     role = models.ForeignKey(MovieRole)
     user = models.ForeignKey(User, null=True)
 
-
     def __unicode__(self):
-        return u"%s %s %s" % (self.role.id, self.user, self.rate)
+        return u"%s %s %s %s" % (self.id,self.role.id, self.user, self.rate)
 
     class Meta:
         verbose_name = 'Ocena rolo'
         verbose_name_plural = 'Oceny ról'
 
-class AvgRole(models.Model):
-    role = models.ForeignKey(MovieRole)
-    sumVotes = models.IntegerField()
-    numberOfVotes = models.IntegerField()
 
-    def __unicode__(self):
-        return u"%s %s %s" % (self.role, self.sumVotes, self.numberOfVotes)
-
-    class Meta:
-        verbose_name = 'AVG ROLEs'
-        verbose_name_plural = 'AVG ROLE'
 

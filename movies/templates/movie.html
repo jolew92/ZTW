@@ -2,37 +2,206 @@
 ﻿﻿{% load i18n %}
 {% block content %}
 
-<script type="text/javascript">
-    window.onload = function(){
-        document.getElementById("star{{ocena}}").checked=true;
-    {% for c in ocenaR%}
-        document.getElementById("star{{c.rate}}_{{c.role.id}}").checked=true;
-    {% endfor %}
+    <script type="text/javascript">
+        window.onload = function(){
+            document.getElementById("star{{ocena}}").checked=true;
+        {% for c in ocenaR%}
+            document.getElementById("star{{c.rate}}_{{c.role.id}}").checked=true;
+        {% endfor %}
+        }
+
+        $(function() {
+		$('body').on("click", ".rate", function () {
+			$.ajax({
+				url: $("#rf").attr('action'),
+				method: "POST",
+				data: {
+					'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').prop('value'),
+					'rating': $(this).prop('value')
+				}
+			}).done(function (data) {
+					alert("Dziękujemy za ocenę");
+			}).fail(function () {
+				alert("Some error occured while sending data. Try again later.");
+			});
+		});
+	});
 
 
-    };
-</script>
+
+        $( document ).ready(function() {
+            $("#dialog-submit-ok").hide();
+            $("#dialog-submit-error").hide();
+            $("#dialog-submit-exists").hide();
+        });
+         $(function() {
+             $("#ok_link").click(function(e) {
+                 e.preventDefault();
+                 $('#dialog-confirm').dialog('open');
+             }
+          );
+          $( "#dialog-confirm" ).dialog({
+              resizable: false,
+              minHeight: 100,
+              maxHeight: 500,
+              modal: true,
+              minWidth: 400,
+              autoOpen:false,
+              buttons: {
+              "{% trans "Dodaj" %}": function() {
+                    var value = $("input[name=add_to_list]:checked").val();
+                    var name = "";
+                    if(value != null) {
+                        var already_exists = false;
+                        {% for list in lists %}
+                            var item = '{{ list.id }}';
+                            if(item == value) {
+                                name = '{{ list.name }}';
+                                var movie = '{{ movie.id }}';
+                                {% for m in list.movies.all %}
+                                    var m = '{{ m.id }}';
+                                    if (movie == m) {
+                                        already_exists = true;
+                                    }
+                                {% endfor %}
+                            }
+                        {% endfor %}
+                        if(already_exists == true) {
+                            $('#list_name2').html(name);
+                            return showMessageDialog(1);
+                        }
+                        else {
+                            $('#list_name1').html(name);
+                            return showMessageDialog(0);
+                        }
+                    }
+                    else {
+                        return showMessageDialog(2);
+                    }
+                },
+             "{% trans "Anuluj" %}": function() {
+                  $( this ).dialog( "close" );
+                }
+              }
+            });
+          });
+            function showMessageDialog(number) {
+                if(number==0) {
+                    $( "#dialog-submit-ok" ).dialog({
+                        resizable: false,
+                        minHeight: 100,
+                        maxHeight: 500,
+                        modal: true,
+                        minWidth: 400,
+                        autoOpen: true,
+                        buttons: {
+                            "OK": function () {
+                                $(this).dialog("close");
+                                $("#dialog-confirm").dialog("close");
+                                $("#add_movie").submit();
+                            }
+                        }
+                    });
+                }
+                else if(number==1) {
+                     $( "#dialog-submit-exists" ).dialog({
+                        resizable: false,
+                        minHeight: 100,
+                        maxHeight: 500,
+                        modal: true,
+                        minWidth: 400,
+                        autoOpen: true,
+                        buttons: {
+                            "OK": function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                }
+                else {
+                     $( "#dialog-submit-error" ).dialog({
+                        resizable: false,
+                        minHeight: 100,
+                        maxHeight: 500,
+                        modal: true,
+                        minWidth: 400,
+                        autoOpen: true,
+                        buttons: {
+                            "OK": function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                }
+        }
+    </script>
     <h1>
         {% if LANGUAGE_CODE == 'pl' %}
             {{  movie.title }}
         {% else %}
             {{ movie.title_en }}
+        {% endif %}<br>
+        {% if not cover.first == None %}
+            <img id="obrazek" src="/media/{% for i in cover %}{{ i }}{% endfor %}" width="250" height="358"/>
         {% endif %}
+        <button class="btn-group btn-group-sm btn-success" id="ok_link"><span class='glyphicon glyphicon-plus'/></button>
     </h1>
+    <div id="dialog-confirm" title="{% trans "Do jakiej listy dodać film?" %}">
+        <form id="add_movie"  action="/movies/{{ movie.id }}/add_to_list/" method="post">{% csrf_token %}
+            <fieldset class="add_to_list">
+              {% for item in lists %}
+                  <input type="radio" name="add_to_list" value="{{ item.id }}" id="{{ item.id }}"/><label for="{{ item.name }}">&nbsp; {{ item.name }}</label><br/>
+              {% endfor %}
+            </fieldset>
+        </form>
+    </div>
+    <div id="dialog-submit-ok" title="{% trans "Udało się" %}">
+        <p class="black">{% trans "Dodano film" %}
+            {% if LANGUAGE_CODE == 'pl' %}
+                "{{  movie.title }}"
+            {% else %}
+                "{{ movie.title_en }}"
+            {% endif %}
+            {% trans "do listy" %} "<span class="black" id="list_name1">lista</span>".</p>
+    </div>
+    <div id="dialog-submit-error" title="{% trans "Nie udało się" %}">
+        <p class="black">{% trans "Żadna lista nie została zaznaczona." %}</p>
+    </div>
+    <div id="dialog-submit-exists" title="{% trans "Już istnieje" %}">
+        <p class="black">{% trans "Film" %}
+            {% if LANGUAGE_CODE == 'pl' %}
+                "{{  movie.title }}"
+            {% else %}
+                "{{ movie.title_en }}"
+            {% endif %}
+            {% trans "znajduje się już na liście" %} "<span class="black" id="list_name2"></span>".</p>
+    </div>
     <div>
+    {% for im in images %}
+        {% autoescape off %}<a href="/photogallery/movie/{{ movie.id }}/{{ im.id }}/">{{ im.thumbnail_bigger }}</a>{% endautoescape %}
+    {% endfor %}
+
+        {% if not images.first == None %}
+            <p style="margin-top: 10px;"><a href="/photogallery/movie/{{ movie.id }}/{{ images.first.id }}/" class="list_link">{% trans "Więcej" %}...</a></p>
+        {% endif %}
+    </div>
+        <div>
         <p class="attributes">{% trans "Ocena:" %}</p>
+        <form method="post" action="/movies/get/{{movie.id}}/set_rating/" id="rf">
+		{% csrf_token %}
         <p><fieldset class="rating">
-                <input type="radio" id="star10" name="rating" value="10" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=10'"/><label for="star10">10 stars</label>
-                <input type="radio" id="star9" name="rating" value="9" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=9'"/><label for="star9">9 stars</label>
-                <input type="radio" id="star8" name="rating" value="8" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=8'"/><label for="star8">8 stars</label>
-                <input type="radio" id="star7" name="rating" value="7" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=7'"/><label for="star7">7 stars</label>
-                <input type="radio" id="star6" name="rating" value="6" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=6'"/><label for="star6">6 star</label>
-                <input type="radio" id="star5" name="rating" value="5" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=5'"/><label for="star5">5 stars</label>
-                <input type="radio" id="star4" name="rating" value="4" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=4'"/><label for="star4">4 stars</label>
-                <input type="radio" id="star3" name="rating" value="3" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=3'"/><label for="star3">3 stars</label>
-                <input type="radio" id="star2" name="rating" value="2" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=2'"/><label for="star2">2 stars</label>
-                <input type="radio" id="star1" name="rating" value="1" onclick="location.href='/movies/get/{{movie.id}}/set_rating/?ocena=1'"/><label for="star1">1 star</label>
+               <input type="radio" id="star10" name="rating" class="rate" value="10" /><label for="star10">10 stars</label>
+                <input type="radio" id="star9" name="rating" class="rate" value="9" /><label for="star9">9 stars</label>
+                <input type="radio" id="star8" name="rating" class="rate" value="8" /><label for="star8">8 stars</label>
+                <input type="radio" id="star7" name="rating" class="rate" value="7" /><label for="star7">7 stars</label>
+                <input type="radio" id="star6" name="rating" class="rate" value="6" /><label for="star6">6 star</label>
+                <input type="radio" id="star5" name="rating" class="rate" value="5" /><label for="star5">5 stars</label>
+                <input type="radio" id="star4" name="rating" class="rate" value="4" /><label for="star4">4 stars</label>
+                <input type="radio" id="star3" name="rating" class="rate" value="3" /><label for="star3">3 stars</label>
+                <input type="radio" id="star2" name="rating" class="rate" value="2" /><label for="star2">2 stars</label>
+                <input type="radio" id="star1" name="rating" class="rate" value="1" /><label for="star1">1 star</label>
         </fieldset></p>  <p style="font-size: 30px;">&nbsp; {{ srednia }}/10</p>
+		</form>
     </div>
     <div>
         <p class="attributes">{% trans "Rok:" %}</p><p>{{ movie.year }}</p>
@@ -111,10 +280,11 @@
         {% for p in movie_roles.all %}
             {% if p.role == r %}
             {% for person in p.people.all %}
+
                 <li class="role_list_item">
                     <a href="/people/get/{{ person.id }}/" class="list_link">
-                        {{ person.last_name }} {{ person.first_name }} {{p.role}}
-                    </a> {{p.id}} <p><fieldset class="rating">
+                        {{ person.last_name }} {{ person.first_name }}
+                    </a><p><fieldset class="rating">
                 <input type="radio" id="star10_{{p.id}}" name="rating_{{p.id}}" value="10" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=10'"/><label for="star10_{{p.id}}">10 stars</label>
                 <input type="radio" id="star9_{{p.id}}" name="rating_{{p.id}}" value="9" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=9'"/><label for="star9_{{p.id}}">9 stars</label>
                 <input type="radio" id="star8_{{p.id}}" name="rating_{{p.id}}" value="8" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=8'"/><label for="star8_{{p.id}}">8 stars</label>
@@ -125,7 +295,7 @@
                 <input type="radio" id="star3_{{p.id}}" name="rating_{{p.id}}" value="3" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=3'"/><label for="star3_{{p.id}}">3 stars</label>
                 <input type="radio" id="star2_{{p.id}}" name="rating_{{p.id}}" value="2" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=2'"/><label for="star2_{{p.id}}">2 stars</label>
                 <input type="radio" id="star1_{{p.id}}" name="rating_{{p.id}}" value="1" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=1'"/><label for="star1_{{p.id}}">1 star</label>
-        </fieldset></p><br><br>
+        </fieldset></p>{{ p.avgR }}/10<br><br>
                 </li>
             {% endfor %}
             {% endif %}

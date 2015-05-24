@@ -9,33 +9,33 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('movies', '0001_initial'),
+        ('movies', '__first__'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='MovieItem',
+            name='MovieList',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('movieitem', models.ForeignKey(to='movies.Movie', null=True)),
-                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL, null=True)),
+                ('user', models.ForeignKey(null=True, verbose_name=b'U\xc5\xbcytkownik', to=settings.AUTH_USER_MODEL, unique=True)),
             ],
             options={
-                'verbose_name': 'Ulubiony',
-                'verbose_name_plural': 'Ulubione',
+                'verbose_name': 'Lista u\u017cytkownika',
+                'verbose_name_plural': 'Listy u\u017cytkownika',
             },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='MovieList',
+            name='MovieListItem',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('movielist', models.ManyToManyField(to='list.MovieItem', null=True)),
-                ('user', models.ForeignKey(null=True, to=settings.AUTH_USER_MODEL, unique=True)),
+                ('name', models.CharField(max_length=30, verbose_name=b'Nazwa')),
+                ('movielist', models.ForeignKey(verbose_name=b'U\xc5\xbcytkownik', to='list.MovieList')),
+                ('movies', models.ManyToManyField(to='movies.Movie', null=True, verbose_name=b'Filmy', blank=True)),
             ],
             options={
-                'verbose_name': 'Lista ulubionych',
-                'verbose_name_plural': 'Listy ulubionych',
+                'verbose_name': 'Lista',
+                'verbose_name_plural': 'Listy',
             },
             bases=(models.Model,),
         ),

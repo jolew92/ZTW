@@ -2,6 +2,10 @@
 ﻿﻿{% load i18n %}
 {% block content %}
     <h1>{{ person.last_name }} {{  person.first_name}}</h1>
+    {% if not cover.first == None %}
+        <img id="obrazek" src="/media/{% for i in cover %}{{ i }}{% endfor %}" width="250" height="358"/>
+    {% endif %}
+    <br>
     <div>
         {% for b in bio %}
             {% if LANGUAGE_CODE == 'pl' %}
@@ -14,6 +18,16 @@
                 {% endif %}
             {% endif %}
         {% endfor %}
+    </div>
+    <br>
+    <div>
+    {% for im in images %}
+        {% autoescape off %}<a href="/photogallery/person/{{ person.id }}/{{ im.id }}/">{{ im.thumbnail_bigger }}</a>{% endautoescape %}
+    {% endfor %}
+
+        {% if not images.first == None %}
+            <p style="margin-top: 10px;"><a href="/photogallery/person/{{ person.id }}/{{ images.first.id }}/" class="list_link">{% trans "Więcej" %}...</a></p>
+        {% endif %}
     </div>
     <div>
         {% for r in roles.all %}

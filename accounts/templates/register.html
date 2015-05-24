@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 ﻿{% load i18n %}
 {% block content %}
-
     <h2>{% trans "Rejestracja" %}</h2>
     <br>
     <form class="form-horizontal" action="/accounts/register/" method="post">{% csrf_token %}

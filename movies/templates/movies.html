@@ -1,15 +1,52 @@
 {% extends 'base.html' %}
 ﻿{% load i18n %}
 {% block content %}
+    <div>
+    <p id="test">{% trans "Wybierz gatunek:" %}</p>
+            <form name="myform" id="k1" class="form-horizontal" method="GET">{% csrf_token %}
+            <div align="left" style="margin-top: 20px;">
+            {% if LANGUAGE_CODE == 'pl' %}
+                {% for g in genre.all %}
+                    <input type="radio" name="gatunek" value="{{ g.genre }}" id="{{ genre.id }}" onlclick="genere()">{{ g.genre }}
+                {% endfor %}
+            {% else %}
+                {% for g in genre.all %}
+                    <input type="radio" name="gatunek" value="{{ g.genre }}" id="{{ genre.id }}" onlclick="genere()">{{ g.genre_en }}
+                {% endfor %}
+            {% endif %}
+            </div>
+            <div class="col-lg-3">
+                <div class="input-group" style="margin-top: 20px;">
+                        <input type="text" class="form-control" placeholder="{% trans "Od:" %}" name="od"/>
+                        <input type="text" class="form-control" placeholder="{% trans "Do:" %}" name="do2"/>
+                </div>
+              </div>
+                <h1><button class="btn-group btn-success" style="margin-left: 0px; margin-top: 10px" type="submit">OK</button></h1>
+        </form>
+    </div>
+    <div style="margin-top: 30px">
     <ul>
     {% if LANGUAGE_CODE == 'pl' %}
         {% for movie in movies %}
-            <li><a href="/movies/get/{{ movie.id }}/" class="list_link">{{ movie.title }} ({{ movie.year }})</a></li>
+            {%if movie.year >= od and movie.year <= do2 %}
+                {% for m in movie.genre.all %}
+                    {% if m.genre == gatunek %}
+                        <li><img src="https://dl.dropboxusercontent.com/u/102438243/{{movie.id}}.jpg" width="62" height="80"/><a href="/movies/get/{{ movie.id }}/" class="list_link"> {{ movie.title }} ({{ movie.year }})</a></li>
+                    {% endif %}
+                {% endfor %}
+            {%endif%}
         {% endfor %}
     {% else %}
         {% for movie in movies %}
-            <li><a href="/movies/get/{{ movie.id }}/" class="list_link">{{ movie.title_en }} ({{ movie.year }})</a></li>
+            {% if movie.year >= od and movie.year <= do2 %}
+                {% for m in movie.genre.all %}
+                    {% if m.genre == gatunek %}
+                        <li><img src="https://dl.dropboxusercontent.com/u/102438243/{{movie.id}}.jpg" width="62" height="80"/><a href="/movies/get/{{ movie.id }}/" class="list_link"> {{ movie.title_en }} ({{ movie.year }})</a></li>
+                    {% endif %}
+                {% endfor %}
+            {%endif%}
         {% endfor %}
     {% endif %}
     </ul>
+    </div>
 {% endblock content %}

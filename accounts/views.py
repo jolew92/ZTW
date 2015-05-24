@@ -135,7 +135,11 @@ def add_list(request):
     language = translation.get_language_from_request(request)
     if request.user.is_authenticated():
         list_name = request.POST.get('list_name', '')
-        list = MovieListItem.objects.create(name=list_name, movielist=MovieList.objects.get(user=request.user))
+        if MovieList.objects.filter(user=request.user).exists():
+            movie_list = MovieList.objects.get(user=request.user)
+        else:
+            movie_list = MovieList.objects.create(user=request.user)
+        list = MovieListItem.objects.create(name=list_name, movielist=movie_list)
         list.save()
         return HttpResponseRedirect(redirect_to='/'+language+'/accounts/edit_list/')
     else:

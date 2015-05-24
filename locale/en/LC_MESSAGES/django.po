@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-03 19:54+0200\n"
+"POT-Creation-Date: 2015-05-24 23:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,76 +17,92 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\Filmland\settings.py:114
+#: .\Filmland\settings.py:125
 msgid "English"
 msgstr "English"
 
-#: .\Filmland\settings.py:115
+#: .\Filmland\settings.py:126
 msgid "Polski"
 msgstr "Polski"
 
-#: .\Filmland\urls.py:26
+#: .\Filmland\urls.py:34
 msgid "^$"
 msgstr ""
 
-#: .\Filmland\urls.py:27
-msgid "^accounts/login/$"
+#: .\Filmland\urls.py:35
+msgid "^cinemas/all/$"
 msgstr ""
 
-#: .\Filmland\urls.py:28
-msgid "^accounts/logout/$"
-msgstr ""
-
-#: .\Filmland\urls.py:29
-msgid "^accounts/loggedin/$"
-msgstr ""
-
-#: .\Filmland\urls.py:30
-msgid "^accounts/invalid/$"
-msgstr ""
-
-#: .\Filmland\urls.py:31
-msgid "^accounts/register_success/$"
-msgstr ""
-
-#: .\Filmland\urls.py:32
-msgid "^accounts/edit/$"
-msgstr ""
-
-#: .\Filmland\urls.py:33
-msgid "^accounts/edit_list/$"
-msgstr ""
-
-#: .\Filmland\urls.py:34
-msgid "^accounts/edit_list/(?P<movielistitem_id>\\d+)/$"
+#: .\Filmland\urls.py:36
+msgid "^cinemas/get/(?P<cinema_id>\\d+)/$"
 msgstr ""
 
 #: .\Filmland\urls.py:37
-msgid "^movies/all/$"
+msgid "^accounts/login/$"
 msgstr ""
 
 #: .\Filmland\urls.py:38
-msgid "^movies/get/(?P<movie_id>\\d+)/$"
+msgid "^accounts/logout/$"
 msgstr ""
 
 #: .\Filmland\urls.py:39
-msgid "^people/all/$"
+msgid "^accounts/loggedin/$"
 msgstr ""
 
 #: .\Filmland\urls.py:40
-msgid "^people/get/(?P<person_id>\\d+)/$"
+msgid "^accounts/invalid/$"
 msgstr ""
 
 #: .\Filmland\urls.py:41
-msgid "^search/$"
+msgid "^accounts/register_success/$"
 msgstr ""
 
 #: .\Filmland\urls.py:42
-msgid "^list/all/$"
+msgid "^accounts/edit/$"
 msgstr ""
 
 #: .\Filmland\urls.py:43
+msgid "^accounts/edit_list/$"
+msgstr ""
+
+#: .\Filmland\urls.py:44
+msgid "^accounts/edit_list/(?P<movielistitem_id>\\d+)/$"
+msgstr ""
+
+#: .\Filmland\urls.py:47
+msgid "^movies/all/$"
+msgstr ""
+
+#: .\Filmland\urls.py:48
+msgid "^movies/get/(?P<movie_id>\\d+)/$"
+msgstr ""
+
+#: .\Filmland\urls.py:49
+msgid "^people/all/$"
+msgstr ""
+
+#: .\Filmland\urls.py:50
+msgid "^people/get/(?P<person_id>\\d+)/$"
+msgstr ""
+
+#: .\Filmland\urls.py:51
+msgid "^search/$"
+msgstr ""
+
+#: .\Filmland\urls.py:52
+msgid "^list/all/$"
+msgstr ""
+
+#: .\Filmland\urls.py:53
 msgid "^list/get/(?P<movielistitem_id>\\d+)/$"
+msgstr ""
+
+#: .\Filmland\urls.py:56
+msgid "^photogallery/movie/(?P<movie_id>\\d+)/(?P<image_id>\\d+)/$"
+msgstr ""
+
+#: .\Filmland\urls.py:57
+msgid "^photogallery/person/(?P<person_id>\\d+)/(?P<image_id>\\d+)/$"
 msgstr ""
 
 #: .\accounts\templates\edit.html:6
@@ -105,7 +121,7 @@ msgstr "Name:"
 msgid "Twoje listy:"
 msgstr "Your lists:"
 
-#: .\accounts\templates\edit_lists.html:18
+#: .\accounts\templates\edit_lists.html:9
 msgid "Nowa lista..."
 msgstr "New list..."
 
@@ -165,7 +181,7 @@ msgstr "Login"
 msgid "Nieprawidłowa nazwa użytkownika lub hasło."
 msgstr "Incorrect login or password."
 
-#: .\accounts\templates\login.html:19 .\accounts\templates\register.html:21
+#: .\accounts\templates\login.html:19 .\accounts\templates\register.html:20
 msgid "Hasło:"
 msgstr "Password:"
 
@@ -182,15 +198,15 @@ msgstr "You're loggedout!"
 msgid " aby się zalogować"
 msgstr " to login."
 
-#: .\accounts\templates\register.html:5
+#: .\accounts\templates\register.html:4
 msgid "Rejestracja"
 msgstr "Registration"
 
-#: .\accounts\templates\register.html:27
+#: .\accounts\templates\register.html:26
 msgid "Powtórz hasło:"
 msgstr "Repeat password:"
 
-#: .\accounts\templates\register.html:33
+#: .\accounts\templates\register.html:32
 msgid "Zarejestruj"
 msgstr "Register"
 
@@ -198,75 +214,143 @@ msgstr "Register"
 msgid "Zostałeś zarejestrowany!"
 msgstr "You are registered!"
 
-#: .\movies\templates\movie.html:18
-msgid "Ocena:"
-msgstr "Rating:"
+#: .\movies\templates\movie.html:51
+msgid "Dodaj"
+msgstr "Add"
 
-#: .\movies\templates\movie.html:33
-msgid "Rok:"
-msgstr "Year:"
+#: .\movies\templates\movie.html:82
+msgid "Anuluj"
+msgstr "Cancel"
 
-#: .\movies\templates\movie.html:34
-msgid "Język:"
-msgstr "Language:"
+#: .\movies\templates\movie.html:147
+msgid "Do jakiej listy dodać film?"
+msgstr "To which list add this movie?"
 
-#: .\movies\templates\movie.html:42
-msgid "Gatunek:"
-msgstr "Genre:"
+#: .\movies\templates\movie.html:156
+msgid "Udało się"
+msgstr "Success"
 
-#: .\movies\templates\movie.html:62
-msgid "Kraj:"
-msgstr "Country:"
+#: .\movies\templates\movie.html:157
+msgid "Dodano film"
+msgstr "Added movie"
 
-#: .\templates\base.html:33
-msgid "Filmy"
-msgstr "Movies"
+#: .\movies\templates\movie.html:163
+msgid "do listy"
+msgstr "to list"
 
-#: .\templates\base.html:34
-msgid "Aktorzy"
-msgstr "Actors"
+#: .\movies\templates\movie.html:165
+msgid "Nie udało się"
+msgstr "Failure"
 
-#: .\templates\base.html:36
-msgid "Twoje listy"
-msgstr "Your lists"
+#: .\movies\templates\movie.html:166
+msgid "Żadna lista nie została zaznaczona."
+msgstr "You haven't checked any list."
 
-#: .\templates\base.html:41
-msgid "Szukaj..."
-msgstr "Search..."
+#: .\movies\templates\movie.html:168
+msgid "Już istnieje"
+msgstr "Already exists"
 
-#: .\templates\base.html:44
-msgid "Wszystko"
-msgstr "All"
-
-#: .\templates\base.html:45
+#: .\movies\templates\movie.html:169 .\templates\base.html:53
 msgid "Film"
 msgstr "Movie"
 
-#: .\templates\base.html:46
+#: .\movies\templates\movie.html:175
+msgid "znajduje się już na liście"
+msgstr "already in the list"
+
+#: .\movies\templates\movie.html:183 .\people\templates\person.html:24
+msgid "Więcej"
+msgstr "More"
+
+#: .\movies\templates\movie.html:187
+msgid "Ocena:"
+msgstr "Rating:"
+
+#: .\movies\templates\movie.html:205
+msgid "Rok:"
+msgstr "Year:"
+
+#: .\movies\templates\movie.html:206
+msgid "Język:"
+msgstr "Language:"
+
+#: .\movies\templates\movie.html:214
+msgid "Gatunek:"
+msgstr "Genre:"
+
+#: .\movies\templates\movie.html:234
+msgid "Kraj:"
+msgstr "Country:"
+
+#: .\movies\templates\movies.html:5
+msgid "Wybierz gatunek:"
+msgstr "Select genre:"
+
+#: .\movies\templates\movies.html:20
+msgid "Od:"
+msgstr "From:"
+
+#: .\movies\templates\movies.html:21
+msgid "Do:"
+msgstr "To:"
+
+#: .\photogallery\templates\galleryMovie.html:44
+msgid "Tytuł"
+msgstr "Title"
+
+#: .\photogallery\templates\galleryMovie.html:48
+msgid "Osoby"
+msgstr "People"
+
+#: .\templates\base.html:40
+msgid "Filmy"
+msgstr "Movies"
+
+#: .\templates\base.html:41
+msgid "Aktorzy"
+msgstr "Actors"
+
+#: .\templates\base.html:42
+msgid "Kina"
+msgstr "Cinemas"
+
+#: .\templates\base.html:44
+msgid "Twoje listy"
+msgstr "Your lists"
+
+#: .\templates\base.html:49
+msgid "Szukaj..."
+msgstr "Search..."
+
+#: .\templates\base.html:52
+msgid "Wszystko"
+msgstr "All"
+
+#: .\templates\base.html:54
 msgid "Osoba"
 msgstr "Person"
 
-#: .\templates\base.html:56
+#: .\templates\base.html:64
 msgid "Witaj,"
 msgstr "Welcome,"
 
-#: .\templates\base.html:56
+#: .\templates\base.html:64
 msgid "wyloguj się."
 msgstr "logout."
 
-#: .\templates\base.html:58
+#: .\templates\base.html:66
 msgid "Witaj, gościu "
 msgstr "Welcome, guest "
 
-#: .\templates\base.html:58
+#: .\templates\base.html:66
 msgid "zaloguj się"
 msgstr "login"
 
-#: .\templates\base.html:58
+#: .\templates\base.html:66
 msgid " lub "
 msgstr " or "
 
-#: .\templates\base.html:58
+#: .\templates\base.html:66
 msgid "zarejestruj."
 msgstr "register."
 
