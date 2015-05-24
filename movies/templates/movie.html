@@ -2,23 +2,161 @@
 ﻿﻿{% load i18n %}
 {% block content %}
 
-<script type="text/javascript">
-    window.onload = function(){
-        document.getElementById("star{{ocena}}").checked=true;
-    {% for c in ocenaR%}
-        document.getElementById("star{{c.rate}}_{{c.role.id}}").checked=true;
-    {% endfor %}
+    <script type="text/javascript">
+        window.onload = function(){
+            document.getElementById("star{{ocena}}").checked=true;
+        {% for c in ocenaR%}
+            document.getElementById("star{{c.rate}}_{{c.role.id}}").checked=true;
+        {% endfor %}
+        };
 
+        $( document ).ready(function() {
+            $("#dialog-submit-ok").hide();
+            $("#dialog-submit-error").hide();
+            $("#dialog-submit-exists").hide();
+        });
 
-    };
-</script>
+         $(function() {
+             $("#ok_link").click(function(e) {
+                 e.preventDefault();
+                 $('#dialog-confirm').dialog('open');
+             }
+          );
+
+          $( "#dialog-confirm" ).dialog({
+              resizable: false,
+              minHeight: 100,
+              maxHeight: 500,
+              modal: true,
+              minWidth: 400,
+              autoOpen:false,
+              buttons: {
+                "Dodaj": function() {
+                    var value = $("input[name=add_to_list]:checked").val();
+                    var name = "";
+                    if(value != null) {
+                        var already_exists = false;
+                        {% for list in lists %}
+                            var item = '{{ list.id }}';
+                            if(item == value) {
+                                name = '{{ list.name }}';
+                                var movie = '{{ movie.id }}';
+                                {% for m in list.movies.all %}
+                                    var m = '{{ m.id }}';
+                                    if (movie == m) {
+                                        already_exists = true;
+                                    }
+                                {% endfor %}
+                            }
+                        {% endfor %}
+                        if(already_exists == true) {
+                            $('#list_name2').html(name);
+                            return showMessageDialog(1);
+                        }
+                        else {
+                            $('#list_name1').html(name);
+                            return showMessageDialog(0);
+                        }
+                    }
+                    else {
+                        return showMessageDialog(2);
+                    }
+                },
+                "Anuluj": function() {
+                  $( this ).dialog( "close" );
+                }
+              }
+            });
+          });
+
+            function showMessageDialog(number) {
+                if(number==0) {
+                    $( "#dialog-submit-ok" ).dialog({
+                        resizable: false,
+                        minHeight: 100,
+                        maxHeight: 500,
+                        modal: true,
+                        minWidth: 400,
+                        autoOpen: true,
+                        buttons: {
+                            "OK": function () {
+                                $(this).dialog("close");
+                                $("#dialog-confirm").dialog("close");
+                                $("#add_movie").submit();
+                            }
+                        }
+                    });
+                }
+                else if(number==1) {
+                     $( "#dialog-submit-exists" ).dialog({
+                        resizable: false,
+                        minHeight: 100,
+                        maxHeight: 500,
+                        modal: true,
+                        minWidth: 400,
+                        autoOpen: true,
+                        buttons: {
+                            "OK": function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                }
+                else {
+                     $( "#dialog-submit-error" ).dialog({
+                        resizable: false,
+                        minHeight: 100,
+                        maxHeight: 500,
+                        modal: true,
+                        minWidth: 400,
+                        autoOpen: true,
+                        buttons: {
+                            "OK": function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                }
+        }
+    </script>
     <h1>
         {% if LANGUAGE_CODE == 'pl' %}
             {{  movie.title }}
         {% else %}
             {{ movie.title_en }}
         {% endif %}
+        <button class="btn-group btn-group-sm btn-success" id="ok_link"><span class='glyphicon glyphicon-plus'/></button>
     </h1>
+    <div id="dialog-confirm" title="Do jakiej listy dodać film?">
+        <form id="add_movie"  action="/movies/{{ movie.id }}/add_to_list/" method="post">{% csrf_token %}
+            <fieldset class="add_to_list">
+              {% for item in lists %}
+                  <input type="radio" name="add_to_list" value="{{ item.id }}" id="{{ item.id }}"/><label for="{{ item.name }}">&nbsp; {{ item.name }}</label><br/>
+              {% endfor %}
+            </fieldset>
+        </form>
+    </div>
+    <div id="dialog-submit-ok" title="Udało się">
+        <p class="black">Dodano film
+            {% if LANGUAGE_CODE == 'pl' %}
+                "{{  movie.title }}"
+            {% else %}
+                "{{ movie.title_en }}"
+            {% endif %}
+            do listy "<span class="black" id="list_name1">lista</span>".</p>
+    </div>
+    <div id="dialog-submit-error" title="Nie udało się">
+        <p class="black">Żadna lista nie została zaznaczona.</p>
+    </div>
+    <div id="dialog-submit-exists" title="Udało się">
+        <p class="black">Film
+            {% if LANGUAGE_CODE == 'pl' %}
+                "{{  movie.title }}"
+            {% else %}
+                "{{ movie.title_en }}"
+            {% endif %}
+            znajduje się już na liście "<span class="black" id="list_name2"></span>".</p>
+    </div>
     <div>
         <p class="attributes">{% trans "Ocena:" %}</p>
         <p><fieldset class="rating">
@@ -114,7 +252,7 @@
                 <li class="role_list_item">
                     <a href="/people/get/{{ person.id }}/" class="list_link">
                         {{ person.last_name }} {{ person.first_name }} {{p.role}}
-                    </a> {{p.id}} <p><fieldset class="rating">
+                    </a> <p><fieldset class="rating">
                 <input type="radio" id="star10_{{p.id}}" name="rating_{{p.id}}" value="10" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=10'"/><label for="star10_{{p.id}}">10 stars</label>
                 <input type="radio" id="star9_{{p.id}}" name="rating_{{p.id}}" value="9" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=9'"/><label for="star9_{{p.id}}">9 stars</label>
                 <input type="radio" id="star8_{{p.id}}" name="rating_{{p.id}}" value="8" onclick="location.href='/movies/set_role/?movie_id={{movie.id}}&role_id={{p.id}}&ocenaR=8'"/><label for="star8_{{p.id}}">8 stars</label>

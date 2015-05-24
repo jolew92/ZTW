@@ -66,6 +66,32 @@ class Country(models.Model):
         verbose_name_plural = 'Kraje'
 
 
+class Role(models.Model):
+    role = models.CharField(max_length=30, verbose_name='Rola')
+    role_en = models.CharField(max_length=30, verbose_name='Role')
+
+    def __unicode__(self):
+        return unicode(self.role)
+
+    class Meta:
+        ordering = ['role']
+        verbose_name = 'Rola'
+        verbose_name_plural = 'Role'
+
+
+class MovieRole(models.Model):
+    role = models.ForeignKey(Role)
+    people = models.ForeignKey(Person, blank=True, null=True, verbose_name='Osoba')
+ #   movie = models.ForeignKey(Movie, blank=True, null=True)
+
+    def __unicode__(self):
+        return unicode(self.role)
+
+    class Meta:
+        ordering = ['role']
+        verbose_name = 'Rola'
+        verbose_name_plural = 'Role'
+
 class Movie(models.Model):
     title = models.CharField(max_length=30, verbose_name='Tytuł')
     title_en = models.CharField(max_length=30, verbose_name='Title')
@@ -73,6 +99,7 @@ class Movie(models.Model):
     language = models.ForeignKey(Language, blank=True, null=True, verbose_name='Język')
     genre = models.ManyToManyField(Genre, blank=True, null=True, verbose_name='Gatunek')
     country = models.ManyToManyField(Country, blank=True, null=True, verbose_name='Kraj')
+    movie_role = models.ManyToManyField(MovieRole, blank=True, null=True, verbose_name='Role w filmie')
     #rating = RatingField(range=5)
 
     def __unicode__(self):
@@ -90,33 +117,6 @@ class Movie(models.Model):
         ordering = ['title']
         verbose_name = 'Film'
         verbose_name_plural = 'Filmy'
-
-
-class Role(models.Model):
-    role = models.CharField(max_length=30, verbose_name='Rola')
-    role_en = models.CharField(max_length=30, verbose_name='Role')
-
-    def __unicode__(self):
-        return unicode(self.role)
-
-    class Meta:
-        ordering = ['role']
-        verbose_name = 'Rola'
-        verbose_name_plural = 'Role'
-
-
-class MovieRole(models.Model):
-    role = models.ForeignKey(Role)
-    people = models.ManyToManyField(Person, blank=True, null=True, verbose_name='Osoba')
-    movie = models.ForeignKey(Movie, blank=True, null=True)
-
-    def __unicode__(self):
-        return unicode(self.role)
-
-    class Meta:
-        ordering = ['role']
-        verbose_name = 'Rola'
-        verbose_name_plural = 'Role'
 
 
 class Description(models.Model):
@@ -157,11 +157,11 @@ class Avg(models.Model):
         verbose_name = 'avg'
         verbose_name_plural = 'avg'
 
+
 class RoleRate(models.Model):
     rate = models.CharField(max_length=2, choices=VOTE_GRADES, verbose_name='Oceny2')
     role = models.ForeignKey(MovieRole)
     user = models.ForeignKey(User, null=True)
-
 
     def __unicode__(self):
         return u"%s %s %s" % (self.role.id, self.user, self.rate)
@@ -169,6 +169,7 @@ class RoleRate(models.Model):
     class Meta:
         verbose_name = 'Ocena rolo'
         verbose_name_plural = 'Oceny ról'
+
 
 class AvgRole(models.Model):
     role = models.ForeignKey(MovieRole)

@@ -1,3 +1,5 @@
+.hidden { display: none }
+
 @font-face {
     font-family: testFont;
     src: url(CaviarDreams_Bold.ttf);
@@ -47,7 +49,8 @@ li {
     padding: 20px 50px;
     width: 80%;
     left: 10%;
-    height: 95%;
+    height: auto;
+    min-height: 95%;
     margin-top: 20px;
     color: white;
     background: rgba(5,4,2,0.7);

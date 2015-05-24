@@ -4,7 +4,9 @@ from django.views.generic import View
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.utils import translation
+from list.models import MovieListItem
 import django.core.exceptions
+
 
 class MoviesView(View):
     template_name = 'movies.html'
@@ -35,20 +37,20 @@ class MovieView(View):
         roles = MovieRole.objects.filter(movie_id=movie_id)
         przekazujeoceny = RoleRate.objects.filter(user_id=request.user.id, role__in=roles)
 
+        lists = MovieListItem.objects.filter(movielist__user=request.user)
 
         if len(ocena) != 0:
-
             return render(request, self.template_name, {'movie': Movie.objects.get(id=movie_id),
                                                     'desc': desc, 'roles': Role.objects, 'movie_roles': movie_roles, 'ocena':ocena[0].rate,
-                                                    'srednia':srednia,'ocenaR':przekazujeoceny})
+                                                    'srednia':srednia,'ocenaR':przekazujeoceny, 'lists': lists})
         elif len(ocena) == 0 and test == 1:
             return render(request, self.template_name, {'movie': Movie.objects.get(id=movie_id),
                                                     'desc': desc, 'roles': Role.objects, 'movie_roles': movie_roles,
-                                                    'srednia':srednia,'ocenaR':przekazujeoceny})
+                                                    'srednia':srednia,'ocenaR':przekazujeoceny, 'lists': lists})
         else:
             return render(request, self.template_name, {'movie': Movie.objects.get(id=movie_id),
-                                                    'desc': desc, 'roles': Role.objects, 'movie_roles': movie_roles,'srednia':srednia,'ocenaR':przekazujeoceny
-            })
+                                                    'desc': desc, 'roles': Role.objects, 'movie_roles': movie_roles,'srednia':srednia,'ocenaR':przekazujeoceny,
+                                                    'lists': lists})
 
 
 def set_rating(request, movie_id=1):
@@ -66,8 +68,7 @@ def set_rating(request, movie_id=1):
         ilosc = 0
         suma = 0
 
-
-    if len(oceny) == 0 and test ==0:
+    if len(oceny) == 0 and test == 0:
         rate = Rate(rate=ocena, user=User.objects.get(id=user), movie=Movie.objects.get(id=movie_id))
         rate.save()
         #ocena2 = rate[0].rate
@@ -92,23 +93,31 @@ def set_rating(request, movie_id=1):
         oceny[0].save()
     return HttpResponseRedirect(redirect_to='/'+language+'/movies/get/'+movie_id+'/')
 
+
 def set_role(request):
     language = translation.get_language_from_request(request)
     ocenaR = request.GET['ocenaR']
     role_id = request.GET['role_id']
-    movie_id= request.GET['movie_id']
+    movie_id = request.GET['movie_id']
     user = request.user.id
     oceny = RoleRate.objects.filter(role_id=role_id, user_id=request.user.id)
-
 
     if len(oceny) == 0:
         rate = RoleRate(rate=ocenaR, user=User.objects.get(id=user), role=MovieRole.objects.get(id=role_id))
         rate.save()
-
-
     else:
         oceny[0].rate = ocenaR
         oceny[0].save()
-
-
     return HttpResponseRedirect(redirect_to='/'+language+'/movies/get/'+movie_id+'/')
+
+
+def add_movie_to_list(request, movie_id):
+    language = translation.get_language_from_request(request)
+    if request.method == 'POST':
+        list_id = request.POST['add_to_list']
+    if request.user.is_authenticated():
+        user_list = MovieListItem.objects.get(id=list_id)
+        user_list.movies.add(Movie.objects.get(id=movie_id))
+        return HttpResponseRedirect(redirect_to='/'+language+'/movies/get/'+movie_id+'/')
+    else:
+        return HttpResponseRedirect('/')
