@@ -10,25 +10,6 @@
         {% endfor %}
         }
 
-        $(function() {
-		$('body').on("click", ".rate", function () {
-			$.ajax({
-				url: $("#rf").attr('action'),
-				method: "POST",
-				data: {
-					'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').prop('value'),
-					'rating': $(this).prop('value')
-				}
-			}).done(function (data) {
-					alert("Dziękujemy za ocenę");
-			}).fail(function () {
-				alert("Some error occured while sending data. Try again later.");
-			});
-		});
-	});
-
-
-
         $( document ).ready(function() {
             $("#dialog-submit-ok").hide();
             $("#dialog-submit-error").hide();
@@ -200,7 +181,8 @@
                 <input type="radio" id="star3" name="rating" class="rate" value="3" /><label for="star3">3 stars</label>
                 <input type="radio" id="star2" name="rating" class="rate" value="2" /><label for="star2">2 stars</label>
                 <input type="radio" id="star1" name="rating" class="rate" value="1" /><label for="star1">1 star</label>
-        </fieldset></p>  <p style="font-size: 30px;">&nbsp; {{ srednia }}/10</p>
+        </fieldset>
+            <input type="submit" value="OK" /></p>  <p style="font-size: 30px;">&nbsp; {{ srednia }}/10</p>
 		</form>
     </div>
     <div>

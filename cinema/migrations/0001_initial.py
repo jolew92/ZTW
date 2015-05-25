@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('movies', '0003_auto_20150511_1452'),
+        ('movies', '0007_auto_20150525_0906'),
     ]
 
     operations = [
@@ -41,17 +41,30 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
+            name='Seans',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('seans_time', models.TimeField()),
+            ],
+            options={
+                'ordering': ['movieInCinema'],
+                'verbose_name': 'Repertuar',
+                'verbose_name_plural': 'Repertuary',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
             name='Timetable',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('movie_time', models.TimeField()),
+                ('sala', models.CharField(default=1, max_length=2, verbose_name=b'Sala', choices=[(b'0', b'0'), (b'1', b'1'), (b'2', b'2'), (b'3', b'3'), (b'4', b'4'), (b'5', b'5'), (b'6', b'6'), (b'7', b'7'), (b'8', b'8'), (b'9', b'9'), (b'10', b'10'), (b'11', b'11'), (b'12', b'12'), (b'13', b'13'), (b'14', b'14'), (b'15', b'15'), (b'16', b'16'), (b'17', b'17'), (b'18', b'18'), (b'19', b'19'), (b'20', b'20')])),
                 ('cinema', models.ForeignKey(verbose_name=b'Kino', to='cinema.Cinema')),
                 ('movie', models.ForeignKey(to='movies.Movie')),
             ],
             options={
                 'ordering': ['cinema'],
-                'verbose_name': 'Repertuar',
-                'verbose_name_plural': 'Repertuary',
+                'verbose_name': 'Film w kinie',
+                'verbose_name_plural': 'Filmy w kinach',
             },
             bases=(models.Model,),
         ),
@@ -67,6 +80,12 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': 'Miasta',
             },
             bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='seans',
+            name='movieInCinema',
+            field=models.ForeignKey(verbose_name=b'Film w kinie', to='cinema.Timetable'),
+            preserve_default=True,
         ),
         migrations.AddField(
             model_name='cinema',

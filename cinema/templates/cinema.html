@@ -9,12 +9,12 @@
 {{cinema.street_number}}<br>
 <p style="font-size:30px;">Repertuar:</p>
             <div style="text-align: center"><table>
-    <tr><td style="color: white;font-size:30px"><i>Film</i></td><td style="color: white;font-size:30px;text-align:right"><i>Godzina</i></td></tr>
-    <tr><td><hr width="160%"></td></tr>
+    <tr><td style="color: white;font-size:30px"><i>Film</i></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="color: white;font-size:30px"><i>Godzina</i></td><td style="color: white;font-size:30px;text-align:right"><i>Sala</i></td></tr>
+    <tr><td><hr width="200%"></td></tr>
     <br><br>
 {%for t in timetable%}
     <tr>
-<td style="color: white;font-size:40px">{{t.movie}}{{t.movie.id}}</td><td style="color: gold;font-size:40px">{{t.movie_time}}</td></tr>
+<td style="color: white;font-size:40px">{{t.movieInCinema.movie}}</td><td>&nbsp;&nbsp;&nbsp;</td><td style="color: gold;font-size:40px;text-align:right">{{t.seans_time}}</td><td style="color: white;font-size:40px;text-align:right">{{t.movieInCinema.sala}}</td></tr>
 {%endfor%}
 </table></div>
 {% endblock content %}

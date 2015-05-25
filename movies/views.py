@@ -118,7 +118,7 @@ def set_rating(request, movie_id=1):
         avg.sumVotes = suma
         avg.save()
         oceny[0].save()
-    return HttpResponse()
+    return HttpResponseRedirect(redirect_to='/'+language+'/movies/get/'+movie_id+'/')
 
 
 def set_role(request):

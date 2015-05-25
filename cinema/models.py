@@ -38,15 +38,52 @@ class Cinema(models.Model):
         verbose_name = u'Kino'
         verbose_name_plural = u'Kina'
 
+SALE_SALE = (
+    ('0', '0'),
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+    ('4', '4'),
+    ('5', '5'),
+    ('6', '6'),
+    ('7', '7'),
+    ('8', '8'),
+    ('9', '9'),
+    ('10', '10'),
+    ('11', '11'),
+    ('12', '12'),
+    ('13', '13'),
+    ('14', '14'),
+    ('15', '15'),
+    ('16', '16'),
+    ('17', '17'),
+    ('18', '18'),
+    ('19', '19'),
+    ('20', '20'),
+)
+
+
 class Timetable(models.Model):
     cinema = models.ForeignKey(Cinema, verbose_name='Kino')
-    movie_time = models.TimeField()
     movie = models.ForeignKey(Movie)
+    sala = models.CharField(max_length=2, default=1, choices=SALE_SALE, verbose_name='Sala')
 
     def __unicode__(self):
-        return u"%s %s %s" % (self.cinema, self.movie_time, self.movie.title)
+        return u"%s %s %s" % (self.cinema, self.movie.title, self.sala)
 
     class Meta:
         ordering = ['cinema']
+        verbose_name = u'Film w kinie'
+        verbose_name_plural = u'Filmy w kinach'
+
+class Seans(models.Model):
+    movieInCinema = models.ForeignKey(Timetable, verbose_name='Film w kinie')
+    seans_time = models.TimeField()
+
+    def __unicode__(self):
+        return u"%s %s Sala: %s Czas: %s" % (self.movieInCinema.movie.title, self.movieInCinema.cinema,self.movieInCinema.sala, self.seans_time)
+
+    class Meta:
+        ordering = ['movieInCinema']
         verbose_name = u'Repertuar'
         verbose_name_plural = u'Repertuary'

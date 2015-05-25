@@ -1,7 +1,6 @@
 from django.views.generic import View
 from django.shortcuts import render
-from cinema.models import Cinema,Town,Timetable,Brand
-
+from cinema.models import Cinema,Town,Timetable,Brand,Seans
 
 class CinemasView(View):
     template_name = 'cinemas.html'
@@ -42,5 +41,6 @@ class CinemaView(View):
         cinema = Cinema.objects.get(id=cinema_id)
 
         tt = Timetable.objects.filter(cinema=cinema_id)
+        tt2 = Seans.objects.filter(movieInCinema__in=tt)
 
-        return render(request, self.template_name,{'cinema':cinema,'timetable':tt})
+        return render(request, self.template_name,{'cinema':cinema,'timetable':tt2})
