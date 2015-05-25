@@ -1,11 +1,4 @@
 .idea/
-accounts/migrations/
-cinema/migrations/
-Filmland/migrations/
-list/migrations/
-locale/migrations/
 media/
-movies/migrations/
-people/migrations/
-photogallery/migrations/
-ratings/migrations/
+*.pyc
+*.pyo
