@@ -40,6 +40,26 @@
                 Tytuł: {{ image.title }}
             </p>
         {% endif %}
+        {% if not image.movies.first == None %}
+            <p style="margin-top: 20px; margin-bottom: 0px; color: black">
+                {% trans "Film" %}:
+                {% for m in image.movies.all %}
+                    {% if m == image.movies.last %}
+                        {% if LANGUAGE_CODE == 'pl' %}
+                            <a href="/movies/get/{{ m.movie.id }}/" class="gallery_link">{{ m.movie.title }}</a>
+                        {% else %}
+                             <a href="/movies/get/{{ m.movie.id }}/" class="gallery_link">{{ m.movie.title_en }}</a>
+                        {% endif %}
+                    {% else %}
+                        {% if LANGUAGE_CODE == 'pl' %}
+                            <a href="/movies/get/{{ m.movie.id }}/" class="gallery_link">{{ m.movie.title }}</a>,
+                        {% else %}
+                             <a href="/movies/get/{{ m.movie.id }}/" class="gallery_link">{{ m.movie.title_en }}</a>,
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </p>
+        {% endif %}
         {% if not image.people.first == None %}
             <p style="margin-top: 20px; margin-bottom: 0px; color: black">
                 {% trans "Osoby" %}:
