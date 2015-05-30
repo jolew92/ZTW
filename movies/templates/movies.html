@@ -7,11 +7,13 @@
             <div align="left" style="margin-top: 20px;">
             {% if LANGUAGE_CODE == 'pl' %}
                 {% for g in genre.all %}
-                    <input type="radio" name="gatunek" value="{{ g.genre }}" id="{{ genre.id }}" onlclick="genere()">{{ g.genre }}
+                    <input type="radio" name="gatunek" value="{{ g.genre }}" id="{{ genre.id }}" onlclick="genere()">
+                    {{ g.genre }}
                 {% endfor %}
             {% else %}
                 {% for g in genre.all %}
-                    <input type="radio" name="gatunek" value="{{ g.genre }}" id="{{ genre.id }}" onlclick="genere()">{{ g.genre_en }}
+                    <input type="radio" name="gatunek" value="{{ g.genre }}" id="{{ genre.id }}" onlclick="genere()">
+                    {{ g.genre_en }}
                 {% endfor %}
             {% endif %}
             </div>
@@ -31,7 +33,7 @@
             {%if movie.year >= od and movie.year <= do2 %}
                 {% for m in movie.genre.all %}
                     {% if m.genre == gatunek %}
-                        <li><img src="/media/{{movie.id}}.jpg" width="62" height="80"/><a href="/movies/get/{{ movie.id }}/" class="list_link"> {{ movie.title }} ({{ movie.year }})</a></li>
+                        <li><a href="/movies/get/{{ movie.id }}/" class="list_link"> {{ movie.title }} ({{ movie.year }})</a></li>
                     {% endif %}
                 {% endfor %}
             {%endif%}
@@ -41,7 +43,7 @@
             {% if movie.year >= od and movie.year <= do2 %}
                 {% for m in movie.genre.all %}
                     {% if m.genre == gatunek %}
-                        <li><img src="https://dl.dropboxusercontent.com/u/102438243/{{movie.id}}.jpg" width="62" height="80"/><a href="/movies/get/{{ movie.id }}/" class="list_link"> {{ movie.title_en }} ({{ movie.year }})</a></li>
+                        <li><a href="/movies/get/{{ movie.id }}/" class="list_link"> {{ movie.title_en }} ({{ movie.year }})</a></li>
                     {% endif %}
                 {% endfor %}
             {%endif%}

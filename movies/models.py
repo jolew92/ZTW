@@ -73,7 +73,6 @@ class Movie(models.Model):
     language = models.ForeignKey(Language, blank=True, null=True, verbose_name='Język')
     genre = models.ManyToManyField(Genre, blank=True, null=True, verbose_name='Gatunek')
     country = models.ManyToManyField(Country, blank=True, null=True, verbose_name='Kraj')
-    #rating = RatingField(range=5)
 
     def __unicode__(self):
         return unicode(self.title)
@@ -81,14 +80,6 @@ class Movie(models.Model):
     def genre_(self):
         lst = [x[1] for x in self.genre.values_list()]
         return str(join(lst, ', '))
-
-    @property
-    def get_admin_url(self):
-        return urlresolvers.reverse("admin:%s_%s_change" %
-        (self._meta.app_label, self._meta.module_name), args=(self.pk,))
-
-    def get_url(self):
-        return u"/%s/%s/%s" % (self._meta.app_label, self._meta.module_name, self.pk)
 
     class Meta:
         ordering = ['title']
@@ -118,7 +109,6 @@ class MovieRole(models.Model):
     avgR = models.FloatField(default=0.0)
 
     def __unicode__(self):
-        #return unicode(self.role)
         return u"%s %s %s" % (self.role, self.movie.title, self.avgR)
 
     class Meta:
@@ -136,8 +126,8 @@ class Description(models.Model):
         return u"%s %s %s" % (self.movie.title, self.movie.year, self.language)
 
     class Meta:
-        verbose_name = 'Opis filmu'
-        verbose_name_plural = 'Opisy filmów'
+        verbose_name = u'Opis filmu'
+        verbose_name_plural = u'Opisy filmów'
 
 
 class Rate(models.Model):
@@ -149,8 +139,8 @@ class Rate(models.Model):
         return u"%s %s %s" % (self.movie.title, self.user, self.rate)
 
     class Meta:
-        verbose_name = 'Ocena filmu'
-        verbose_name_plural = 'Oceny filmów'
+        verbose_name = u'Ocena filmu'
+        verbose_name_plural = u'Oceny filmów'
 
 
 class Avg(models.Model):
@@ -175,8 +165,8 @@ class RoleRate(models.Model):
         return u"%s %s %s %s" % (self.id,self.role.id, self.user, self.rate)
 
     class Meta:
-        verbose_name = 'Ocena rolo'
-        verbose_name_plural = 'Oceny ról'
+        verbose_name = u'Ocena rolo'
+        verbose_name_plural = u'Oceny ról'
 
 
 

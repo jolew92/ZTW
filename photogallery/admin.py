@@ -13,10 +13,7 @@ class PersonAlbumAdmin(admin.ModelAdmin):
 
 
 class ImageAdmin(admin.ModelAdmin):
-    # search_fields = ["title"]
-    list_display = ["__unicode__", "title", "size", "people_", "movies_",
-        "thumbnail", "created"]
-  #  list_filter = ["people", "movies"]
+    list_display = ["__unicode__", "title", "size", "people_", "movies_", "thumbnail", "created"]
     search_fields = ["movies__movie__title", "people__person__last_name", "people__person__first_name"]
     filter_horizontal = ("people", "movies")
 

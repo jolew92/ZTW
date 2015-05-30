@@ -22,7 +22,7 @@ class MovieAlbum(models.Model):
 
     class Meta:
         ordering = ['movie']
-        verbose_name = 'Album Filmu'
+        verbose_name = u'Album Filmu'
         verbose_name_plural = u'Albumy Filmów'
 
 
@@ -40,7 +40,7 @@ class PersonAlbum(models.Model):
 
     class Meta:
         ordering = ['person']
-        verbose_name = 'Album Osoby'
+        verbose_name = u'Album Osoby'
         verbose_name_plural = u'Albumy Osób'
 
 
@@ -78,15 +78,14 @@ class Image(models.Model):
 
     def thumbnail(self):
         return """<a href="/media/%s"><img border="0" alt="" src="/media/%s" height="40" /></a>""" % \
-               (self.image.name, self.image.name)
+            (self.image.name, self.image.name)
     thumbnail.allow_tags = True
 
     def thumbnail_bigger(self):
-        return """<img border="0" alt="" src="/media/%s" style="width:80px; height: 80px; "/>""" % \
-               (self.image.name)
+        return """<img border="0" alt="" src="/media/%s" style="width:80px; height: 80px; "/>""" % self.image.name
     thumbnail.allow_tags = True
 
     class Meta:
         ordering = ['title']
-        verbose_name = 'Zdjecie'
+        verbose_name = u'Zdjecie'
         verbose_name_plural = u'Zdjęcia'

@@ -32,4 +32,3 @@ class Biography(models.Model):
     class Meta:
         verbose_name = 'Biografia'
         verbose_name_plural = 'Biografie'
-

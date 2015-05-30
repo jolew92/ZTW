@@ -20,7 +20,7 @@ class ListItemView(View):
 
     def get(self, request, movielistitem_id=1):
         if request.user.is_authenticated():
-            list = MovieListItem.objects.get(id=movielistitem_id)
-            return render(request, self.template_name, {'list': list})
+            list_items = MovieListItem.objects.get(id=movielistitem_id)
+            return render(request, self.template_name, {'list': list_items})
         else:
             return HttpResponseRedirect('/')

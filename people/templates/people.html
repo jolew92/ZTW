@@ -3,7 +3,9 @@
 {% block content %}
     <ul>
     {% for person in people %}
-        <li><a href="/people/get/{{ person.id }}/" class="list_link">{{ person.last_name }} {{ person.first_name }}</a></li>
+        <li>
+            <a href="/people/get/{{ person.id }}/" class="list_link">{{ person.last_name }} {{ person.first_name }}</a>
+        </li>
     {% endfor %}
     </ul>
 {% endblock content %}

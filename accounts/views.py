@@ -115,8 +115,8 @@ class EditListView(View):
 
     def get(self, request, movielistitem_id=1):
         if request.user.is_authenticated():
-            list = MovieListItem.objects.get(id=movielistitem_id)
-            return render(request, self.template_name, {'list': list})
+            user_list = MovieListItem.objects.get(id=movielistitem_id)
+            return render(request, self.template_name, {'list': user_list})
         else:
             return HttpResponseRedirect('/')
 
@@ -139,8 +139,8 @@ def add_list(request):
             movie_list = MovieList.objects.get(user=request.user)
         else:
             movie_list = MovieList.objects.create(user=request.user)
-        list = MovieListItem.objects.create(name=list_name, movielist=movie_list)
-        list.save()
+        user_list = MovieListItem.objects.create(name=list_name, movielist=movie_list)
+        user_list.save()
         return HttpResponseRedirect(redirect_to='/'+language+'/accounts/edit_list/')
     else:
         return HttpResponseRedirect('/')
@@ -150,9 +150,9 @@ def change_list_name(request, list_id):
     language = translation.get_language_from_request(request)
     if request.user.is_authenticated():
         list_name = request.POST.get('list_name', '')
-        list = MovieListItem.objects.get(id=list_id)
-        list.name = list_name
-        list.save()
+        user_list = MovieListItem.objects.get(id=list_id)
+        user_list.name = list_name
+        user_list.save()
         return HttpResponseRedirect(redirect_to='/'+language+'/accounts/edit_list/'+list_id+'/')
     else:
         return HttpResponseRedirect('/')

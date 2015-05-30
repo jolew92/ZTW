@@ -1,7 +1,7 @@
 .hidden { display: none }
 
 .obrazek {
-    psoition: relative;
+    position: relative;
     left: 10%;
     z-index: -1;
 }
@@ -22,8 +22,6 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
-    font-family: testFont;
     z-index:-10;
     font-size: 1rem;
     font-family: "Helvetica Neue", Arial, sans-serif;
@@ -31,12 +29,12 @@ body {
 }
 
 div {
-    font-family: testFont;
+    font-family: testFont, serif;
     color: white;
 }
 
 p {
-    font-family: testFont;
+    font-family: testFont, serif;
     color: white;
 }
 
@@ -64,8 +62,6 @@ li {
     margin-top: 20px;
     color: white;
     background: rgba(5,4,2,0.7);
-/*  background: rgba(255,255,255,0.17); */
-
 }
 
 .login {
@@ -73,7 +69,7 @@ li {
     text-align: left;
     float: right;
     color: black;
-    font-family: testFont;
+    font-family: testFont, serif;
     font-weight: 600;
     padding-right: 10%;
     position: absolute;
@@ -90,7 +86,6 @@ li {
 }
 
 /* ********************MENU******************** */
-
 .wrapper {
     position: absolute;
     top: -1px;
@@ -101,40 +96,39 @@ li {
     background: #464646;
     background: -webkit-gradient(linear, left top, left bottom, from(rgb(148,148,148)), to(rgb(69,69,69)));
     background: -moz-linear-gradient(top, rgb(148,148,148), rgb(69,69,69));
-    border-top: 0px solid #939393;
+    border-top: 0 solid #939393;
 }
 
 ul {
     color: black;
-    font-family: testFont;
+    font-family: testFont, serif;
     margin: 0;
     padding: 0;
 }
 
 ul.menu {
     color: black;
-    font-family: testFont;
+    font-family: testFont, serif;
     margin-left: -15px;
     height: 30px;
-    border-left: 0px solid rgba(0,0,0,0.3);
-    border-right: 0px solid rgba(255,255,255,0.3);
+    border-left: 0 solid rgba(0,0,0,0.3);
+    border-right: 0 solid rgba(255,255,255,0.3);
     float: left;
 }
 
 ul.menu li {
     color: black;
-    font-family: testFont;
+    font-family: testFont, serif;
     list-style: none;
     float: left;
     height: 30px;
     text-align: center;
     background: -webkit-gradient(radial, 50% 100%, 10, 50% 50%, 90, from(rgba(232,240,17,1)), to(rgba(240,153,17, 1)) );
- /*   background: -moz-radial-gradient(center 80px 45deg, circle cover, rgba(232,240,17,1) 0%, rgba(240,153,17, 1) 100%); */
 }
 
 ul li a {
     color: black;
-    font-family: testFont;
+    font-family: testFont, serif;
     display: inline-block;
     padding: 0 20px;
     border-left: 1px solid rgba(255,255,255,0.1);
@@ -153,19 +147,18 @@ ul li a:hover {
     background: transparent none;
     text-decoration: none;
     color: black;
-    font-family: testFont;
+    font-family: testFont, serif;
 }
 
 ul li.active a {
     text-decoration: none;
     background: -webkit-gradient(radial, 50% 100%, 10, 50% 50%, 90, from(rgba(232,240,17,1)), to(rgba(240,156,0, 1)) );
- /*   background: -moz-radial-gradient(center 80px 45deg, circle cover, rgba(232,240,17,1) 0%, rgba(240,156,0, 1) 100%);*/
 }
 
 ul li a:visited {
     color: black;
     text-decoration: none;
-    font-family: testFont;
+    font-family: testFont, serif;
 }
 
 /*RATING*/
@@ -226,8 +219,6 @@ ul li a:visited {
     left:2px;
 }
 
-
-
 /* ********************BUTTON******************** */
 *,
 *:before,
@@ -240,7 +231,6 @@ ul li a:visited {
 html {
 	font-size: 100%;
 }
-
 
 .content {
 	margin: 0 auto;
@@ -282,7 +272,6 @@ html {
 }
 
 .button:focus {
-	outline: thin dotted #444;
 	outline: 5px auto -webkit-focus-ring-color;
 	outline-offset: -2px;
 }
@@ -301,10 +290,9 @@ html {
 }
 
 /* SLAJDER */
-
 .gallery .control-operator:target ~ .controls .control-button {
-  color: #ccc;
-  color: rgba(255, 255, 255, 0.4);
+    color: #ccc;
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .gallery .control-button:first-of-type,
@@ -313,69 +301,69 @@ html {
 .gallery .control-operator:nth-of-type(3):target ~ .controls .control-button:nth-of-type(3),
 .gallery .control-operator:nth-of-type(4):target ~ .controls .control-button:nth-of-type(4),
 .gallery .control-operator:nth-of-type(5):target ~ .controls .control-button:nth-of-type(5) {
-  color: white;
-  color: rgba(255, 255, 255, 0.8);
+    color: white;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .gallery .item:first-of-type {
-  position: relative;
-  pointer-events: none;
-  pacity: 0;
+    position: relative;
+    pointer-events: none;
+    opacity: 0;
  
 }
 
 .gallery .item {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0;
-  -webkit-transition: opacity .5s;
-  -o-transition: opacity .5s;
-  transition: opacity .5s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    -webkit-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
 }
 
 .gallery .control-operator {
-  display: none;
+    display: none;
 }
 
 .gallery .control-operator:target ~ .item {
-  pointer-events: none;
-  opacity: 0;
-  -webkit-animation: none;
-  -o-animation: none;
-  animation: none;
+    pointer-events: none;
+    opacity: 0;
+    -webkit-animation: none;
+    -o-animation: none;
+    animation: none;
 }
 
 .gallery .control-operator:target ~ .controls .control-button {
-  -webkit-animation: none;
-  -o-animation: none;
-  animation: none;
+    -webkit-animation: none;
+    -o-animation: none;
+    animation: none;
 }
 
 @-webkit-keyframes controlAnimation-2 {
   0% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 
   14.3%, 50% {
-    color: white;
-    color: rgba(255, 255, 255, 0.8);
+      color: white;
+      color: rgba(255, 255, 255, 0.8);
   }
 
   64.3%, 100% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 }
 
 @-o-keyframes controlAnimation-2 {
   0% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 
   14.3%, 50% {
@@ -384,426 +372,426 @@ html {
   }
 
   64.3%, 100% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 }
 
 @keyframes controlAnimation-2 {
   0% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 
   14.3%, 50% {
-    color: white;
-    color: rgba(255, 255, 255, 0.8);
+      color: white;
+      color: rgba(255, 255, 255, 0.8);
   }
 
   64.3%, 100% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 }
 
 @-webkit-keyframes galleryAnimation-2 {
   0% {
-    opacity: 0;
+      opacity: 0;
   }
 
   14.3%, 50% {
-    opacity: 1;
+      opacity: 1;
   }
 
   64.3%, 100% {
-    opacity: 0;
+      opacity: 0;
   }
 }
 
 @-o-keyframes galleryAnimation-2 {
   0% {
-    opacity: 0;
+      opacity: 0;
   }
 
   14.3%, 50% {
-    opacity: 1;
+      opacity: 1;
   }
 
   64.3%, 100% {
-    opacity: 0;
+      opacity: 0;
   }
 }
 
 @keyframes galleryAnimation-2 {
   0% {
-    opacity: 0;
+      opacity: 0;
   }
 
   14.3%, 50% {
-    opacity: 1;
+      opacity: 1;
   }
 
   64.3%, 100% {
-    opacity: 0;
+      opacity: 0;
   }
 }
 
 .gallery .control-operator:nth-of-type(1):target ~ .item:nth-of-type(1) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .gallery .control-operator:nth-of-type(2):target ~ .item:nth-of-type(2) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .items-2.autoplay .control-button {
-  -webkit-animation: controlAnimation-2 14s infinite;
-  -o-animation: controlAnimation-2 14s infinite;
-  animation: controlAnimation-2 14s infinite;
+    -webkit-animation: controlAnimation-2 14s infinite;
+    -o-animation: controlAnimation-2 14s infinite;
+    animation: controlAnimation-2 14s infinite;
 }
 
 .items-2.autoplay .item {
-  -webkit-animation: galleryAnimation-2 14s infinite;
-  -o-animation: galleryAnimation-2 14s infinite;
-  animation: galleryAnimation-2 14s infinite;
+    -webkit-animation: galleryAnimation-2 14s infinite;
+    -o-animation: galleryAnimation-2 14s infinite;
+    animation: galleryAnimation-2 14s infinite;
 }
 
 .items-2 .control-button:nth-of-type(1),
 .items-2 .item:nth-of-type(1) {
-  -webkit-animation-delay: -2s;
-  -o-animation-delay: -2s;
-  animation-delay: -2s;
+    -webkit-animation-delay: -2s;
+    -o-animation-delay: -2s;
+    animation-delay: -2s;
 }
 
 .items-2 .control-button:nth-of-type(2),
 .items-2 .item:nth-of-type(2) {
-  -webkit-animation-delay: 5s;
-  -o-animation-delay: 5s;
-  animation-delay: 5s;
+    -webkit-animation-delay: 5s;
+    -o-animation-delay: 5s;
+    animation-delay: 5s;
 }
 
 @-webkit-keyframes controlAnimation-3 {
   0% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 
   9.5%, 33.3% {
-    color: white;
-    color: rgba(255, 255, 255, 0.8);
+      color: white;
+      color: rgba(255, 255, 255, 0.8);
   }
 
   42.9%, 100% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 }
 
 @-o-keyframes controlAnimation-3 {
   0% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 
   9.5%, 33.3% {
-    color: white;
-    color: rgba(255, 255, 255, 0.8);
+      color: white;
+      color: rgba(255, 255, 255, 0.8);
   }
 
   42.9%, 100% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 }
 
 @keyframes controlAnimation-3 {
   0% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 
   9.5%, 33.3% {
-    color: white;
-    color: rgba(255, 255, 255, 0.8);
+      color: white;
+      color: rgba(255, 255, 255, 0.8);
   }
 
   42.9%, 100% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 }
 
 @-webkit-keyframes galleryAnimation-3 {
   0% {
-    opacity: 0;
+      opacity: 0;
   }
 
   9.5%, 33.3% {
-    opacity: 1;
+      opacity: 1;
   }
 
   42.9%, 100% {
-    opacity: 0;
+      opacity: 0;
   }
 }
 
 @-o-keyframes galleryAnimation-3 {
   0% {
-    opacity: 0;
+      opacity: 0;
   }
 
   9.5%, 33.3% {
-    opacity: 1;
+      opacity: 1;
   }
 
   42.9%, 100% {
-    opacity: 0;
+      opacity: 0;
   }
 }
 
 @keyframes galleryAnimation-3 {
   0% {
-    opacity: 0;
+      opacity: 0;
   }
 
   9.5%, 33.3% {
-    opacity: 1;
+      opacity: 1;
   }
 
   42.9%, 100% {
-    opacity: 0;
+      opacity: 0;
   }
 }
 
 .gallery .control-operator:nth-of-type(1):target ~ .item:nth-of-type(1) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .gallery .control-operator:nth-of-type(2):target ~ .item:nth-of-type(2) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .gallery .control-operator:nth-of-type(3):target ~ .item:nth-of-type(3) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .items-3.autoplay .control-button {
-  -webkit-animation: controlAnimation-3 21s infinite;
-  -o-animation: controlAnimation-3 21s infinite;
-  animation: controlAnimation-3 21s infinite;
+    -webkit-animation: controlAnimation-3 21s infinite;
+    -o-animation: controlAnimation-3 21s infinite;
+    animation: controlAnimation-3 21s infinite;
 }
 
 .items-3.autoplay .item {
-  -webkit-animation: galleryAnimation-3 21s infinite;
-  -o-animation: galleryAnimation-3 21s infinite;
-  animation: galleryAnimation-3 21s infinite;
+    -webkit-animation: galleryAnimation-3 21s infinite;
+    -o-animation: galleryAnimation-3 21s infinite;
+    animation: galleryAnimation-3 21s infinite;
 }
 
 .items-3 .control-button:nth-of-type(1),
 .items-3 .item:nth-of-type(1) {
-  -webkit-animation-delay: -2s;
-  -o-animation-delay: -2s;
-  animation-delay: -2s;
+    -webkit-animation-delay: -2s;
+    -o-animation-delay: -2s;
+    animation-delay: -2s;
 }
 
 .items-3 .control-button:nth-of-type(2),
 .items-3 .item:nth-of-type(2) {
-  -webkit-animation-delay: 5s;
-  -o-animation-delay: 5s;
-  animation-delay: 5s;
+    -webkit-animation-delay: 5s;
+    -o-animation-delay: 5s;
+    animation-delay: 5s;
 }
 
 .items-3 .control-button:nth-of-type(3),
 .items-3 .item:nth-of-type(3) {
-  -webkit-animation-delay: 12s;
-  -o-animation-delay: 12s;
-  animation-delay: 12s;
+    -webkit-animation-delay: 12s;
+    -o-animation-delay: 12s;
+    animation-delay: 12s;
 }
 
 @-webkit-keyframes controlAnimation-4 {
   0% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 
   7.1%, 25% {
-    color: white;
-    color: rgba(255, 255, 255, 0.8);
+      color: white;
+      color: rgba(255, 255, 255, 0.8);
   }
 
   32.1%, 100% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 }
 
 @-o-keyframes controlAnimation-4 {
   0% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 
   7.1%, 25% {
-    color: white;
-    color: rgba(255, 255, 255, 0.8);
+      color: white;
+      color: rgba(255, 255, 255, 0.8);
   }
 
   32.1%, 100% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 }
 
 @keyframes controlAnimation-4 {
   0% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 
   7.1%, 25% {
-    color: white;
-    color: rgba(255, 255, 255, 0.8);
+      color: white;
+      color: rgba(255, 255, 255, 0.8);
   }
 
   32.1%, 100% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 }
 
 @-webkit-keyframes galleryAnimation-4 {
   0% {
-    opacity: 0;
+      opacity: 0;
   }
 
   7.1%, 25% {
-    opacity: 1;
+      opacity: 1;
   }
 
   32.1%, 100% {
-    opacity: 0;
+      opacity: 0;
   }
 }
 
 @-o-keyframes galleryAnimation-4 {
   0% {
-    opacity: 0;
+      opacity: 0;
   }
 
   7.1%, 25% {
-    opacity: 1;
+      opacity: 1;
   }
 
   32.1%, 100% {
-    opacity: 0;
+      opacity: 0;
   }
 }
 
 @keyframes galleryAnimation-4 {
   0% {
-    opacity: 0;
+      opacity: 0;
   }
 
   7.1%, 25% {
-    opacity: 1;
+      opacity: 1;
   }
 
   32.1%, 100% {
-    opacity: 0;
+      opacity: 0;
   }
 }
 
 .gallery .control-operator:nth-of-type(1):target ~ .item:nth-of-type(1) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .gallery .control-operator:nth-of-type(2):target ~ .item:nth-of-type(2) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .gallery .control-operator:nth-of-type(3):target ~ .item:nth-of-type(3) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .gallery .control-operator:nth-of-type(4):target ~ .item:nth-of-type(4) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .items-4.autoplay .control-button {
-  -webkit-animation: controlAnimation-4 28s infinite;
-  -o-animation: controlAnimation-4 28s infinite;
-  animation: controlAnimation-4 28s infinite;
+    -webkit-animation: controlAnimation-4 28s infinite;
+    -o-animation: controlAnimation-4 28s infinite;
+    animation: controlAnimation-4 28s infinite;
 }
 
 .items-4.autoplay .item {
-  -webkit-animation: galleryAnimation-4 28s infinite;
-  -o-animation: galleryAnimation-4 28s infinite;
-  animation: galleryAnimation-4 28s infinite;
+    -webkit-animation: galleryAnimation-4 28s infinite;
+    -o-animation: galleryAnimation-4 28s infinite;
+    animation: galleryAnimation-4 28s infinite;
 }
 
 .items-4 .control-button:nth-of-type(1),
 .items-4 .item:nth-of-type(1) {
-  -webkit-animation-delay: -2s;
-  -o-animation-delay: -2s;
-  animation-delay: -2s;
+    -webkit-animation-delay: -2s;
+    -o-animation-delay: -2s;
+    animation-delay: -2s;
 }
 
 .items-4 .control-button:nth-of-type(2),
 .items-4 .item:nth-of-type(2) {
-  -webkit-animation-delay: 5s;
-  -o-animation-delay: 5s;
-  animation-delay: 5s;
+    -webkit-animation-delay: 5s;
+    -o-animation-delay: 5s;
+    animation-delay: 5s;
 }
 
 .items-4 .control-button:nth-of-type(3),
 .items-4 .item:nth-of-type(3) {
-  -webkit-animation-delay: 12s;
-  -o-animation-delay: 12s;
-  animation-delay: 12s;
+    -webkit-animation-delay: 12s;
+    -o-animation-delay: 12s;
+    animation-delay: 12s;
 }
 
 .items-4 .control-button:nth-of-type(4),
 .items-4 .item:nth-of-type(4) {
-  -webkit-animation-delay: 19s;
-  -o-animation-delay: 19s;
-  animation-delay: 19s;
+    -webkit-animation-delay: 19s;
+    -o-animation-delay: 19s;
+    animation-delay: 19s;
 }
 
 @-webkit-keyframes controlAnimation-5 {
   0% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 
   5.7%, 20% {
-    color: white;
-    color: rgba(255, 255, 255, 0.8);
+      color: white;
+      color: rgba(255, 255, 255, 0.8);
   }
 
   25.7%, 100% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 }
 
 @-o-keyframes controlAnimation-5 {
   0% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 
   5.7%, 20% {
-    color: white;
-    color: rgba(255, 255, 255, 0.8);
+      color: white;
+      color: rgba(255, 255, 255, 0.8);
   }
 
   25.7%, 100% {
@@ -814,149 +802,148 @@ html {
 
 @keyframes controlAnimation-5 {
   0% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 
   5.7%, 20% {
-    color: white;
-    color: rgba(255, 255, 255, 0.8);
+      color: white;
+      color: rgba(255, 255, 255, 0.8);
   }
 
   25.7%, 100% {
-    color: #ccc;
-    color: rgba(255, 255, 255, 0.4);
+      color: #ccc;
+      color: rgba(255, 255, 255, 0.4);
   }
 }
 
 @-webkit-keyframes galleryAnimation-5 {
   0% {
-    opacity: 0;
+      opacity: 0;
   }
 
   5.7%, 20% {
-    opacity: 1;
+      opacity: 1;
   }
 
   25.7%, 100% {
-    opacity: 0;
+      opacity: 0;
   }
 }
 
 @-o-keyframes galleryAnimation-5 {
   0% {
-    opacity: 0;
+      opacity: 0;
   }
 
   5.7%, 20% {
-    opacity: 1;
+      opacity: 1;
   }
 
   25.7%, 100% {
-    opacity: 0;
+      opacity: 0;
   }
 }
 
 @keyframes galleryAnimation-5 {
   0% {
-    opacity: 0;
+      opacity: 0;
   }
 
   5.7%, 20% {
-    opacity: 1;
+      opacity: 1;
   }
 
   25.7%, 100% {
-    opacity: 0;
+      opacity: 0;
   }
 }
 
 .gallery .control-operator:nth-of-type(1):target ~ .item:nth-of-type(1) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .gallery .control-operator:nth-of-type(2):target ~ .item:nth-of-type(2) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .gallery .control-operator:nth-of-type(3):target ~ .item:nth-of-type(3) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .gallery .control-operator:nth-of-type(4):target ~ .item:nth-of-type(4) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .gallery .control-operator:nth-of-type(5):target ~ .item:nth-of-type(5) {
-  pointer-events: auto;
-  opacity: 1;
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .items-5.autoplay .control-button {
-  -webkit-animation: controlAnimation-5 35s infinite;
-  -o-animation: controlAnimation-5 35s infinite;
-  animation: controlAnimation-5 35s infinite;
+    -webkit-animation: controlAnimation-5 35s infinite;
+    -o-animation: controlAnimation-5 35s infinite;
+    animation: controlAnimation-5 35s infinite;
 }
 
 .items-5.autoplay .item {
-  -webkit-animation: galleryAnimation-5 35s infinite;
-  -o-animation: galleryAnimation-5 35s infinite;
-  animation: galleryAnimation-5 35s infinite;
+    -webkit-animation: galleryAnimation-5 35s infinite;
+    -o-animation: galleryAnimation-5 35s infinite;
+    animation: galleryAnimation-5 35s infinite;
 }
 
 .items-5 .control-button:nth-of-type(1),
 .items-5 .item:nth-of-type(1) {
-  -webkit-animation-delay: -2s;
-  -o-animation-delay: -2s;
-  animation-delay: -2s;
+    -webkit-animation-delay: -2s;
+    -o-animation-delay: -2s;
+    animation-delay: -2s;
 }
 
 .items-5 .control-button:nth-of-type(2),
 .items-5 .item:nth-of-type(2) {
-  -webkit-animation-delay: 5s;
-  -o-animation-delay: 5s;
-  animation-delay: 5s;
+    -webkit-animation-delay: 5s;
+    -o-animation-delay: 5s;
+    animation-delay: 5s;
 }
 
 .items-5 .control-button:nth-of-type(3),
 .items-5 .item:nth-of-type(3) {
-  -webkit-animation-delay: 12s;
-  -o-animation-delay: 12s;
-  animation-delay: 12s;
+    -webkit-animation-delay: 12s;
+    -o-animation-delay: 12s;
+    animation-delay: 12s;
 }
 
 .items-5 .control-button:nth-of-type(4),
 .items-5 .item:nth-of-type(4) {
-  -webkit-animation-delay: 19s;
-  -o-animation-delay: 19s;
-  animation-delay: 19s;
+    -webkit-animation-delay: 19s;
+    -o-animation-delay: 19s;
+    animation-delay: 19s;
 }
 
 .items-5 .control-button:nth-of-type(5),
 .items-5 .item:nth-of-type(5) {
-  -webkit-animation-delay: 26s;
-  -o-animation-delay: 26s;
-  animation-delay: 26s;
+    -webkit-animation-delay: 26s;
+    -o-animation-delay: 26s;
+    animation-delay: 26s;
 }
 
 .gallery .control-button {
-  color: #ccc;
-  color: rgba(255, 255, 255, 0.4);
+    color: #ccc;
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .gallery .control-button:hover {
-  color: white;
-  color: rgba(255, 255, 255, 0.8);
+    color: white;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /*
 	Theme controls how everything looks in Gallery CSS.
 */
-
 .gallery {
     position: relative;
 }
@@ -981,30 +968,29 @@ html {
 }
 
 .gallery .control-button {
-  display: inline-block;
-  margin: 0 ;
-  font-size: 3em;
-  text-align: center;
-  text-decoration: none;
-  -webkit-transition: color .1s;
-  -o-transition: color .1s;
-  transition: color .1s;
+    display: inline-block;
+    margin: 0 ;
+    font-size: 3em;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: color .1s;
+    -o-transition: color .1s;
+    transition: color .1s;
 }
 
 /* test */
 .wrap {
-	 /* force the div to properly contain the floated images: */
-    overflow: hidden;
+/* force the div to properly contain the floated images: */
     text-align: center;
     background: rgba(255,255,255,0.17);
-    position:relative;
-    float:left;
-    clear:none;
-    overflow:hidden;
+    position: relative;
+    float: left;
+    clear: none;
+    overflow: hidden;
 }
 .wrap img {
-    position:relative;
-    z-index:1;
+    position: relative;
+    z-index: 1;
 }
 
 .wrap .desc {
@@ -1019,19 +1005,19 @@ html {
 .list_link {
     all: initial;
     color: white;
-    font-family: testFont;
+    font-family: testFont, serif;
 }
 
 .list_link:hover{
     all: initial;
     color: gold;
-    font-family: testFont;
+    font-family: testFont, serif;
 }
 
 .list_link:visited{
     all: initial;
     color: white;
-    font-family: testFont;
+    font-family: testFont, serif;
 }
 
 .role_list {
@@ -1047,7 +1033,7 @@ html {
     text-align: left;
     float: left;
     color: black;
-    font-family: testFont;
+    font-family: testFont, serif;
     font-weight: 600;
 }
 
@@ -1087,7 +1073,7 @@ html {
     background: #464646;
     background: -webkit-gradient(linear, left top, left bottom, from(rgb(148,148,148)), to(rgb(69,69,69)));
     background: -moz-linear-gradient(top, rgb(148,148,148), rgb(69,69,69));
-    border-top: 0px solid #939393;
+    border-top: 0 solid #939393;
 }
 
 .edit {
@@ -1117,13 +1103,13 @@ ul.clear {
 .gallery_link {
     text-decoration: none;
     color: white;
-    font-family: testFont;
+    font-family: testFont, serif;
 }
 
 .gallery_link:hover {
     text-decoration: none;
     color: gold;
-    font-family: testFont;
+    font-family: testFont, serif;
 }
 
 .image-container {
@@ -1134,13 +1120,13 @@ ul.clear {
 .image-container a {
     text-decoration: none;
     color: black;
-    font-family: testFont;
+    font-family: testFont, serif;
 }
 
 .image-container a:hover {
     text-decoration: none;
     color: gold;
-    font-family: testFont;
+    font-family: testFont, serif;
 }
 
 #image-in-gallery {

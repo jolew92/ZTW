@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-24 23:15+0200\n"
+"POT-Creation-Date: 2015-05-28 10:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,83 +25,83 @@ msgstr "English"
 msgid "Polski"
 msgstr "Polski"
 
-#: .\Filmland\urls.py:34
+#: .\Filmland\urls.py:38
 msgid "^$"
 msgstr ""
 
-#: .\Filmland\urls.py:35
-msgid "^cinemas/all/$"
-msgstr ""
-
-#: .\Filmland\urls.py:36
-msgid "^cinemas/get/(?P<cinema_id>\\d+)/$"
-msgstr ""
-
-#: .\Filmland\urls.py:37
+#: .\Filmland\urls.py:40
 msgid "^accounts/login/$"
 msgstr ""
 
-#: .\Filmland\urls.py:38
+#: .\Filmland\urls.py:41
 msgid "^accounts/logout/$"
 msgstr ""
 
-#: .\Filmland\urls.py:39
+#: .\Filmland\urls.py:42
 msgid "^accounts/loggedin/$"
 msgstr ""
 
-#: .\Filmland\urls.py:40
+#: .\Filmland\urls.py:43
 msgid "^accounts/invalid/$"
 msgstr ""
 
-#: .\Filmland\urls.py:41
+#: .\Filmland\urls.py:44
 msgid "^accounts/register_success/$"
 msgstr ""
 
-#: .\Filmland\urls.py:42
+#: .\Filmland\urls.py:45
 msgid "^accounts/edit/$"
 msgstr ""
 
-#: .\Filmland\urls.py:43
+#: .\Filmland\urls.py:46
 msgid "^accounts/edit_list/$"
 msgstr ""
 
-#: .\Filmland\urls.py:44
+#: .\Filmland\urls.py:47
 msgid "^accounts/edit_list/(?P<movielistitem_id>\\d+)/$"
 msgstr ""
 
-#: .\Filmland\urls.py:47
-msgid "^movies/all/$"
-msgstr ""
-
-#: .\Filmland\urls.py:48
-msgid "^movies/get/(?P<movie_id>\\d+)/$"
-msgstr ""
-
 #: .\Filmland\urls.py:49
-msgid "^people/all/$"
+msgid "^cinemas/all/$"
 msgstr ""
 
 #: .\Filmland\urls.py:50
-msgid "^people/get/(?P<person_id>\\d+)/$"
-msgstr ""
-
-#: .\Filmland\urls.py:51
-msgid "^search/$"
+msgid "^cinemas/get/(?P<cinema_id>\\d+)/$"
 msgstr ""
 
 #: .\Filmland\urls.py:52
-msgid "^list/all/$"
+msgid "^movies/all/$"
 msgstr ""
 
 #: .\Filmland\urls.py:53
-msgid "^list/get/(?P<movielistitem_id>\\d+)/$"
+msgid "^movies/get/(?P<movie_id>\\d+)/$"
+msgstr ""
+
+#: .\Filmland\urls.py:54
+msgid "^people/all/$"
+msgstr ""
+
+#: .\Filmland\urls.py:55
+msgid "^people/get/(?P<person_id>\\d+)/$"
 msgstr ""
 
 #: .\Filmland\urls.py:56
-msgid "^photogallery/movie/(?P<movie_id>\\d+)/(?P<image_id>\\d+)/$"
+msgid "^search/$"
 msgstr ""
 
 #: .\Filmland\urls.py:57
+msgid "^list/all/$"
+msgstr ""
+
+#: .\Filmland\urls.py:58
+msgid "^list/get/(?P<movielistitem_id>\\d+)/$"
+msgstr ""
+
+#: .\Filmland\urls.py:60
+msgid "^photogallery/movie/(?P<movie_id>\\d+)/(?P<image_id>\\d+)/$"
+msgstr ""
+
+#: .\Filmland\urls.py:61
 msgid "^photogallery/person/(?P<person_id>\\d+)/(?P<image_id>\\d+)/$"
 msgstr ""
 
@@ -138,8 +138,8 @@ msgid "Nazwisko:"
 msgstr "Last name:"
 
 #: .\accounts\templates\edit_user.html:43
-msgid "Edytuj:"
-msgstr "Edit:"
+msgid "Edytuj"
+msgstr "Edit"
 
 #: .\accounts\templates\invalid_login.html:5
 msgid "Nieprawidłowe dane!"
@@ -214,71 +214,84 @@ msgstr "Register"
 msgid "Zostałeś zarejestrowany!"
 msgstr "You are registered!"
 
-#: .\movies\templates\movie.html:51
+#: .\cinema\templates\cinema.html:7
+msgid "Adres"
+msgstr "Address"
+
+#: .\cinema\templates\cinema.html:15
+msgid "Godzina"
+msgstr "Hour"
+
+#: .\cinema\templates\cinema.html:16
+msgid "Sala"
+msgstr "Hall"
+
+#: .\movies\templates\movie.html:32
 msgid "Dodaj"
 msgstr "Add"
 
-#: .\movies\templates\movie.html:82
+#: .\movies\templates\movie.html:63
 msgid "Anuluj"
 msgstr "Cancel"
 
-#: .\movies\templates\movie.html:147
+#: .\movies\templates\movie.html:130
 msgid "Do jakiej listy dodać film?"
 msgstr "To which list add this movie?"
 
-#: .\movies\templates\movie.html:156
+#: .\movies\templates\movie.html:140
 msgid "Udało się"
 msgstr "Success"
 
-#: .\movies\templates\movie.html:157
+#: .\movies\templates\movie.html:141
 msgid "Dodano film"
 msgstr "Added movie"
 
-#: .\movies\templates\movie.html:163
+#: .\movies\templates\movie.html:147
 msgid "do listy"
 msgstr "to list"
 
-#: .\movies\templates\movie.html:165
+#: .\movies\templates\movie.html:149
 msgid "Nie udało się"
 msgstr "Failure"
 
-#: .\movies\templates\movie.html:166
+#: .\movies\templates\movie.html:150
 msgid "Żadna lista nie została zaznaczona."
 msgstr "You haven't checked any list."
 
-#: .\movies\templates\movie.html:168
+#: .\movies\templates\movie.html:152
 msgid "Już istnieje"
 msgstr "Already exists"
 
-#: .\movies\templates\movie.html:169 .\templates\base.html:53
+#: .\movies\templates\movie.html:153
+#: .\photogallery\templates\galleryPerson.html:45 .\templates\base.html:53
 msgid "Film"
 msgstr "Movie"
 
-#: .\movies\templates\movie.html:175
+#: .\movies\templates\movie.html:159
 msgid "znajduje się już na liście"
 msgstr "already in the list"
 
-#: .\movies\templates\movie.html:183 .\people\templates\person.html:24
+#: .\movies\templates\movie.html:170 .\people\templates\person.html:32
 msgid "Więcej"
 msgstr "More"
 
-#: .\movies\templates\movie.html:187
+#: .\movies\templates\movie.html:174
 msgid "Ocena:"
 msgstr "Rating:"
 
-#: .\movies\templates\movie.html:205
+#: .\movies\templates\movie.html:193
 msgid "Rok:"
 msgstr "Year:"
 
-#: .\movies\templates\movie.html:206
+#: .\movies\templates\movie.html:194
 msgid "Język:"
 msgstr "Language:"
 
-#: .\movies\templates\movie.html:214
+#: .\movies\templates\movie.html:202
 msgid "Gatunek:"
 msgstr "Genre:"
 
-#: .\movies\templates\movie.html:234
+#: .\movies\templates\movie.html:222
 msgid "Kraj:"
 msgstr "Country:"
 
@@ -286,11 +299,11 @@ msgstr "Country:"
 msgid "Wybierz gatunek:"
 msgstr "Select genre:"
 
-#: .\movies\templates\movies.html:20
+#: .\movies\templates\movies.html:22
 msgid "Od:"
 msgstr "From:"
 
-#: .\movies\templates\movies.html:21
+#: .\movies\templates\movies.html:23
 msgid "Do:"
 msgstr "To:"
 
@@ -298,7 +311,8 @@ msgstr "To:"
 msgid "Tytuł"
 msgstr "Title"
 
-#: .\photogallery\templates\galleryMovie.html:48
+#: .\photogallery\templates\galleryMovie.html:49
+#: .\photogallery\templates\galleryPerson.html:65
 msgid "Osoby"
 msgstr "People"
 
@@ -330,27 +344,27 @@ msgstr "All"
 msgid "Osoba"
 msgstr "Person"
 
-#: .\templates\base.html:64
+#: .\templates\base.html:66
 msgid "Witaj,"
 msgstr "Welcome,"
 
-#: .\templates\base.html:64
+#: .\templates\base.html:66
 msgid "wyloguj się."
 msgstr "logout."
 
-#: .\templates\base.html:66
+#: .\templates\base.html:68
 msgid "Witaj, gościu "
 msgstr "Welcome, guest "
 
-#: .\templates\base.html:66
+#: .\templates\base.html:68
 msgid "zaloguj się"
 msgstr "login"
 
-#: .\templates\base.html:66
+#: .\templates\base.html:68
 msgid " lub "
 msgstr " or "
 
-#: .\templates\base.html:66
+#: .\templates\base.html:68
 msgid "zarejestruj."
 msgstr "register."
 
