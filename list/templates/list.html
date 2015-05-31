@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 ﻿﻿﻿{% load i18n %}
+
+{% block title %}
+    {{ list.name }} - {% trans "lista użytkownika" %} {{ request.user }}
+{% endblock %}
+
 {% block content %}
 
     {% for movie in list.movies.all %}

@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
 ﻿﻿﻿{% load i18n %}
+
+{% block title %}
+    {% trans "Galeria" %} -
+    {% if LANGUAGE_CODE == 'pl' %}
+        {{  movie.title }}
+    {% else %}
+        {{ movie.title_en }}
+    {% endif %}
+{% endblock %}
+
 {% block content %}
     <script type="text/javascript">
     $( document ).ready(function() {

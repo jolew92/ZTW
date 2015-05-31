@@ -1,5 +1,11 @@
 {% extends 'edit.html' %}
 ﻿{% load i18n %}
+
+{% block title %}
+    {% trans "Zarządzanie listą" %} {{ list.name }}
+{% endblock %}
+
+
 {% block edit %}
     <div class="edit">
         <br>

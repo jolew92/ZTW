@@ -1,6 +1,45 @@
 {% extends 'base.html' %}
 ﻿﻿{% load i18n %}
+
+{% block title %}
+    {{ person.last_name }} {{ person.first_name }}
+{% endblock %}
+
+{% block meta %}
+    <meta property="og:title" content="{{ person.last_name }} {{ person.first_name }}" />
+    <meta property="og:site_name" content="Filmland"/>
+    <meta property="og:url" content="{{ request.path }}" />
+    <meta property="fb:app_id" content="763097213809301" />
+{% endblock %}
+
 {% block content %}
+       <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '763097213809301',
+          xfbml      : true,
+          version    : 'v2.3'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+          {% if LANGUAGE_CODE == 'pl' %}
+              js.src = "//connect.facebook.net/pl_PL/sdk.js";
+          {% else %}
+              js.src = "//connect.facebook.net/en_US/sdk.js";
+          {% endif %}
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <div style="float: right;">
+        <p style="display: inline-block;" class="fb-share-button" data-href="" data-layout="button_count"></p>
+        <p style="display: inline-block;"><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a></p>
+    </div>
     <h1>{{ person.last_name }} {{  person.first_name}}</h1>
     {% if not cover.first == None %}
         <img id="obrazek" src="/media/{% for i in cover %}{{ i }}{% endfor %}" width="250" height="358"/>

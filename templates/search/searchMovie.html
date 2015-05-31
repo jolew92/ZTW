@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 ﻿﻿﻿{% load i18n %}
+
+{% block title %}
+    {% trans "Szukaj" %}
+{% endblock %}
+
 {% block content %}
 
     <h3><p class="attributes">{% trans "Szukane:" %}</p> {{ search }}</h3><br>

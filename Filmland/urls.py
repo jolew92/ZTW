@@ -18,6 +18,9 @@ urlpatterns = patterns(
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^admin/', include(admin.site.urls),),
 
+    url(r'', include('social.apps.django_app.urls', namespace='social')),
+    url(r'', include('django.contrib.auth.urls', namespace='auth')),
+
     url(r'^accounts/auth/$', 'accounts.views.auth_view'),
     url(r'^accounts/register/$', 'accounts.views.register_user'),
     url(r'^accounts/edit_user/$', 'accounts.views.update_profile'),

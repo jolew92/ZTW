@@ -2,7 +2,12 @@
 ﻿{% load staticfiles %}
 <html>
     <head>
-        <title>Filmland</title>
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+        {% block meta %}
+        {% endblock %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -36,7 +41,7 @@
         <div class="wrapper">
         <div class="container">
             <ul class="menu" rel="sam1">
-                <li class="active"><a class="menuFont" href="/">FilmLand</a></li>
+                <li class="active" style="width: 50px"><a class="menuFont" href="/"><img src="http://a.fsdn.com/sd/topics/movies_64.png" width="20px" height="20px" style="margin-top: 5px; margin-left: -5px"/></a></li>
                 <li><a class="menuFont" href="/movies/all/">{% trans "Filmy" %}</a></li>
                 <li><a class="menuFont" href="/people/all/">{% trans "Aktorzy" %}</a></li>
                 <li><a class="menuFont" href="/cinemas/all/">{% trans "Kina" %}</a></li>
@@ -63,9 +68,13 @@
             </form>
             <div class="login">
                 {% if user.is_authenticated %}
-                    <p>{% trans "Witaj," %} <a href='/accounts/edit/'>{{ user.username }}</a>  <a href="/accounts/logout/">{% trans "wyloguj się." %}</a></p>
+                    <p>{% trans "Witaj," %} <a href='/accounts/edit/'>{{ user.username }}</a>  <a href="{% url 'auth:logout' %}?next={{ request.path }}">{% trans "wyloguj się." %}</a></p>
                     {% else %}
-                    <p>{% trans "Witaj, gościu " %} <a href="/accounts/login/">{% trans "zaloguj się" %}</a> {% trans ' lub ' %}<a href="/accounts/register/">{% trans "zarejestruj." %}</a></p>
+                    <p>{% trans "Witaj, gościu " %} <a href="/accounts/login/">{% trans "zaloguj się" %}</a>
+                        {% trans ' lub ' %}<a href="/accounts/register/">{% trans "zarejestruj." %}</a>
+                        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><img style="margin-top:-5px" src="https://fbstatic-a.akamaihd.net/rsrc.php/v2/yU/r/fWK1wxX-qQn.png" /></a>
+                        <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}"><img style="margin-top:-5px" src="http://www.123contactform.com/images3/twitter-small-icon.png" width="18" height="18"/></a>
+                    </p>
                 {% endif %}
             </div>
         </div>

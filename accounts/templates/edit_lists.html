@@ -1,5 +1,11 @@
 {% extends 'edit.html' %}
 ﻿{% load i18n %}
+
+{% block title %}
+    {% trans "Zarządzanie listami użytkownika" %}
+{% endblock %}
+
+
 {% block edit %}
     <div class="edit">
         <h3>{% trans "Twoje listy:" %}</h3>

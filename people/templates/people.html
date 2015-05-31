@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 ﻿﻿{% load i18n %}
+
+{% block title %}
+    {% trans "Osoby" %}
+{% endblock %}
+
 {% block content %}
     <ul>
     {% for person in people %}

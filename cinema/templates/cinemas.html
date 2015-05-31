@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 ﻿{% load i18n %}
+
+{% block title %}
+    {% trans "Kina" %}
+{% endblock %}
+
 {% block content %}
 
 <form name="myform" id="k1" class="form-horizontal" method="GET">{% csrf_token %}

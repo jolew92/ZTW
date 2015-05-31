@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 ﻿{% load i18n %}
+
+{% block title %}
+    {{cinema.brand}} {{cinema.additionalName}}
+{% endblock %}
+
 {% block content %}
 
 {{cinema.brand}} {{cinema.additionalName}}<br>

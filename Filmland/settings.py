@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'cinema',
     'django_extensions',
     'photogallery',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -133,4 +134,18 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.static',
     'django.contrib.messages.context_processors.messages',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
 )
+
+AUTHENTICATION_BACKENDS = (
+   'social.backends.facebook.FacebookOAuth2',
+   'social.backends.google.GoogleOAuth2',
+   'social.backends.twitter.TwitterOAuth',
+   'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '763097213809301'
+SOCIAL_AUTH_FACEBOOK_SECRET = '188f09ba437db56914a58437415e5e4a'
+SOCIAL_AUTH_TWITTER_KEY = 'I1WAgQHEokUo7ueOTWPLZDdZ5'
+SOCIAL_AUTH_TWITTER_SECRET = 'AZVHVM2qwYmL5ziDSsfSCrj7PD0lXY4LrehNN55vtePs4MNRN7'

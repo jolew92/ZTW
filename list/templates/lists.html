@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 ﻿﻿﻿{% load i18n %}
+
+{% block title %}
+    {% trans "Listy użytkownika" %} {{ request.user }}
+{% endblock %}
+
 {% block content %}
     <ul>
         {% for item in lists %}
