@@ -59,7 +59,7 @@ class MovieView(View):
         roles = MovieRole.objects.filter(movie_id=movie_id)
         przekazujeoceny = RoleRate.objects.filter(user_id=request.user.id, role__in=roles)
 
-        lists = MovieListItem.objects.filter(movielist__user=request.user)
+        lists = MovieListItem.objects.filter(movielist__user=request.user.id)
 
         images = Image.objects.filter(movies__movie_id=movie_id).order_by('id')[:5]
         cover = Image.objects.filter(movies__movie_id=movie_id, title='Cover').order_by('id')[:1]

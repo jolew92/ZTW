@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'photogallery',
     'social.apps.django_app.default',
+    'social_auth',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -54,6 +55,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
+    'social_auth.middleware.SocialAuthExceptionMiddleware',
 )
 
 ROOT_URLCONF = 'Filmland.urls'
@@ -140,7 +143,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 AUTHENTICATION_BACKENDS = (
    'social.backends.facebook.FacebookOAuth2',
-   'social.backends.google.GoogleOAuth2',
    'social.backends.twitter.TwitterOAuth',
    'django.contrib.auth.backends.ModelBackend',
 )
@@ -149,3 +151,5 @@ SOCIAL_AUTH_FACEBOOK_KEY = '763097213809301'
 SOCIAL_AUTH_FACEBOOK_SECRET = '188f09ba437db56914a58437415e5e4a'
 SOCIAL_AUTH_TWITTER_KEY = 'I1WAgQHEokUo7ueOTWPLZDdZ5'
 SOCIAL_AUTH_TWITTER_SECRET = 'AZVHVM2qwYmL5ziDSsfSCrj7PD0lXY4LrehNN55vtePs4MNRN7'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+SOCIAL_AUTH_BACKEND_ERROR_URL = "/"
